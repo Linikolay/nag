@@ -1,7 +1,14 @@
+@font-face {
+  font-family: "Rubik";
+  src: url("./font/Rubik-Light.ttf")
+      
+}
 .App {
   text-align: center;
 }
-
+.container{
+  max-width: 1650px;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -13,6 +20,9 @@
   }
 }
 
+*{
+  font-family: "Rubik";
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -36,3 +46,227 @@
     transform: rotate(360deg);
   }
 }
+nav{
+  box-shadow: 0px 4px 15px rgb(0 0 0 / 16%);
+  /* transform: matrix(1, 0, 0, -1, 0, 0); */
+  margin-bottom: 15px;
+}
+.test{
+/* background-color: red; */
+display: inline-block;
+width: 100%;
+height: 100%;
+}
+.grtextlogo{
+  display: inline-block;
+  margin-top: 0px;
+  position: relative;
+  top: 12px;
+  margin-left: 11px;
+}
+.grtextlogo0{
+  display: inline-block;
+  margin-top: 0px;
+  position: relative;
+  top: 8px;
+  margin-left: 11px;
+}
+.textlogo{
+margin: 0px;
+  font-family: "Rubik";
+font-size: 10px;
+color: #2D2B324F;
+}
+
+.tel{
+  color: black;
+  font-family: "Rubik";
+  font-weight: 900;
+font-size: 12px
+}
+.date{
+
+}
+.searchform::placeholder{
+  font-size: 10px;
+  color: #08080966;
+
+}
+.rgtopbuttn img{
+  margin-right: 10px;
+}
+.rgtopbuttn{
+  color: black !important;
+  margin-left: 5px !important;
+  font-weight: 500;
+  font-size: 14px;
+
+}
+.regbtn{
+  background: #efefef;
+border-radius: 5px;
+width: 123px;
+text-align: center;
+}
+.imgtemp{
+float: left;
+position: relative;
+top: 7px;
+margin-right: 20px;
+width: 30px;
+
+}
+.blockcater{
+  max-width: 211px;
+  display: inline-block;
+}
+.textcategory{
+margin: 0px;
+font-weight: 600;
+}
+.brandcategory{
+margin: 0px;
+color: #000000;
+
+opacity: 0.3;
+font-size: 13px;
+white-space: nowrap; /* Запрещаем перенос строк */
+overflow: hidden; /* Обрезаем все, что не помещается в область */
+
+text-overflow: ellipsis; /* Добавляем многоточие */
+}
+.nextcateg{
+float: right;
+width: 20px;
+position: relative;
+top: 13px;
+
+
+}
+.blockcatersrre{
+  padding-left: 34px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+.botallcateg{
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  padding-top: 20px;
+}
+.botallcategtext{
+margin-top: 20px;
+  color: #000000;
+padding-left: 10px;
+opacity: 0.5;
+}
+.textcategory{
+  color: black;
+}
+.banerimg{
+  width: 100%;
+}
+.blocbuttonm{
+  display: inline-block;
+}
+.leftsider{
+  padding-right: 0px;
+}
+.centerbanners{
+  padding: 0px;
+}
+.mini1{
+  height: 221px;
+}
+.mini2{
+  height: 221px;
+  margin-top: 10px;
+}
+.centerbannersmini{
+  text-align: right;
+  
+}
+.alignbaner{
+  position: relative;
+}
+.buttonleft{
+position: absolute;
+top: 50%;
+z-index: 22;
+border: 0px;
+background-color: transparent;
+left: 20px;
+}
+.buttonright{
+  position: absolute;
+  z-index: 22;
+  border: 0px;
+  top: 50%;
+  right: 20px;
+  background-color: transparent;
+}
+.imgback{
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 5px;
+  width: 100%;
+  
+}
+.imgnext{
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 5px;
+  width: 100%;
+}
+.slick-active{
+  width: 41px;
+  height: 2px !important;
+  background: white;
+  border-radius: 10px;
+}
+.slick-dots li{
+  width: 41px !important;
+  height: 2px !important;
+  border-radius: 10px;
+}
+.partnerbanners{
+  width: 100%;
+  padding: 30px;
+}
+.buttonleft22{
+  top: 31%;
+  left: 0px;
+}.buttonleft33{
+  top: 31%;
+  right: 0px;
+}
+
+.populartitle{
+  font-weight: 900;
+  font-size: 30px;
+}
+.brnpop{
+  display: inline-block;
+  text-align: right;
+ float: right;
+}
+.eeee{
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
+}
+.red{
+  margin-bottom: 20px;
+  transition: 1s; /* Время эффекта */
+
+}.red:hover{
+ /* padding: 10px; */
+ margin-bottom: 20px;
+ transform: scale(1.2);
+ box-shadow: 6px 6px 30px rgba(0, 0, 0, 0.5);
+border-radius: 8px;
+
+}.red:hover .eeee{
+  visibility: visible;
+  opacity: 1;
+  text-align: center;
+
+ }
