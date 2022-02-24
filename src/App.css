@@ -3,11 +3,18 @@
   src: url("./font/Rubik-Light.ttf")
       
 }
+
+@font-face {
+  font-family: "RubikBold";
+  src: url("./font/Rubik-Bold.ttf")
+      
+}
+
 .App {
   text-align: center;
 }
 .container{
-  max-width: 1650px;
+  max-width: 1400px !important;
 }
 .App-logo {
   height: 40vmin;
@@ -117,7 +124,7 @@ width: 30px;
 
 }
 .blockcater{
-  max-width: 211px;
+  max-width: 200px;
   display: inline-block;
 }
 .textcategory{
@@ -144,15 +151,20 @@ top: 13px;
 
 }
 .blockcatersrre{
-  padding-left: 34px;
-  padding-top: 18px;
-  padding-bottom: 18px;
+  padding-left: 18px;
+  /* padding-top: 18px; */
+  /* padding-bottom: 18px; */
 }
 .botallcateg{
   display: inline-block;
   width: 100%;
   text-align: center;
-  padding-top: 20px;
+  /* margin-top: 20px; */
+  margin-bottom: 12px;
+  background-color: #F9F9F8;
+}
+.slick-list{
+  /* background-color: white; */
 }
 .botallcategtext{
 margin-top: 20px;
@@ -165,21 +177,29 @@ opacity: 0.5;
 }
 .banerimg{
   width: 100%;
+  /* background-color: white; */
 }
 .blocbuttonm{
   display: inline-block;
 }
 .leftsider{
   padding-right: 0px;
+ 
+}
+.catereseed1{
+  background-color: white;
+  border-radius: 8px;
+  padding: 12px;
 }
 .centerbanners{
   padding: 0px;
+  padding-left: 12px;
 }
 .mini1{
-  height: 221px;
+  height: 182px;
 }
 .mini2{
-  height: 221px;
+  height: 182px;
   margin-top: 10px;
 }
 .centerbannersmini{
@@ -191,7 +211,7 @@ opacity: 0.5;
 }
 .buttonleft{
 position: absolute;
-top: 50%;
+top: 43%;
 z-index: 22;
 border: 0px;
 background-color: transparent;
@@ -201,7 +221,7 @@ left: 20px;
   position: absolute;
   z-index: 22;
   border: 0px;
-  top: 50%;
+  top: 43%;
   right: 20px;
   background-color: transparent;
 }
@@ -216,7 +236,7 @@ left: 20px;
   border-radius: 5px;
   width: 100%;
 }
-.slick-active{
+.maincatalogs .slick-active{
   width: 41px;
   height: 2px !important;
   background: white;
@@ -233,14 +253,17 @@ left: 20px;
 }
 .buttonleft22{
   top: 31%;
-  left: 0px;
+  left: 13px;
 }.buttonleft33{
   top: 31%;
   right: 0px;
 }
-
+.slick-track{
+  background-color: transparent;
+}
 .populartitle{
   font-weight: 900;
+  font-family: "RubikBold";
   font-size: 30px;
 }
 .brnpop{
@@ -264,9 +287,239 @@ left: 20px;
  box-shadow: 6px 6px 30px rgba(0, 0, 0, 0.5);
 border-radius: 8px;
 
-}.red:hover .eeee{
+}
+.red:hover .eeee{
   visibility: visible;
   opacity: 1;
   text-align: center;
 
  }
+ .cartbtners{
+   width: 100%;
+   height: 30px;
+   display: inline-block;
+
+   visibility: hidden;
+   opacity: 0;
+   transition: visibility 0s, opacity 0.5s linear;
+ }
+
+.catevnuters:hover .cartbtners{
+  visibility: visible;
+  opacity: 1;
+  text-align: center;
+}
+ .testerkacs{
+   height: 500px ;
+   width: 100%;
+   display: inline-block;
+   margin-top: 20px;
+ }
+ .routers{
+   width: 100%;
+ }
+ .catageters{
+  padding: 15px;
+  height: 512px;
+  position: relative;
+  background-color: white;
+  border-radius: 8px;
+  margin-right: 6px;
+  
+ }
+ .catevnuters{
+  padding: 25px;
+  transition: 1s; /* Время эффекта */
+  border-radius: 8px;
+ }
+ .catageters:hover{
+  box-shadow: 6px 6px 30px rgba(0, 0, 0, 0.05);
+  transform: scale(1.0);
+  height: auto;
+}
+.btnaddcart{
+  background: linear-gradient(100.08deg, #0A8ED8 -0.73%, #38AAEB 108.65%);
+  border-radius: 8px;
+  width: 58%;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  display: inline-block;
+}
+.btnaddcart img{
+padding-right: 5px;
+}
+
+
+.btnaddcartsrav{
+width: 18%;
+display: inline-block;
+padding-top: 7px;
+padding-bottom: 7px;
+background: rgba(196, 196, 196, 0.15);
+border-radius: 8px;
+margin-left: 5px;
+}
+
+.btnaddcartfavorite{
+  width: 18%;
+  display: inline-block;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  background: rgba(196, 196, 196, 0.15);
+border-radius: 8px;
+margin-left: 5px;
+
+}
+.textrowproduct{
+  font-weight: 900;
+  font-size: 16px;
+  font-family: "RubikBold";
+  height: 70px;
+  overflow: hidden;
+}
+.brandtextvers{
+ color: #B2B5C2; 
+}
+.elipse{
+  background: #94DAAC;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+}
+.elipsenals{
+color: #94DAAC;
+font-size: 13px;
+margin-left: 4px;
+}
+.elipseart{
+color: #B2B5C2;
+font-size: 13px;
+margin-left: 6px;
+}
+.groupelipse{
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.goruptopproducer{
+  display: inline-block;
+
+  position: absolute;
+  left: 0;
+  top: 0;
+  left: 40px;
+  top: 34px;
+  z-index: 555;
+}
+.new{
+display: inline-block;
+background: rgba(19, 214, 65, 0.1);
+backdrop-filter: blur(4px);
+/* Note: backdrop-filter has minimal browser support */
+color: #26d63d;
+padding: 5px;
+border-radius: 6px;
+font-size: 13px;
+margin-right: 5px;
+}
+.reqomend{
+  display: inline-block;
+  display: inline-block;
+background: rgba(45, 164, 230, 0.08);
+backdrop-filter: blur(4px);
+/* Note: backdrop-filter has minimal browser support */
+color: #2DA4E6;
+padding: 5px;
+border-radius: 6px;
+font-size: 13px;
+margin-right: 5px;
+}
+.discount{
+  display: inline-block;
+  display: inline-block;
+background: rgba(255, 199, 0, 0.15);
+backdrop-filter: blur(4px);
+/* Note: backdrop-filter has minimal browser support */
+color: #FFC700;
+padding: 5px;
+border-radius: 6px;
+font-size: 13px;
+margin-right: 5px;
+}
+.skidk{
+  display: inline-block;
+  display: inline-block;
+background: rgba(255, 69, 69, 0.1);
+backdrop-filter: blur(4px);
+/* Note: backdrop-filter has minimal browser support */
+color: #FF4545;
+padding: 5px;
+border-radius: 6px;
+font-size: 13px;
+margin-right: 5px;
+}
+#root{
+  background-color: #F9F9F8;
+}
+.slick-arrow {
+  display: none !important;
+}
+.mainnon{
+  background-color: rebeccapurple;
+}
+.slick-slide img{
+  width: 100%;
+}
+.mainmalabs{
+  background-color: white;
+  border-radius: 8px;
+}
+.nopadd{
+  padding: 0px;
+}
+.titleboldcena{
+  font-family: "RubikBold";
+  margin-bottom: 22px;
+  font-size: 25px;
+}
+.activecategorymain{
+font-family: "RubikBold";
+margin-right: 10px;
+color: black;
+border: 0px;
+background-color: transparent;
+font-size: 20px;
+}
+.noactivecategorymain{
+  margin-right: 10px;
+  color: #000000;
+
+opacity: 0.3;
+border: 0px;
+background-color: transparent;
+}
+.cladco{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.minn{
+  border: 0px;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+.controlerspadr{
+  margin-top: 30px;
+  margin-bottom: 150px;
+}
+.reklna{
+  width: 100%;
+}
+.bodymaincontrollers{
+  height: 750px;
+}
+.notanknew{
+  margin-top:20px;
+}

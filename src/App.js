@@ -1,19 +1,23 @@
 
-import React, { Component } from 'react';
+import { Component, Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import MainPage from './component/MainPage'
-import Headers from './component/Headers'
-
-
 
 import logo from './logo.svg';
-import './App.css';
+// import './App.css';
+;
+const MainPage = lazy(() => import('./component/MainPage'));
+const Headers = lazy(() => import('./component/Headers'));
 
+lazy(() => import('bootstrap/dist/css/bootstrap.min.css'))
+lazy(() => import('./App.css'))
 class App extends Component {
   render() {
 
     return (
       <div className="page-wrap">
+        <Suspense fallback={
+          <div>Load</div>
+        }>
         <div className="main-body">
           <Headers/>
           <Router>
@@ -27,9 +31,11 @@ class App extends Component {
                 {/* <Route exact path="/teachercreate/" component={TeachPage} /> */}
 
               </Routes></Router>
-        </div></div>
+        </div>
+        </Suspense></div>
     )
   }
 }
 
-export default App;
+
+export { App as default } 

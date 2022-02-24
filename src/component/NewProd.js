@@ -4,6 +4,7 @@ import { Container, Row, Col, NavLink } from 'react-bootstrap';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
+
 import mini1 from '../img/mini1.png';
 import mini2 from '../img/mini2.png';
 import banner from '../img/banner.png';
@@ -52,7 +53,7 @@ const responsive = {
 
 
 
-class Popular extends Component {
+class NewProd extends Component {
     constructor(props) {
         super()
         this.state = {
@@ -167,13 +168,9 @@ class Popular extends Component {
 
 
                             </Col>
-                            <Col className='nopadd cladco' xs={12}>
+                   
 
-                                <button className='activecategorymain '>Все категории</button>
-                                <button className='noactivecategorymain '>Все категории</button>
-                            </Col>
-
-                            <Col className='nopadd' xs={12}>
+                            <Col className='nopadd notanknew' xs={12}>
                                 <Carousel infinite={true} ref={(el) => (this.Carousel = el)} arrows={false} responsive={responsive}>
                                     <div className='catageters' id="1">
                                         <div className='goruptopproducer'>
@@ -368,4 +365,4 @@ class Popular extends Component {
     }
 }
 
-export default Popular;
+export default NewProd;

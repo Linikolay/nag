@@ -1,5 +1,5 @@
 
-import React, { Component } from 'react';
+import React, { Component, lazy } from 'react';
 import { Container, Row, Col, NavLink } from 'react-bootstrap';
 
 import komutator from '../img/komutator.svg';
@@ -12,14 +12,13 @@ import voip from '../img/voip.svg';
 import next from '../img/next.svg';
 import router from '../img/router.svg';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../App.css';
+import "bootstrap/dist/css/bootstrap.min.css"
 
 class LeftCategory extends Component {
     render() {
 
         return (
-            <div className="page-wrap">
+            <div className="page-wrap catereseed1">
                 <div className="main-body">
                     <NavLink className='blockcatersrre'>
                         <img className='imgtemp' src={komutator} />

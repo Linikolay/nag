@@ -1,5 +1,5 @@
 
-import React, { Component } from 'react';
+import React, { Component, lazy } from 'react';
 import { Container, Row, Col, NavLink } from 'react-bootstrap';
 
 import mini1 from '../img/mini1.png';
@@ -17,8 +17,8 @@ import backp from "../img/backp.svg";
 import nextp from "../img/nextp.svg";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../App.css';
+import "bootstrap/dist/css/bootstrap.min.css"
+
 
 class RightBaners extends Component {
     constructor(props) {
@@ -54,35 +54,11 @@ class RightBaners extends Component {
             infinite: true,
             speed: 500,
             slidesToShow: 5,
-            autoplay: true,
+            // autoplay: true,
             // speed: 2000,
             slidesToScroll: 1,
 
-            appendDots: dots => (
-                <div
-                    style={{
-                        // backgroundColor: "#ddd",
-                        borderRadius: "10px",
-                        padding: "10px",
-                        position: "relative",
-                        top: "-46px",
-                    }}
-                >
-                    <ul style={{ margin: "0px" }}> {dots} </ul>
-                </div>
-            ),
-            customPaging: i => (
-                <div
-                    style={{
-                        width: "41px",
-                        height: "2px",
-                        background: "rgba(255, 255, 255, 0.06)",
-                        border: "100px",
-                    }}
-                >
-
-                </div>
-            )
+       
 
         }
         const settings = {
@@ -90,7 +66,7 @@ class RightBaners extends Component {
             infinite: true,
             speed: 500,
             slidesToShow: 1,
-            autoplay: true,
+            // autoplay: true,
           
             slidesToScroll: 1,
 
@@ -128,7 +104,7 @@ class RightBaners extends Component {
 
                     <Container>
                         <Row>
-                            <Col className='centerbanners alignbaner' xs={8}>
+                            <Col className='centerbanners alignbaner maincatalogs' xs={8}>
 
 
 
@@ -142,8 +118,8 @@ class RightBaners extends Component {
 
 
                                 <Slider ref={c => (this.slider1 = c)}{...settings}>
-                                    <div>
-                                        <img className='banerimg' src={banner} />
+                                    <div className='mainnon'>
+                                        <img  src={banner} />
                                     </div>
                                     <div>
                                         <img className='banerimg' src={banner} />
@@ -177,7 +153,7 @@ class RightBaners extends Component {
                             </Col>
 
 
-                            <Col className='centerbanners alignbaner' xs={12}>
+                            <Col className='centerbanners alignbaner mainmalabs' xs={12}>
 
 
 
@@ -190,32 +166,32 @@ class RightBaners extends Component {
 
 
 
-                                <Slider className='listmainpage' ref={c => (this.slider = c)}{...settings1}>
-                                    <div>
+                                <Slider className='' ref={c => (this.slider = c)}{...settings1}>
+                                    <div className='banerimg'>
                                         <img className='partnerbanners' src={partner} />
                                     </div>
-                                    <div>
+                                    <div className='banerimg'>
                                         <img className='partnerbanners' src={partner} />
                                     </div>
-                                    <div>
+                                    <div className='banerimg'>
+                                        <img className='partnerbanners' src={partner} />
+                                    </div >
+                                    <div className='banerimg'>
                                         <img className='partnerbanners' src={partner} />
                                     </div>
-                                    <div>
+                                    <div className='banerimg'>
                                         <img className='partnerbanners' src={partner} />
                                     </div>
-                                    <div>
+                                    <div className='banerimg'>
                                         <img className='partnerbanners' src={partner} />
                                     </div>
-                                    <div>
+                                    <div className='banerimg'> 
                                         <img className='partnerbanners' src={partner} />
                                     </div>
-                                    <div>
+                                    <div className='banerimg'>
                                         <img className='partnerbanners' src={partner} />
                                     </div>
-                                    <div>
-                                        <img className='partnerbanners' src={partner} />
-                                    </div>
-                                    <div>
+                                    <div className='banerimg'>
                                         <img className='partnerbanners' src={partner} />
                                     </div>
                                 </Slider>
