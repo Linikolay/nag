@@ -23,35 +23,9 @@ import cartbtn from "../img/cartbtn.svg";
 import srav from "../img/sravbtn.svg";
 import favorite from "../img/favorite.svg";
 import "bootstrap/dist/css/bootstrap.min.css"
-const CustomRightArrow = ({ onClick }) => {
-    return <i className="custom-right-arrow" onClick={() => onClick()} />;
-};
 
-const CustomLeftArrow = ({ onClick }) => (
-    <i onClick={() => onClick()} className="custom-left-arrow" />
-);
-
-const responsive = {
-    superLargeDesktop: {
-        // the naming can be any, depends on you.
-        breakpoint: { max: 4000, min: 3000 },
-        items: 5
-    },
-    desktop: {
-        breakpoint: { max: 3000, min: 1024 },
-        items: 4
-    },
-    tablet: {
-        breakpoint: { max: 1024, min: 464 },
-        items: 2
-    },
-    mobile: {
-        breakpoint: { max: 464, min: 0 },
-        items: 1
-    }
-};
-
-
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 class NewProd extends Component {
     constructor(props) {
@@ -59,9 +33,25 @@ class NewProd extends Component {
         this.state = {
             sle: "",
         }
+        this.next = this.next.bind(this);
+        this.previous = this.previous.bind(this);
+
+        this.next1 = this.next1.bind(this);
+        this.previous1 = this.previous1.bind(this);
     }
     next1() {
-        this.slider1.slickNext();
+        this.slider.slickNext();
+    }
+    next() {
+        this.slider.slickNext();
+    }
+    previous1() {
+        this.slider.slickPrev();
+        console.log("fdsfjsdhf")
+    }
+    previous() {
+        this.slider.slickPrev();
+        console.log("fdsfjsdhf")
     }
     back() {
         this.slider1.slickPrev();
@@ -87,14 +77,12 @@ class NewProd extends Component {
     render() {
 
         const settings = {
-            dots: false,
+            dots: true,
             infinite: true,
-
             speed: 500,
             slidesToShow: 5,
-            autoplay: false,
-            centerMode: true,
-            speed: 2000,
+            // autoplay: true,
+          
             slidesToScroll: 1,
 
             appendDots: dots => (
@@ -123,7 +111,7 @@ class NewProd extends Component {
                 </div>
             )
 
-        }
+        };
         return (
             <div className="page-wrap">
                 <div className="main-body">
@@ -140,23 +128,12 @@ class NewProd extends Component {
                                 <div className='brnpop'>
 
 
-                                    <button className='minn' onClick={() => {
-                                        const nextSlide = this.Carousel.state.currentSlide - 1;
-                                        this.Carousel.previous()
-                                        this.Carousel.goToSlide(nextSlide)
-                                    }}>
-                                        <img src={backp}></img>
-
-                                    </button>
-
-                                    <button className='minn' onClick={() => {
-                                        const nextSlide = this.Carousel.state.currentSlide + 1;
-                                        this.Carousel.next()
-                                        this.Carousel.goToSlide(nextSlide)
-                                    }}><img src={nextp}></img></button>
-
-
-
+                                <button className="minn" onClick={this.previous1}>
+                                <img src={backp}></img>
+                                </button>
+                                <button className="minn" onClick={this.next1}>
+                                <img src={nextp}></img>
+                                </button>
 
 
 
@@ -171,7 +148,7 @@ class NewProd extends Component {
                    
 
                             <Col className='nopadd notanknew' xs={12}>
-                                <Carousel infinite={true} ref={(el) => (this.Carousel = el)} arrows={false} responsive={responsive}>
+                            <Slider ref={c => (this.slider = c)}{...settings}>
                                     <div className='catageters' id="1">
                                         <div className='goruptopproducer'>
                                             <div className='new'>
@@ -349,7 +326,7 @@ class NewProd extends Component {
 
                                     </div>
 
-                                </Carousel>
+                                </Slider>
 
 
 

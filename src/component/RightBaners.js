@@ -153,6 +153,9 @@ class RightBaners extends Component {
                             </Col>
 
 
+                            <Col className='' xs={12}>
+<p className='nasvibirat'>Нас выбирают</p>
+                            </Col>
                             <Col className='centerbanners alignbaner mainmalabs' xs={12}>
 
 

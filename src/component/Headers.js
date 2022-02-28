@@ -23,9 +23,9 @@ class Headers extends Component {
                         <Container>
                             <Navbar.Brand href="#home"><img src={logo}/>
                             <div className='grtextlogo'>
-                            <p className='textlogo'>Сетевое и </p>
-                            <p className='textlogo'> телекоммуникационное </p>
-                            <p className='textlogo'>оборудование</p>
+                            <p className='textlogo textlogonoew'>Сетевое и </p>
+                            <p className='textlogo textlogonoew'> телекоммуникационное </p>
+                            <p className='textlogo textlogonoew'>оборудование</p>
                             </div>
                             <div className='grtextlogo0'>
                             <p className='textlogo tel'>998 (97) 777-70-60 </p>
@@ -43,12 +43,12 @@ class Headers extends Component {
                                     <Nav.Link className='rgtopbuttn' href="#home"><img src={favorite}/>Избранное</Nav.Link>
                                     <Nav.Link className='rgtopbuttn' href="#home"><img src={cart}/>Корзина</Nav.Link>
                                     <Nav.Link className='rgtopbuttn regbtn' href="#home"><img src={reg}/>Войти</Nav.Link>
-                                    <NavDropdown title="Ру" id="basic-nav-dropdown">
-                                        {/* <NavDropdown.Item href="#action/3.1">Ру</NavDropdown.Item> */}
+                                    {/* <NavDropdown title="Ру" id="basic-nav-dropdown">
+
                                         <NavDropdown.Item href="#action/3.2">Uz</NavDropdown.Item>
                                         <NavDropdown.Item href="#action/3.3">Uz</NavDropdown.Item>
                                      
-                                    </NavDropdown>
+                                    </NavDropdown> */}
                                 </Nav>
                             </Navbar.Collapse>
                         </Container>

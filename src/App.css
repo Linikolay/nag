@@ -130,6 +130,7 @@ width: 30px;
 .textcategory{
 margin: 0px;
 font-weight: 600;
+font-size: 14px;
 }
 .brandcategory{
 margin: 0px;
@@ -159,7 +160,7 @@ top: 13px;
   display: inline-block;
   width: 100%;
   text-align: center;
-  /* margin-top: 20px; */
+  margin-top: 32px;
   margin-bottom: 12px;
   background-color: #F9F9F8;
 }
@@ -190,6 +191,8 @@ opacity: 0.5;
   background-color: white;
   border-radius: 8px;
   padding: 12px;
+  padding-top: 18px;
+    padding-bottom: 18px;
 }
 .centerbanners{
   padding: 0px;
@@ -264,7 +267,7 @@ left: 20px;
 .populartitle{
   font-weight: 900;
   font-family: "RubikBold";
-  font-size: 30px;
+  font-size: 34px;
 }
 .brnpop{
   display: inline-block;
@@ -320,15 +323,16 @@ border-radius: 8px;
  }
  .catageters{
   padding: 15px;
-  height: 512px;
+  height: 440px;
   position: relative;
   background-color: white;
   border-radius: 8px;
   margin-right: 6px;
+  width: auto !important;
   
  }
  .catevnuters{
-  padding: 25px;
+  padding: 6px;
   transition: 1s; /* Время эффекта */
   border-radius: 8px;
  }
@@ -350,9 +354,18 @@ border-radius: 8px;
 }
 .btnaddcart img{
 padding-right: 5px;
+width: auto !important;
+display: inline-block !important;
 }
 
-
+.btnaddcartsrav img{
+  width: auto !important;
+  display: inline-block !important;
+}
+.btnaddcartfavorite img{
+  width: auto !important;
+  display: inline-block !important;
+}
 .btnaddcartsrav{
 width: 18%;
 display: inline-block;
@@ -375,13 +388,15 @@ margin-left: 5px;
 }
 .textrowproduct{
   font-weight: 900;
-  font-size: 16px;
+  font-size: 14px;
   font-family: "RubikBold";
   height: 70px;
-  overflow: hidden;
+  overflow: hidden
+  ;
 }
 .brandtextvers{
  color: #B2B5C2; 
+ font-size: 12px;
 }
 .elipse{
   background: #94DAAC;
@@ -392,12 +407,12 @@ margin-left: 5px;
 }
 .elipsenals{
 color: #94DAAC;
-font-size: 13px;
+font-size: 10px;
 margin-left: 4px;
 }
 .elipseart{
 color: #B2B5C2;
-font-size: 13px;
+font-size: 10px;
 margin-left: 6px;
 }
 .groupelipse{
@@ -410,8 +425,8 @@ margin-left: 6px;
   position: absolute;
   left: 0;
   top: 0;
-  left: 40px;
-  top: 34px;
+  left: 17px;
+  top: 14px;
   z-index: 555;
 }
 .new{
@@ -482,8 +497,8 @@ margin-right: 5px;
 }
 .titleboldcena{
   font-family: "RubikBold";
-  margin-bottom: 22px;
-  font-size: 25px;
+  margin-bottom: 15px;
+  font-size: 18px;
 }
 .activecategorymain{
 font-family: "RubikBold";
@@ -491,7 +506,7 @@ margin-right: 10px;
 color: black;
 border: 0px;
 background-color: transparent;
-font-size: 20px;
+font-size: 16px;
 }
 .noactivecategorymain{
   margin-right: 10px;
@@ -512,14 +527,314 @@ background-color: transparent;
 }
 .controlerspadr{
   margin-top: 30px;
-  margin-bottom: 150px;
+  margin-bottom: 18px;
 }
 .reklna{
   width: 100%;
 }
 .bodymaincontrollers{
-  height: 750px;
+  height: 645px;
 }
 .notanknew{
   margin-top:20px;
+}
+.btnstatis{
+  background-color: transparent;
+  border: 0px;
+  padding-right: 30px;
+  color: #000000;
+
+opacity: 0.3;
+}
+.statblock{
+  background-color: white;
+padding: 5px;
+
+}
+.statblock img{
+width: 100%;
+border-top-left-radius: 8px;
+border-top-right-radius: 8px;
+}
+.grtextsttis{
+  padding: 25px;
+}
+.columstatis{
+  margin-top: 20px;
+}
+.statsbblockchanges{
+  background-color: white;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  
+}
+.statr{
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+.aboimg{
+  width: 100%;
+}
+.aboimgblock{
+  position: relative;
+}
+.aboint{
+  color: #000000;
+  font-family: "RubikBold";
+opacity: 0.15;
+margin: 0px;
+font-size: 50px;
+}
+.abostr{
+  font-family: "RubikBold";
+  margin: 0px;
+}
+.absblocktext{
+  position: absolute;
+  top: 41px;
+  right: -17px;
+  background-color: white;
+  padding: 20px;
+  width: 200px;
+  box-shadow: 0px 4px 35px rgba(0, 0, 0, 0.06);
+border-radius: 8px;
+}
+.abotitle{
+font-size: 30px;
+font-family: "RubikBold";
+margin-top: 15px;
+}
+.urblbtnabout{
+  color: white;
+  padding: 10px;
+  padding-left: 35px;
+  padding-right: 35px;
+  border: 0px;
+  background: linear-gradient(100.08deg, #0A8ED8 -0.73%, #38AAEB 108.65%);
+  border-radius: 8px;
+}
+.discaboutmal{
+  color: #000000;
+margin-top: 15px;
+margin-bottom: 30px;
+  opacity: 0.6;
+  line-height: 30px;
+}
+.parthmain{
+  width: 100%;
+  padding: 15px;
+}
+.imgparmauioage{
+  max-width: 271px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.tetilepatrhners{
+ color: black;
+ font-size: 30px;
+ font-family: "RubikBold"; 
+}
+.subsblock{
+  background: linear-gradient(93.38deg, #080A0C -9.23%, #262C31 91.47%);
+border-radius: 20px;
+width: 100%;
+display: inline-block;
+padding: 100px;
+padding-top: 50px;
+padding-bottom: 50px;
+
+}
+
+.titlesubs{
+font-size: 30px;
+color: white;
+font-family: "RubikBold";
+}
+.dessubs{
+  color: #FFFFFF;
+width: 400px;
+  opacity: 0.6;
+}
+.formmailblock{
+  width: 100%;
+  display: inline-block;
+ 
+}
+.inpmail{
+  background: rgba(255, 255, 255, 0.04);
+border-radius: 10px;
+border: 0px;
+color: #FFFFFF99;
+padding: 15px;
+margin-right: 15px;
+
+}
+.inpmail:focus{
+ border: 0px solid transparent;
+}
+
+.inpmail:focus-visible {
+  outline: -webkit-focus-ring-color auto 0px;
+}
+.vtnsubmail{
+  background: linear-gradient(126.81deg, #0C8FD9 0%, #30A5E8 107.92%);
+border-radius: 10px;
+color: #FFFFFF;
+padding-top: 15px;
+padding-bottom: 15px;
+padding-left: 20px;
+padding-right: 20px;
+border: 0px;
+}
+.boulkdtext{
+  color: #FFFFFF;
+
+  opacity: 0.6;
+margin-left: 10px;
+}
+.boulkdtext1{
+  color: rgba(255, 255, 255, 0.6);
+
+  border-bottom:1px solid rgba(255, 255, 255, 0.6);
+  padding-bottom:2px;
+}
+
+
+
+
+.groupformtestermail{
+  margin-top: 30px;
+}
+
+.form-group{
+display: inline-block;
+}
+
+.form-group input {
+  padding: 0;
+
+  width: 30px;
+  margin-bottom: 0;
+  display: none;
+  cursor: pointer;
+}
+
+.form-group label {
+  position: relative;
+  cursor: pointer;
+}
+
+.form-group label:before {
+  content:'';
+  -webkit-appearance: none;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  border: 0px solid #0079bf;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
+  padding: 10px;
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  cursor: pointer;
+  margin-right: 5px;
+  width: 33px;
+    height: 33px;
+}
+
+.form-group input:checked + label:after {
+ 
+  content: '';
+  display: block;
+  position: absolute;
+  top: 5px;
+  left: 12px;
+  width: 10px;
+  height: 19px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.footer{
+  background: linear-gradient(93.38deg, #080A0C -9.23%, #262C31 91.47%);
+  display: inline-block;
+  width: 100%;
+  min-height: 200px;
+  margin-top: 50px;
+  padding-top: 20px;
+}
+.logotext{
+  color: rgba(255, 255, 255, 0.31);
+  font-size: 12px;
+}
+.textfootertop{
+font-weight: 500;
+color: white;
+font-size: 18px;
+margin-bottom: 13px;
+}
+.linkfootertext{
+  color: #FFFFFF;
+margin-bottom: 8px;
+font-weight: 300;
+font-size: 12px;
+  opacity: 0.6;
+}
+.footbtnsubs{
+  background: #1C99E0;
+border-radius: 8px;
+text-align: center;
+padding-top: 10px;
+padding-bottom: 10px;
+color: white;
+padding-left: 20px;
+padding-right: 20px;
+width: 100%;
+border: 0px;
+}
+.numbertxt{
+  color: white;
+  font-size: 16px;
+font-weight: 700;
+}
+.footerbottoms{
+  
+  background: rgba(0, 0, 0, 0.21);
+margin-top: 15px;
+padding-top: 15px;
+padding-bottom: 10px;
+}
+.linkfootertextbtntext{
+  text-align: right;
+}
+.powered-link[data-v-b51c4d68]{
+  display: none;
+}
+
+.testersss{
+  /* background-color: red; */
+  border-radius: 8px;
+  border: 1px solid #ECECF3;
+}
+.textlogonoew{
+  font-size: 10px;
+  
+}
+.tel{
+  font-size: 12px;
+}
+.date{
+  font-size: 10px;
+}
+.rgtopbuttn {
+  font-size: 12px;
+  font-weight: 600;
+}
+.nasvibirat{
+font-family: "RubikBold";
+  font-size: 16px;
+  margin: 0px;
+}
+.bodysttis{
+  background-color: white;
+  padding-top: 20px;
 }

@@ -7,20 +7,20 @@ import "react-multi-carousel/lib/styles.css";
 import mini1 from '../img/mini1.png';
 import mini2 from '../img/mini2.png';
 import banner from '../img/banner.png';
-import routersimg from '../img/router.png';
+import routersimg from '../../img/router.png';
 import partner from '../img/partner.png';
 
 import Slider from "react-slick";
 
 import back from "../img/back.svg";
-import backp from "../img/backp.svg";
+import backp from "../../img/backp.svg";
 
-import nextp from "../img/nextp.svg";
+import nextp from "../../img/nextp.svg";
 import next1 from "../img/next1.svg";
 
-import cartbtn from "../img/cartbtn.svg";
-import srav from "../img/sravbtn.svg";
-import favorite from "../img/favorite.svg";
+import cartbtn from "../../img/cartbtn.svg";
+import srav from "../../img/sravbtn.svg";
+import favorite from "../../img/favorite.svg";
 import "bootstrap/dist/css/bootstrap.min.css"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -80,7 +80,7 @@ class Popular extends Component {
             dots: true,
             infinite: true,
             speed: 500,
-            slidesToShow: 5,
+            slidesToShow: 4,
             // autoplay: true,
           
             slidesToScroll: 1,

@@ -1,18 +1,21 @@
 
-import { Component, Suspense, lazy } from 'react';
+import  React, { Component, Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 import logo from './logo.svg';
 // import './App.css';
-;
-const MainPage = lazy(() => import('./component/MainPage'));
-const Headers = lazy(() => import('./component/Headers'));
 
+// import MainPage from './component/MainPage'
+
+// const MainPage = lazy(() => import('./component/MainPage'));
+const Headers = React.lazy(() => import('./component/Headers'));
+const Footer = React.lazy(() => import('./component/Footer'));
+const MainPage = React.lazy(() => import('./component/MainPage'));
+const Category = React.lazy(() => import('./component/Product/Category'));
 lazy(() => import('bootstrap/dist/css/bootstrap.min.css'))
 lazy(() => import('./App.css'))
 class App extends Component {
   render() {
-
     return (
       <div className="page-wrap">
         <Suspense fallback={
@@ -25,13 +28,12 @@ class App extends Component {
               <Routes>
             
                 <Route path="/" element={<MainPage/>} />
-               
-                {/* <Route exact path="/room/" component={App} /> */}
-
-                {/* <Route exact path="/teachercreate/" component={TeachPage} /> */}
-
+                <Route path="/category/:id" element={<Category/>} />
+                
               </Routes></Router>
+             <Footer/>
         </div>
+   
         </Suspense></div>
     )
   }
