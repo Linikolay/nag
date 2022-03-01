@@ -12,6 +12,7 @@ const Headers = React.lazy(() => import('./component/Headers'));
 const Footer = React.lazy(() => import('./component/Footer'));
 const MainPage = React.lazy(() => import('./component/MainPage'));
 const Category = React.lazy(() => import('./component/Product/Category'));
+const Product = React.lazy(() => import('./component/Product/Product'));
 lazy(() => import('bootstrap/dist/css/bootstrap.min.css'))
 lazy(() => import('./App.css'))
 class App extends Component {
@@ -29,7 +30,7 @@ class App extends Component {
             
                 <Route path="/" element={<MainPage/>} />
                 <Route path="/category/:id" element={<Category/>} />
-                
+                <Route path="/view/:id" element={<Product/>} />
               </Routes></Router>
              <Footer/>
         </div>

@@ -30,8 +30,8 @@ import '../../Pro.css'
 const STEP = 10000;
 const MIN = 0;
 const MAX = 500000;
-const COLORS = ["rgba(0, 0, 0, 0.00)" , " #0A8ED8", "rgba(0, 0, 0, 0.00)"];
-const COLORS2 = ["rgba(0, 0, 0, 0.00)" , " rgba(0, 0, 0, 0.00)", "rgba(0, 0, 0, 0.00)"];
+const COLORS = ["rgba(0, 0, 0, 0.00)", " #0A8ED8", "rgba(0, 0, 0, 0.00)"];
+const COLORS2 = ["rgba(0, 0, 0, 0.00)", " rgba(0, 0, 0, 0.00)", "rgba(0, 0, 0, 0.00)"];
 class Category extends Component {
     constructor(props) {
         super()
@@ -106,14 +106,14 @@ class Category extends Component {
 
                                                 </div>
                                             </Col>
-<Col>     <button className='btnbrands'>
-Фильтр по цене
-                                                </button>
+                                            <Col>     <button className='btnbrands'>
+                                                Фильтр по цене
+                                            </button>
                                                 <img className='imgdowncater' src={down}></img>
-                                   </Col>
+                                            </Col>
                                             <Col className=' cladco sliderfilters' xs={12}>
-                                       
-                                            <Range
+
+                                                <Range
                                                     values={this.state.values}
                                                     step={STEP}
                                                     min={MIN}
@@ -131,7 +131,7 @@ class Category extends Component {
                                                             }}
                                                         >
                                                             <div
-                                                            className='colpser'
+                                                                className='colpser'
                                                                 ref={props.ref}
                                                                 style={{
                                                                     height: "10px",
@@ -147,7 +147,7 @@ class Category extends Component {
                                                                     alignSelf: "center"
                                                                 }}
                                                             >
-                                                          
+
                                                             </div>
                                                         </div>
                                                     )}
@@ -156,10 +156,10 @@ class Category extends Component {
                                                             {...props}
                                                             style={{
                                                                 ...props.style,
-                                                 
+
                                                             }}
                                                         >
-                                                            
+
                                                         </div>
                                                     )}
                                                 />
@@ -207,17 +207,17 @@ class Category extends Component {
                                                             {...props}
                                                             style={{
                                                                 ...props.style,
-                                                            
-                                                             
+
+
                                                                 backgroundColor: "transparent",
                                                                 display: "flex",
                                                                 justifyContent: "center",
                                                                 alignItems: "center",
-                                                           
+
                                                             }}
                                                         >
                                                             <span
-                                                               
+
                                                             >
                                                                 <img className='slidergttn' src={slidebtn}></img>
                                                                 <span
@@ -230,22 +230,22 @@ class Category extends Component {
                                                                         marginLeft: "-2px"
                                                                     }}
                                                                 >
-                                                                    
-                                                          
+
+
                                                                 </span>
                                                             </span>
-                                                     
+
                                                         </div>
-                                                        
+
                                                     )}
                                                 />
 
 
 
-<div className='dislbbbdf'>
-<span className='tas1'><div className='textmiongo1'>от</div>{this.state.values[0]}<div className='textmiongo2'>сум</div></span>
-<span className='tas2'><div className='textmiongo3'>до</div>{this.state.values[1]}<div className='textmiongo4'>сум</div></span>
-</div>
+                                                <div className='dislbbbdf'>
+                                                    <span className='tas1'><div className='textmiongo1'>от</div>{this.state.values[0]}<div className='textmiongo2'>сум</div></span>
+                                                    <span className='tas2'><div className='textmiongo3'>до</div>{this.state.values[1]}<div className='textmiongo4'>сум</div></span>
+                                                </div>
 
 
 
