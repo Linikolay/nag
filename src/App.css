@@ -478,6 +478,7 @@ margin-right: 5px;
 }
 #root{
   background-color: #F9F9F8;
+  /* background-color: red; */
 }
 .slick-arrow {
   display: none !important;

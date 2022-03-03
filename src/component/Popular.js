@@ -141,26 +141,6 @@ class Popular extends Component {
 
 
 
-{/* 
-                                    <button className='minn' onClick={() => {
-                                        const nextSlide = this.Carousel.state.currentSlide - 1;
-                                        this.Carousel.previous()
-                                        this.Carousel.goToSlide(nextSlide)
-                                    }}>
-                                        <img src={backp}></img>
-
-                                    </button>
-
-                                    <button className='minn' onClick={() => {
-                                        const nextSlide = this.Carousel.state.currentSlide + 1;
-                                        this.Carousel.next()
-                                        this.Carousel.goToSlide(nextSlide)
-                                    }}><img src={nextp}></img></button>
- */}
-
-
-
-
 
 
 
