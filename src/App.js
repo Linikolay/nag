@@ -24,14 +24,18 @@ class App extends Component {
         }>
         <div className="main-body">
           <Headers/>
+        
           <Router>
         
               <Routes>
             
                 <Route path="/" element={<MainPage/>} />
                 <Route path="/category/:id" element={<Category/>} />
-                <Route path="/view/:id" element={<Product/>} />
+                <Route  path="/view/:id"
+              
+                element={<Product props={":id"}/>} />
               </Routes></Router>
+         
              <Footer/>
         </div>
    

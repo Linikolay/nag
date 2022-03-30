@@ -20,7 +20,10 @@ const PrevArrow = ({ onClick }) => {
   );
 };
 
-const ImageSlider = ({ onChange,props, parentCallback, images, slidesToShow = 3 }) => {
+const ImageSlider = ({ onChange,props, parentCallback, maincount, images, slidesToShow = maincount
+
+
+}) => {
 
   const [imageIndex, setImageIndex] = useState(0);
  
@@ -57,7 +60,6 @@ const ImageSlider = ({ onChange,props, parentCallback, images, slidesToShow = 3 
 
   const templateImages = images.map((image, idx) => {
 
-    
     if (image !== null) {
       if(idx === imageIndex ){
         onChange (images[imageIndex])
@@ -65,11 +67,11 @@ const ImageSlider = ({ onChange,props, parentCallback, images, slidesToShow = 3 
       return (
         <div
           className={idx === imageIndex ? "activeSlide" : "slide"}
-          key={image.id}
+          key={image._id}
         >
     
           <div className="slideWrapper">
-            {image.code ? image.code : <img src={image.src} alt={image.alt} />}
+            {image.code ? image.code : <img src={"http://localhost:5000"+image.url} alt={image.alt} />}
           </div>
         </div>
       );
