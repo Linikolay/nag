@@ -122,7 +122,7 @@ class Category extends Component {
         var pathArray = window.location.pathname.split('/');
         console.log(pathArray)
 
-        fetch('http://localhost:5000/auth/oneproduct/' + pathArray[2], requestOptions)
+        fetch('http://192.168.109.214:5000/auth/oneproduct/' + pathArray[2], requestOptions)
             .then((response) => response.json())
 
             .then(data => {
@@ -260,11 +260,11 @@ class Category extends Component {
                                             <div className='blokersstree'>
                                                 <div className='slideralign'>
 
-                                                    <div className='goruptopproducer groupmaindetailproduct'>
+                                                    <div className='goruptopproducer groupmaindetailproduct testposition2222'>
 
                                                         {
                                                             main.new == true && (
-                                                                <div className='new newvenv'>
+                                                                <div className='new newvenv testposition'>
                                                                     Новинка
 
                                                                 </div>
@@ -273,7 +273,7 @@ class Category extends Component {
 
                                                         {
                                                             main.recomend == true && (
-                                                                <div className='reqomend '>
+                                                                <div className='reqomend testposition'>
                                                                     Рекомендуем
                                                                 </div>
                                                             )
@@ -281,8 +281,8 @@ class Category extends Component {
 
 
                                                         {
-                                                            main.act == false && (
-                                                                <div className='discount'>
+                                                            main.act == true && (
+                                                                <div className='discount testposition'>
                                                                     Акция
                                                                 </div>
                                                             )
@@ -291,7 +291,7 @@ class Category extends Component {
 
                                                         {
                                                             main.discount > 0 && (
-                                                                <div className='skidk'>
+                                                                <div className='skidk testposition'>
                                                                     -{main.discount}%
                                                                 </div>
                                                             )
@@ -300,7 +300,7 @@ class Category extends Component {
                                                         <div className='btnaddcartsrav btnaddcartsravdet'><img src={srav}></img></div>
                                                         <div className='btnaddcartfavorite btnaddcartfavoritedet'><img src={favorite}></img></div>
                                                     </div>
-                                                    <img className='imgproductdetals' src={"http://localhost:5000" + this.state.src.url}></img>
+                                                    <img className='imgproductdetals' src={"http://192.168.109.214:5000" + this.state.src.url}></img>
                                                     <p><h1>{this.state.src.id}</h1></p>
 
                                                     <div className='container'>
@@ -569,7 +569,7 @@ class Category extends Component {
                                                             <div className='documentbtn'>
 
 
-                                                                <a href={"http://localhost:5000" + pop.url} target="_blank" className='pastext'><img className='icodoc' src={icodoc} /><p>{pop.nameru} </p></a>
+                                                                <a href={"http://192.168.109.214:5000" + pop.url} target="_blank" className='pastext'><img className='icodoc' src={icodoc} /><p>{pop.nameru} </p></a>
 
                                                             </div>
                                                         </div>

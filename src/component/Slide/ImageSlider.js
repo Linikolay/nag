@@ -69,10 +69,15 @@ const ImageSlider = ({ onChange,props, parentCallback, maincount, images, slides
           className={idx === imageIndex ? "activeSlide" : "slide"}
           key={image._id}
         >
-    
-          <div className="slideWrapper">
-            {image.code ? image.code : <img src={"http://localhost:5000"+image.url} alt={image.alt} />}
-          </div>
+            {console.log(images)}
+            {
+              images.length>1**(
+                <div className="slideWrapper">
+                {image.code ? image.code : <img src={"http://192.168.109.214:5000"+image.url} alt={image.alt} />}
+              </div>
+              )
+            }
+       
         </div>
       );
     }

@@ -56,7 +56,7 @@ class Category extends Component {
 
             })
         };
-        fetch('http://localhost:5000/auth/allproduct', requestOptions)
+        fetch('http://192.168.109.214:5000/auth/allproduct', requestOptions)
             .then((response) => response.json())
 
             .then(data => {
@@ -369,7 +369,7 @@ class Category extends Component {
 
                                                             </div>
                                                             <div className='catevnuters'>
-                                                                <img className='routers' src={"http://localhost:5000" + data.image[0].url} />
+                                                                <img className='routers' src={"htpp://192.168.109.214:5000" + data.image[0].url} />
                                                             
                                                                 <p className='brandtextvers'>{data.brand[0].nameru}
                                                                 </p>
