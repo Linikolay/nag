@@ -40,6 +40,33 @@ class Popular extends Component {
         this.next1 = this.next1.bind(this);
         this.previous1 = this.previous1.bind(this);
     }
+
+    componentDidMount() {
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+
+            })
+        };
+        fetch('http://192.168.109.214:5000/auth/getallpopularproduct', requestOptions)
+            .then((response) => response.json())
+
+            .then(data => {
+                console.log(data)
+                this.setState({
+                    main: data,
+                    isLoad: true
+                })
+            }
+            )
+
+
+            .catch((error) => {
+                console.error(error);
+            });
+    }
+
     next1() {
         this.slider.slickNext();
     }

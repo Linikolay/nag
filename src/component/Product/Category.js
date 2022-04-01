@@ -49,6 +49,9 @@ class Category extends Component {
         })
     }
     componentDidMount() {
+        var pathArray = window.location.pathname.split('/');
+        console.log(pathArray)
+
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -56,7 +59,7 @@ class Category extends Component {
 
             })
         };
-        fetch('http://192.168.109.214:5000/auth/allproduct', requestOptions)
+        fetch('http://192.168.109.214:5000/auth/getonecategory/' + pathArray[2], requestOptions)
             .then((response) => response.json())
 
             .then(data => {
@@ -323,7 +326,7 @@ class Category extends Component {
 
 
                                             <Row>
-                                                {this.state.main.product.map((data) =>
+                                                {this.state.main.tesr.map((data) =>
                                                     <Col className='nopadd' xs={3}>
                                                         <div className='productercateg' id="1">
                                                             <div className='goruptopproducer'>
@@ -369,7 +372,7 @@ class Category extends Component {
 
                                                             </div>
                                                             <div className='catevnuters'>
-                                                                <img className='routers' src={"htpp://192.168.109.214:5000" + data.image[0].url} />
+                                                                <img className='routers' src={"http://192.168.109.214:5000" + data.image[0].url} />
                                                             
                                                                 <p className='brandtextvers'>{data.brand[0].nameru}
                                                                 </p>

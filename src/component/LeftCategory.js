@@ -15,91 +15,70 @@ import router from '../img/router.svg';
 import "bootstrap/dist/css/bootstrap.min.css"
 
 class LeftCategory extends Component {
-    render() {
+    constructor(props) {
+        super()
+        this.state = {
+            isLoad: false,
+           
+            main: ""
+        }
 
+    }
+    componentDidMount() {
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+
+            })
+        };
+        fetch('http://192.168.109.214:5000/auth/allcategory', requestOptions)
+            .then((response) => response.json())
+
+            .then(data => {
+                // console.log(data)
+                this.setState({
+                    main: data,
+                    isLoad: true
+                })
+            }
+            )
+
+
+            .catch((error) => {
+                console.error(error);
+            });
+    }
+    render() {
+            const {isLoad, main} = this.state
+            if(!isLoad){
+                return(
+                    <p></p>
+                )
+            }else{
         return (
             <div className="page-wrap catereseed1">
                 <div className="main-body">
-                    <NavLink className='blockcatersrre'>
-                        <img className='imgtemp' src={komutator} />
-                        <div className='blockcater'>
-                            <p className='textcategory'>Коммутаторы</p>
-                            <p className='brandcategory'>SNR, MikroTik, Ubiquiti, Powertone</p>
-                        </div>
-                        <img className='nextcateg' src={next} />
+                {this.state.main.data.map((data) =>
+   <NavLink href={"category/" + data._id} className='blockcatersrre'>
+   <img className='imgtemp' src={"http://192.168.109.214:5000"+data.icon} />
+   <div className='blockcater'>
+       <p className='textcategory'>{data.nameru}</p>
+       <p className='brandcategory'>
+           
+       {data.child.map((con) =>
+
+        <span>{con.nameru}, </span>
+)}
+           </p>
+   </div>
+   <img className='nextcateg' src={next} />
 
 
-                    </NavLink>
+</NavLink>
+                )}
+                 
 
-                    <NavLink className='blockcatersrre'>
-                        <img className='imgtemp' src={router} />
-                        <div className='blockcater'>
-                            <p className='textcategory'>Маршруторизаторы</p>
-                            <p className='brandcategory'>SNR, MikroTik</p>
-                        </div>
-                        <img className='nextcateg' src={next} />
-
-                    </NavLink>
-                    <NavLink className='blockcatersrre'>
-
-
-                        <img className='imgtemp' src={usb} />
-                        <div className='blockcater'>
-                            <p className='textcategory'>Оптические кабели</p>
-                            <p className='brandcategory'>FTTH, канализационный, подвесной, распределительный </p>
-                        </div>
-                        <img className='nextcateg' src={next} />
-
-
-
-                    </NavLink>
-                    <NavLink className='blockcatersrre'>
-
-
-
-                        <img className='imgtemp' src={mediaconverter} />
-                        <div className='blockcater'>
-                            <p className='textcategory'>Медиаконвертеры</p>
-                            <p className='brandcategory'>Оптические медиаконвертеры</p>
-                        </div>
-                        <img className='nextcateg' src={next} />
-
-
-
-                    </NavLink>
-                    <NavLink className='blockcatersrre' >
-                        <img className='imgtemp' src={sfp} />
-                        <div className='blockcater'>
-                            <p className='textcategory'>Коммутаторы</p>
-                            <p className='brandcategory'>SNR, MikroTik, Ubiquiti, Powertone</p>
-                        </div>
-                        <img className='nextcateg' src={next} />
-
-                    </NavLink>
-
-                    <NavLink className='blockcatersrre' >
-                        <img className='imgtemp' src={optical} />
-                        <div className='blockcater'>
-                            <p className='textcategory'>Модули SFP</p>
-                            <p className='brandcategory'>Small Form factor Pluggable</p>
-                        </div>
-                        <img className='nextcateg' src={next} />
-
-                    </NavLink>
-
-                    <NavLink className='blockcatersrre'>
-                    <img className='imgtemp' src={voip} />
-                    <div className='blockcater'>
-                        <p className='textcategory'>VoIP и телефония</p>
-                        <p className='brandcategory'>IP-Телефоны, системы ВКС, абонентские шлюзы и др.
-                        </p>
-                    </div>
-                    <img className='nextcateg' src={next} />
-            
-
-
-
-                </NavLink>
                 </div>
 
                 <NavLink className='botallcateg'>
@@ -108,6 +87,7 @@ class LeftCategory extends Component {
                     </NavLink>
             </div>
         )
+    }
     }
 }
 
