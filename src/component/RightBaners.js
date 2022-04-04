@@ -23,6 +23,10 @@ import "bootstrap/dist/css/bootstrap.min.css"
 class RightBaners extends Component {
     constructor(props) {
         super(props);
+        this.state={
+            isLoad: false,
+            isLoaded: false
+        }
         this.next = this.next.bind(this);
         this.previous = this.previous.bind(this);
 
@@ -47,7 +51,58 @@ class RightBaners extends Component {
         console.log("fdsfjsdhf")
     }
 
+    componentDidMount(){
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
 
+            })
+        };
+        fetch('http://192.168.109.214:5000/auth/getbaner', requestOptions)
+            .then((response) => response.json())
+
+            .then(data => {
+                console.log(data)
+                this.setState({
+                    main: data,
+                    isLoad: true
+                })
+            }
+            )
+
+
+            .catch((error) => {
+                console.error(error);
+            });
+
+
+            const requestOptions1 = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+    
+                })
+            };
+            fetch('http://192.168.109.214:5000/auth/getParther', requestOptions1)
+                .then((response) => response.json())
+    
+                .then(data => {
+                    console.log(data)
+                    this.setState({
+                        parth: data,
+                        isLoaded: true
+                    })
+                }
+                )
+    
+    
+                .catch((error) => {
+                    console.error(error);
+                });
+    
+
+    }
     render() {
         const settings1 = {
             dots: false,
@@ -97,7 +152,18 @@ class RightBaners extends Component {
             )
 
         };
+        const {isLoad, isLoaded} = this.state
+        
+        if(!isLoad || !isLoaded)
+        {
+return(
+    <p></p>
+)
+        }else{
+
+       
         return (
+            
             <div className="page-wrap">
                 <div className="main-body">
 
@@ -116,36 +182,23 @@ class RightBaners extends Component {
                                 </button>
 
 
+{
+    this.state.main.data.length > 0 &&(
 
-                                <Slider ref={c => (this.slider1 = c)}{...settings}>
-                                    <div className='mainnon'>
-                                        <img  src={banner} />
-                                    </div>
-                                    <div>
-                                        <img className='banerimg' src={banner} />
-                                    </div>
-                                    <div>
-                                        <img className='banerimg' src={banner} />
-                                    </div>
-                                    <div>
-                                        <img className='banerimg' src={banner} />
-                                    </div>
-                                    <div>
-                                        <img className='banerimg' src={banner} />
-                                    </div>
-                                    <div>
-                                        <img className='banerimg' src={banner} />
-                                    </div>
-                                    <div>
-                                        <img className='banerimg' src={banner} />
-                                    </div>
-                                    <div>
-                                        <img className='banerimg' src={banner} />
-                                    </div>
-                                    <div>
-                                        <img className='banerimg' src={banner} />
-                                    </div>
-                                </Slider>
+        <Slider ref={c => (this.slider1 = c)}{...settings}>
+
+
+        {this.state.main.data.map((data) =>
+        <a href={data.url} className='mainnon img44444'>
+         <img  src={"http://192.168.109.214:5000" + data.icon} />
+    </a>
+        )}
+            
+
+        </Slider>
+    )
+}
+                              
                             </Col>
                             <Col className='centerbanners centerbannersmini' xs={4}>
                                 <img className='mini1' src={mini1} />
@@ -154,50 +207,36 @@ class RightBaners extends Component {
 
 
                             <Col className='' xs={12}>
-<p className='nasvibirat'>Нас выбирают</p>
+                    <p className='nasvibirat'>Нас выбирают</p>
                             </Col>
                             <Col className='centerbanners alignbaner mainmalabs' xs={12}>
 
 
 
-                                <button className="buttonleft buttonleft22" onClick={this.previous}>
+                                <button className="mommomoo buttonleft buttonleft22" onClick={this.previous}>
                                     <img className='imgback ' src={backp}></img>
                                 </button>
-                                <button className="buttonright buttonleft33" onClick={this.next}>
+                                <button className="mommomoo buttonright buttonleft33" onClick={this.next}>
                                     <img className='imgnext' src={nextp}></img>
                                 </button>
 
+                                {
+    this.state.main.data.length > 0 &&(
+
+        <Slider className='' ref={c => (this.slider = c)}{...settings1}>
 
 
-                                <Slider className='' ref={c => (this.slider = c)}{...settings1}>
-                                    <div className='banerimg'>
-                                        <img className='partnerbanners' src={partner} />
-                                    </div>
-                                    <div className='banerimg'>
-                                        <img className='partnerbanners' src={partner} />
-                                    </div>
-                                    <div className='banerimg'>
-                                        <img className='partnerbanners' src={partner} />
-                                    </div >
-                                    <div className='banerimg'>
-                                        <img className='partnerbanners' src={partner} />
-                                    </div>
-                                    <div className='banerimg'>
-                                        <img className='partnerbanners' src={partner} />
-                                    </div>
-                                    <div className='banerimg'>
-                                        <img className='partnerbanners' src={partner} />
-                                    </div>
-                                    <div className='banerimg'> 
-                                        <img className='partnerbanners' src={partner} />
-                                    </div>
-                                    <div className='banerimg'>
-                                        <img className='partnerbanners' src={partner} />
-                                    </div>
-                                    <div className='banerimg'>
-                                        <img className='partnerbanners' src={partner} />
-                                    </div>
-                                </Slider>
+        {this.state.parth.data.map((data) =>
+        <a href={data.url} className='banerimg'>
+         <img className='partnerbanner'  src={"http://192.168.109.214:5000" + data.icon} />
+    </a>
+        )}
+            
+
+        </Slider>
+    )
+}
+
                             </Col>
                         </Row>
 
@@ -211,6 +250,7 @@ class RightBaners extends Component {
 
             </div>
         )
+    }
     }
 }
 

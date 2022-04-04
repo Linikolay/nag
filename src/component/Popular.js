@@ -105,7 +105,7 @@ class Popular extends Component {
     render() {
         const settings = {
             dots: true,
-            infinite: true,
+            infinite: false,
             speed: 500,
             slidesToShow: 5,
             // autoplay: true,
@@ -141,7 +141,14 @@ class Popular extends Component {
         };
       
       
-        
+        const {isLoad} = this.state
+        if(!isLoad){
+            return(
+                <p></p>
+            )
+        }else{
+
+    
         return (
             <div className="page-wrap">
                 <div className="main-body">
@@ -186,182 +193,77 @@ class Popular extends Component {
                             <Col className='nopadd' xs={12}>
                                 {/* <Carousel autoPlay={true} infinite={true} ref={(el) => (this.Carousel = el)} arrows={false} responsive={responsive}> */}
                                 <Slider ref={c => (this.slider = c)}{...settings}>
-                                    <div className='catageters' id="1">
-                                        <div className='goruptopproducer'>
-                                            <div className='new'>
-                                                Новинка
-                                            </div>
+                                {this.state.main.product.map((data) =>
+    <div className='catageters' id="1">
+    <div className='goruptopproducer'>
+      
+    {
+                                                            data.new == true && (
+                                                                <div className='new newvenv testposition'>
+                                                                    Новинка
+
+                                                                </div>
+                                                            )
+                                                        }
+
+                                                        {
+                                                            data.recomend == true && (
+                                                                <div className='reqomend testposition'>
+                                                                    Рекомендуем
+                                                                </div>
+                                                            )
+                                                        }
 
 
-                                        </div>
-                                        <div className='catevnuters'>
-                                            <img className='routers' src={routersimg} />
-                                            <p className='brandtextvers'>Ubiquiti
-                                            </p>
-                                            <p className='textrowproduct'>Wi-Fi марш рутизатор SNR-CPE-MD1.1
-                                                Wi-Fi маршрутизатор SNR-CPE-MD1.1
-                                            </p>
-                                            <div className='groupelipse'>
-                                                <div className='elipse'></div>
-                                                <span className='elipsenals'>В наличии</span>
-                                                <span className='elipseart'>Арт.: SNR-S1916-1GS</span>
-                                            </div>
-                                            <p className='titleboldcena'>1 740 000 сум</p>
-                                            <div className='cartbtners'>
-
-                                                <div className='btnaddcart'><img src={cartbtn}></img> Добавить</div>
-                                                <div className='btnaddcartsrav'><img src={srav}></img></div>
-                                                <div className='btnaddcartfavorite'><img src={favorite}></img></div>
+                                                        {
+                                                            data.act == true && (
+                                                                <div className='discount testposition'>
+                                                                    Акция
+                                                                </div>
+                                                            )
+                                                        }
 
 
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                    <div className='catageters' id="1">
-                                        <div className='goruptopproducer'>
-                                            <div className='new'>
-                                                Новинка
-                                            </div>
+                                                        {
+                                                            data.discount > 0 && (
+                                                                <div className='skidk testposition'>
+                                                                    -{data.discount}%
+                                                                </div>
+                                                            )
+                                                        }
 
 
-                                        </div>
-                                        <div className='catevnuters'>
-                                            <img className='routers' src={routersimg} />
-                                            <p className='brandtextvers'>Ubiquiti
-                                            </p>
-                                            <p className='textrowproduct'>Wi-Fi марш рутизатор SNR-CPE-MD1.1
-                                                Wi-Fi маршрутизатор SNR-CPE-MD1.1
-                                            </p>
-                                            <div className='groupelipse'>
-                                                <div className='elipse'></div>
-                                                <span className='elipsenals'>В наличии</span>
-                                                <span className='elipseart'>Арт.: SNR-S1916-1GS</span>
-                                            </div>
-                                            <p className='titleboldcena'>1 740 000 сум</p>
-                                            <div className='cartbtners'>
+    </div>
+    <div className='catevnuters'>
+        <img className='routers' src={routersimg} />
+        <p className='brandtextvers'>{data.brand[0].nameru}
+        </p>
+        <p className='textrowproduct'>{data.descriptionru}
+        </p>
+        <div className='groupelipse'>
+            <div className='elipse'></div>
+            <span className='elipsenals'>В наличии</span>
+            <span className='elipseart'>Арт.: {data.artikul}</span>
+        </div>
+        <p className='titleboldcena'>{data.sum.toLocaleString()} сум</p>
 
-                                                <div className='btnaddcart'><img src={cartbtn}></img> Добавить</div>
-                                                <div className='btnaddcartsrav'><img src={srav}></img></div>
-                                                <div className='btnaddcartfavorite'><img src={favorite}></img></div>
+        <div className='cartbtners'>
 
-
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                    <div className='catageters' id="1">
-                                        <div className='goruptopproducer'>
-
-                                            <div className='reqomend'>
-                                                Рекомендуем
-                                            </div>
-
-
-                                        </div>
-                                        <div className='catevnuters'>
-                                            <img className='routers' src={routersimg} />
-                                            <p className='brandtextvers'>Ubiquiti
-                                            </p>
-                                            <p className='textrowproduct'>Wi-Fi марш рутизатор SNR-CPE-MD1.1
-                                                Wi-Fi маршрутизатор SNR-CPE-MD1.1
-                                            </p>
-                                            <div className='groupelipse'>
-                                                <div className='elipse'></div>
-                                                <span className='elipsenals'>В наличии</span>
-                                                <span className='elipseart'>Арт.: SNR-S1916-1GS</span>
-                                            </div>
-                                            <p className='titleboldcena'>1 740 000 сум</p>
-                                            <div className='cartbtners'>
-
-                                                <div className='btnaddcart'><img src={cartbtn}></img> Добавить</div>
-                                                <div className='btnaddcartsrav'><img src={srav}></img></div>
-                                                <div className='btnaddcartfavorite'><img src={favorite}></img></div>
+            <div className='btnaddcart'><img src={cartbtn}></img> Добавить</div>
+            <div className='btnaddcartsrav'><img src={srav}></img></div>
+            <div className='btnaddcartfavorite'><img src={favorite}></img></div>
 
 
 
-                                            </div>
+        </div>
 
-                                        </div>
+    </div>
 
-                                    </div>
+</div>
 
-
-                                    <div className='catageters' id="1">
-                                        <div className='goruptopproducer'>
-
-                                            <div className='discount'>
-                                                Акция
-                                            </div>
-
-                                        </div>
-                                        <div className='catevnuters'>
-                                            <img className='routers' src={routersimg} />
-                                            <p className='brandtextvers'>Ubiquiti
-                                            </p>
-                                            <p className='textrowproduct'>Wi-Fi марш рутизатор SNR-CPE-MD1.1
-                                                Wi-Fi маршрутизатор SNR-CPE-MD1.1
-                                            </p>
-                                            <div className='groupelipse'>
-                                                <div className='elipse'></div>
-                                                <span className='elipsenals'>В наличии</span>
-                                                <span className='elipseart'>Арт.: SNR-S1916-1GS</span>
-                                            </div>
-                                            <p className='titleboldcena'>1 740 000 сум</p>
-                                            <div className='cartbtners'>
-
-                                                <div className='btnaddcart'><img src={cartbtn}></img> Добавить</div>
-                                                <div className='btnaddcartsrav'><img src={srav}></img></div>
-                                                <div className='btnaddcartfavorite'><img src={favorite}></img></div>
-
-
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-
-                                    <div className='catageters' id="1">
-                                        <div className='goruptopproducer'>
-
-                                            <div className='skidk'>
-                                                -30%
-                                            </div>
-
-                                        </div>
-                                        <div className='catevnuters'>
-                                            <img className='routers' src={routersimg} />
-                                            <p className='brandtextvers'>Ubiquiti
-                                            </p>
-                                            <p className='textrowproduct'>Wi-Fi марш рутизатор SNR-CPE-MD1.1
-                                                Wi-Fi маршрутизатор SNR-CPE-MD1.1
-                                            </p>
-                                            <div className='groupelipse'>
-                                                <div className='elipse'></div>
-                                                <span className='elipsenals'>В наличии</span>
-                                                <span className='elipseart'>Арт.: SNR-S1916-1GS</span>
-                                            </div>
-                                            <p className='titleboldcena'>1 740 000 сум</p>
-                                            <div className='cartbtners'>
-
-                                                <div className='btnaddcart'><img src={cartbtn}></img> Добавить</div>
-                                                <div className='btnaddcartsrav'><img src={srav}></img></div>
-                                                <div className='btnaddcartfavorite'><img src={favorite}></img></div>
-
-
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
+                                )}
+                                
+                               
                                     </Slider>
                                 {/* </Carousel> */}
 
@@ -376,6 +278,7 @@ class Popular extends Component {
 
                 </div></div>
         )
+    }
     }
 }
 

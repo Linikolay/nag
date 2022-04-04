@@ -253,6 +253,10 @@ left: 20px;
   width: 100%;
   padding: 30px;
 }
+.partnerbanner{
+  padding: 30px;
+  width: 100%;
+}
 .buttonleft22{
   top: 31%;
   left: 13px;
@@ -484,6 +488,9 @@ margin-right: 5px;
 }
 .mainnon{
   background-color: rebeccapurple;
+}
+.img44444 img {
+  min-height: 373px;
 }
 .slick-slide img{
   width: 100%;
@@ -1527,4 +1534,9 @@ color: black;
 }
 .testposition{
 position: relative;
+}
+.mommomoo{
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
 }

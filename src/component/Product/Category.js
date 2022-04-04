@@ -372,10 +372,19 @@ class Category extends Component {
 
                                                             </div>
                                                             <div className='catevnuters'>
-                                                                <img className='routers' src={"http://192.168.109.214:5000" + data.image[0].url} />
-                                                            
-                                                                <p className='brandtextvers'>{data.brand[0].nameru}
+                                                                {
+                                                                    data.image.length>0&&(
+                                                                        <img className='routers' src={"http://192.168.109.214:5000" + data.image[0].url} />
+                                                                    )
+                                                                }
+                                                      
+                                                      {
+                                                                    data.brand.length>0&&(
+                                                                        <p className='brandtextvers'>{data.brand[0].nameru}
                                                                 </p>
+                                                                    )
+                                                                }
+                                                             
                                                                 <Link to={'/view/' + data._id}>  <p className='textrowproduct'>{data.nameru}
                                                                 </p></Link>
                                                               
