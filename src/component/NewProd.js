@@ -4,7 +4,7 @@ import { Container, Row, Col, NavLink } from 'react-bootstrap';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
 import mini1 from '../img/mini1.png';
 import mini2 from '../img/mini2.png';
 import banner from '../img/banner.png';
@@ -231,7 +231,7 @@ class NewProd extends Component {
         <img className='routers' src={routersimg} />
         <p className='brandtextvers'>{data.brand[0].nameru}
         </p>
-        <p className='textrowproduct'>{data.descriptionru}
+        <p className='textrowproduct'><Link className={"mainlinkblackcolor"} to={"/view/"+data._id}>{data.nameru}</Link>
         </p>
         <div className='groupelipse'>
             <div className='elipse'></div>

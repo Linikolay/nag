@@ -1,9 +1,9 @@
 
 import React, { Component, lazy } from 'react';
 import { Container, Row, Col, NavLink } from 'react-bootstrap';
- import Carousel from "react-multi-carousel";
+import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
 import mini1 from '../img/mini1.png';
 import mini2 from '../img/mini2.png';
 import banner from '../img/banner.png';
@@ -109,7 +109,7 @@ class Popular extends Component {
             speed: 500,
             slidesToShow: 5,
             // autoplay: true,
-          
+
             slidesToScroll: 1,
 
             appendDots: dots => (
@@ -139,146 +139,146 @@ class Popular extends Component {
             )
 
         };
-      
-      
-        const {isLoad} = this.state
-        if(!isLoad){
-            return(
+
+
+        const { isLoad } = this.state
+        if (!isLoad) {
+            return (
                 <p></p>
             )
-        }else{
-
-    
-        return (
-            <div className="page-wrap">
-                <div className="main-body">
+        } else {
 
 
-                    <Container className='controlerspadr'>
-                        <Row>
-
-                            <Col className='nopadd' xs={12}>
-
-                                <span className='populartitle'> Популярные товары</span>
+            return (
+                <div className="page-wrap">
+                    <div className="main-body">
 
 
-                                <div className='brnpop'>
+                        <Container className='controlerspadr'>
+                            <Row>
+
+                                <Col className='nopadd' xs={12}>
+
+                                    <span className='populartitle'> Популярные товары</span>
+
+
+                                    <div className='brnpop'>
 
 
 
-                                <button className="minn" onClick={this.previous1}>
-                                <img src={backp}></img>
-                                </button>
-                                <button className="minn" onClick={this.next1}>
-                                <img src={nextp}></img>
-                                </button>
-
-
+                                        <button className="minn" onClick={this.previous1}>
+                                            <img src={backp}></img>
+                                        </button>
+                                        <button className="minn" onClick={this.next1}>
+                                            <img src={nextp}></img>
+                                        </button>
 
 
 
 
-                                </div>
+
+
+                                    </div>
 
 
 
 
-                            </Col>
-                            <Col className='nopadd cladco' xs={12}>
+                                </Col>
+                                <Col className='nopadd cladco' xs={12}>
 
-                                <button className='activecategorymain '>Все категории</button>
-                                <button className='noactivecategorymain '>Все категории</button>
-                            </Col>
+                                    <button className='activecategorymain '>Все категории</button>
+                                    <button className='noactivecategorymain '>Все категории</button>
+                                </Col>
 
-                            <Col className='nopadd' xs={12}>
-                                {/* <Carousel autoPlay={true} infinite={true} ref={(el) => (this.Carousel = el)} arrows={false} responsive={responsive}> */}
-                                <Slider ref={c => (this.slider = c)}{...settings}>
-                                {this.state.main.product.map((data) =>
-    <div className='catageters' id="1">
-    <div className='goruptopproducer'>
-      
-    {
-                                                            data.new == true && (
-                                                                <div className='new newvenv testposition'>
-                                                                    Новинка
+                                <Col className='nopadd' xs={12}>
+                                    {/* <Carousel autoPlay={true} infinite={true} ref={(el) => (this.Carousel = el)} arrows={false} responsive={responsive}> */}
+                                    <Slider ref={c => (this.slider = c)}{...settings}>
+                                        {this.state.main.product.map((data) =>
+                                            <div className='catageters'>
+                                                <div className='goruptopproducer'>
 
-                                                                </div>
-                                                            )
-                                                        }
+                                                    {
+                                                        data.new == true && (
+                                                            <div className='new newvenv testposition'>
+                                                                Новинка
 
-                                                        {
-                                                            data.recomend == true && (
-                                                                <div className='reqomend testposition'>
-                                                                    Рекомендуем
-                                                                </div>
-                                                            )
-                                                        }
+                                                            </div>
+                                                        )
+                                                    }
 
-
-                                                        {
-                                                            data.act == true && (
-                                                                <div className='discount testposition'>
-                                                                    Акция
-                                                                </div>
-                                                            )
-                                                        }
+                                                    {
+                                                        data.recomend == true && (
+                                                            <div className='reqomend testposition'>
+                                                                Рекомендуем
+                                                            </div>
+                                                        )
+                                                    }
 
 
-                                                        {
-                                                            data.discount > 0 && (
-                                                                <div className='skidk testposition'>
-                                                                    -{data.discount}%
-                                                                </div>
-                                                            )
-                                                        }
+                                                    {
+                                                        data.act == true && (
+                                                            <div className='discount testposition'>
+                                                                Акция
+                                                            </div>
+                                                        )
+                                                    }
 
 
-    </div>
-    <div className='catevnuters'>
-        <img className='routers' src={routersimg} />
-        <p className='brandtextvers'>{data.brand[0].nameru}
-        </p>
-        <p className='textrowproduct'>{data.descriptionru}
-        </p>
-        <div className='groupelipse'>
-            <div className='elipse'></div>
-            <span className='elipsenals'>В наличии</span>
-            <span className='elipseart'>Арт.: {data.artikul}</span>
-        </div>
-        <p className='titleboldcena'>{data.sum.toLocaleString()} сум</p>
-
-        <div className='cartbtners'>
-
-            <div className='btnaddcart'><img src={cartbtn}></img> Добавить</div>
-            <div className='btnaddcartsrav'><img src={srav}></img></div>
-            <div className='btnaddcartfavorite'><img src={favorite}></img></div>
+                                                    {
+                                                        data.discount > 0 && (
+                                                            <div className='skidk testposition'>
+                                                                -{data.discount}%
+                                                            </div>
+                                                        )
+                                                    }
 
 
+                                                </div>
+                                                <div className='catevnuters'>
+                                                    <img className='routers' src={routersimg} />
+                                                    <p className='brandtextvers'>{data.brand[0].nameru}
+                                                    </p>
+                                                    <p className='textrowproduct'><Link className={"mainlinkblackcolor"} to={"/view/"+data._id}>{data.nameru}</Link>
+                                                    </p>
+                                                    <div className='groupelipse'>
+                                                        <div className='elipse'></div>
+                                                        <span className='elipsenals'>В наличии</span>
+                                                        <span className='elipseart'>Арт.: {data.artikul}</span>
+                                                    </div>
+                                                    <p className='titleboldcena'>{data.sum.toLocaleString()} сум</p>
 
-        </div>
+                                                    <div className='cartbtners'>
 
-    </div>
+                                                        <div className='btnaddcart'><img src={cartbtn}></img> Добавить</div>
+                                                        <div className='btnaddcartsrav'><img src={srav}></img></div>
+                                                        <div className='btnaddcartfavorite'><img src={favorite}></img></div>
 
-</div>
 
-                                )}
-                                
-                               
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                        )}
+
+
                                     </Slider>
-                                {/* </Carousel> */}
+                                    {/* </Carousel> */}
 
 
 
-                            </Col>
+                                </Col>
 
-                        </Row>
-                    
-                    </Container>
+                            </Row>
+
+                        </Container>
 
 
-                </div></div>
-        )
-    }
+                    </div></div>
+            )
+        }
     }
 }
 

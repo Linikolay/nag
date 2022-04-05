@@ -1540,3 +1540,9 @@ position: relative;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
+.mainlinkblackcolor{
+  color: black;
+}.mainlinkblackcolor:hover{
+  color: black;
+  text-decoration: none;
+}
