@@ -21,7 +21,7 @@ class Headers extends Component {
 
                     <Navbar bg="light" expand="lg">
                         <Container>
-                            <Navbar.Brand href="#home"><img src={logo}/>
+                            <Navbar.Brand href="/"><img src={logo}/>
                             <div className='grtextlogo'>
                             <p className='textlogo textlogonoew'>Сетевое и </p>
                             <p className='textlogo textlogonoew'> телекоммуникационное </p>
