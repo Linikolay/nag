@@ -236,8 +236,13 @@ class Popular extends Component {
                                                 </div>
                                                 <div className='catevnuters'>
                                                     <img className='routers' src={routersimg} />
-                                                    <p className='brandtextvers'>{data.brand[0].nameru}
+                                                   {
+                                                       data.brand.length>0&&(
+<p className='brandtextvers'>{data.brand[0].nameru}
                                                     </p>
+                                                       )
+                                                   }
+                                                    
                                                     <p className='textrowproduct'><Link className={"mainlinkblackcolor"} to={"/view/"+data._id}>{data.nameru}</Link>
                                                     </p>
                                                     <div className='groupelipse'>
