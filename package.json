@@ -1,5 +1,5 @@
 {
-  "homepage": "http://localhost:9000/",
+  "homepage": "http://localhost:5000/",
   "name": "client",
   "version": "0.1.0",
   "dependencies": {

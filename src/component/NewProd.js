@@ -83,7 +83,7 @@ class NewProd extends Component {
 
             })
         };
-        fetch('http://192.168.109.214:5000/auth/getallnewproduct', requestOptions)
+        fetch('/auth/getallnewproduct', requestOptions)
             .then((response) => response.json())
 
             .then(data => {

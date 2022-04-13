@@ -49,7 +49,7 @@ class Popular extends Component {
 
             })
         };
-        fetch('http://192.168.109.214:5000/auth/getallpopularproduct', requestOptions)
+        fetch('/auth/getallpopularproduct', requestOptions)
             .then((response) => response.json())
 
             .then(data => {

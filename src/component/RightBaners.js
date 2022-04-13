@@ -59,7 +59,7 @@ class RightBaners extends Component {
 
             })
         };
-        fetch('http://192.168.109.214:5000/auth/getbaner', requestOptions)
+        fetch('/auth/getbaner', requestOptions)
             .then((response) => response.json())
 
             .then(data => {
@@ -84,7 +84,7 @@ class RightBaners extends Component {
     
                 })
             };
-            fetch('http://192.168.109.214:5000/auth/getParther', requestOptions1)
+            fetch('/auth/getParther', requestOptions1)
                 .then((response) => response.json())
     
                 .then(data => {
@@ -190,7 +190,7 @@ return(
 
         {this.state.main.data.map((data) =>
         <a href={data.url} className='mainnon img44444'>
-         <img  src={"http://192.168.109.214:5000" + data.icon} />
+         <img  src={data.icon} />
     </a>
         )}
             
@@ -228,7 +228,7 @@ return(
 
         {this.state.parth.data.map((data) =>
         <a href={data.url} className='banerimg'>
-         <img className='partnerbanner'  src={"http://192.168.109.214:5000" + data.icon} />
+         <img className='partnerbanner'  src={ data.icon} />
     </a>
         )}
             

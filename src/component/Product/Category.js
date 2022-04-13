@@ -59,7 +59,7 @@ class Category extends Component {
 
             })
         };
-        fetch('http://192.168.109.214:5000/auth/getonecategory/' + pathArray[2], requestOptions)
+        fetch('http://localhost:5000/auth/getonecategory/' + pathArray[2], requestOptions)
             .then((response) => response.json())
 
             .then(data => {
@@ -374,7 +374,7 @@ class Category extends Component {
                                                             <div className='catevnuters'>
                                                                 {
                                                                     data.image.length>0&&(
-                                                                        <img className='routers' src={"http://192.168.109.214:5000" + data.image[0].url} />
+                                                                        <img className='routers' src={ data.image[0].url} />
                                                                     )
                                                                 }
                                                       

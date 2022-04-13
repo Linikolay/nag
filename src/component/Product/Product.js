@@ -51,6 +51,9 @@ class Category extends Component {
             dec: true,
             har: false,
             doc: false,
+            pers: {
+                filter:[]
+            },
             src: { _id: 9999999999, url: "" },
 
 
@@ -122,35 +125,44 @@ class Category extends Component {
         var pathArray = window.location.pathname.split('/');
         console.log(pathArray)
 
-        fetch('http://192.168.109.214:5000/auth/oneproduct/' + pathArray[2], requestOptions)
+        fetch('http://localhost:5000/auth/oneproduct/' + pathArray[2], requestOptions)
             .then((response) => response.json())
 
             .then(data => {
                 var cont = data
-
+                console.log(data)
+                var ArrB = {...data}
+                console.log(ArrB)
                 for (var i = 0; i < cont.product.mainparams.length; i++) {
 
 
+                    for (var b = 0; b < cont.product.mainparams[i].filter.length; b++) {
+                       
+                        for (var f = 0; f < cont.product.mainparams[i].filter[b].filterchild.length; f++) {
 
+                           
 
-                    for (var k = 0; k < cont.product.mainparams[i].filter.length; k++) {
-
-                        for (var b = 0; b < cont.product.mainparams[i].filter[k].filterchild.length; b++) {
-
-                            if (cont.product.mainparams[i].filter[k].filterchild[b]._id != cont.product.mainparams[i].filterchild[b]._id) {
-                                cont.product.mainparams[i].filter[k].filterchild.splice(b, 1)
-                            }
                             for (var t = 0; t < cont.product.mainparams[i].filterchild.length; t++) {
 
-                                if (cont.product.mainparams[i].filter[k].filterchild[b] != cont.product.mainparams[i].filterchild[t]._id) {
-                                    // console.log("Подфильтров" + data.product.mainparams[i].filter[k].filterchild )
-                                    // console.log(b)
-                                    //     cont.product.mainparams[i].filter[k].filterchild.splice(b, 1)
-                                    // cont = data
+                              
+                                
+                            
+                                if ( cont.product.mainparams[i].filter[b].filterchild[f]._id == cont.product.mainparams[i].filterchild[t]._id) {
+                                    console.log("fefe")
+                                    cont.product.mainparams[i].filter[b].product.push(cont.product.mainparams[i].filterchild[t])
+                                
+                                
+                     
 
                                 }
+
+
                             }
+
+
                         }
+
+
 
 
 
@@ -160,7 +172,7 @@ class Category extends Component {
                 }
 
 
-                console.log(cont)
+             
                 if (data.product.image.length > 3) {
                     this.setState({
                         maincount: 3
@@ -300,7 +312,7 @@ class Category extends Component {
                                                         <div className='btnaddcartsrav btnaddcartsravdet'><img src={srav}></img></div>
                                                         <div className='btnaddcartfavorite btnaddcartfavoritedet'><img src={favorite}></img></div>
                                                     </div>
-                                                    <img className='imgproductdetals' src={"http://192.168.109.214:5000" + this.state.src.url}></img>
+                                                    <img className='imgproductdetals' src={this.state.src.url}></img>
                                                     <p><h1>{this.state.src.id}</h1></p>
 
                                                     <div className='container'>
@@ -429,14 +441,14 @@ class Category extends Component {
                                                 Характеристики
                                             </button>
                                             {
-                                                    main.files.length > 0&&(
-                                                        <button onClick={this.doc} className={this.state.doc ? 'btnactive' : 'btnactiveno'}>
-                                              
+                                                main.files.length > 0 && (
+                                                    <button onClick={this.doc} className={this.state.doc ? 'btnactive' : 'btnactiveno'}>
+
                                                         Документация
                                                     </button>
-                                                    )
-                                                }
-                                          
+                                                )
+                                            }
+
                                         </Col>
 
 
@@ -466,6 +478,7 @@ class Category extends Component {
                                                                     <Row>
                                                                         <Col xs={9}>
                                                                             {(() => {
+                                                                                console.log(data)
                                                                                 const ids = data.filter.map(o => o._id)
                                                                                 const filtered = data.filter.filter(({ _id }, index) => !ids.includes(_id, index + 1))
                                                                                 console.log(filtered)
@@ -491,7 +504,7 @@ class Category extends Component {
                                                                                                                 <Col className='mainlable' xs={6}>
                                                                                                                     <div>
 
-                                                                                                                        {data1.filterchild.map((maip, idx) =>
+                                                                                                                        {data1.product.map((maip, idx) =>
 
                                                                                                                             <div>
 
@@ -519,7 +532,7 @@ class Category extends Component {
                                                                                                                 <Col className='mainlable' xs={6}>
                                                                                                                     <div>
 
-                                                                                                                        {data1.filterchild.map((maip, idx) =>
+                                                                                                                        {data1.product.map((maip, idx) =>
 
                                                                                                                             <div>
 
@@ -569,7 +582,7 @@ class Category extends Component {
                                                             <div className='documentbtn'>
 
 
-                                                                <a href={"http://192.168.109.214:5000" + pop.url} target="_blank" className='pastext'><img className='icodoc' src={icodoc} /><p>{pop.nameru} </p></a>
+                                                                <a href={pop.url} target="_blank" className='pastext'><img className='icodoc' src={icodoc} /><p>{pop.nameru} </p></a>
 
                                                             </div>
                                                         </div>

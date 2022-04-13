@@ -32,7 +32,7 @@ class LeftCategory extends Component {
 
             })
         };
-        fetch('http://192.168.109.214:5000/auth/allcategory', requestOptions)
+        fetch('http://localhost:5000/auth/allcategory', requestOptions)
             .then((response) => response.json())
 
             .then(data => {
@@ -61,7 +61,7 @@ class LeftCategory extends Component {
                 <div className="main-body">
                 {this.state.main.data.map((data) =>
    <NavLink href={"category/" + data._id} className='blockcatersrre'>
-   <img className='imgtemp' src={"http://192.168.109.214:5000"+data.icon} />
+   <img className='imgtemp' src={data.icon} />
    <div className='blockcater'>
        <p className='textcategory'>{data.nameru}</p>
        <p className='brandcategory'>

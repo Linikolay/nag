@@ -73,7 +73,7 @@ const ImageSlider = ({ onChange,props, parentCallback, maincount, images, slides
             {
               images.length>1**(
                 <div className="slideWrapper">
-                {image.code ? image.code : <img src={"http://192.168.109.214:5000"+image.url} alt={image.alt} />}
+                {image.code ? image.code : <img src={image.url} alt={image.alt} />}
               </div>
               )
             }
