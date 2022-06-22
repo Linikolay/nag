@@ -20,10 +20,7 @@ const PrevArrow = ({ onClick }) => {
   );
 };
 
-const ImageSlider = ({ onChange,props, parentCallback, maincount, images, slidesToShow = maincount
-
-
-}) => {
+const ImageSlider = ({ onChange,props, parentCallback, maincount, images, slidesToShow = maincount }) => {
 
   const [imageIndex, setImageIndex] = useState(0);
  
@@ -51,7 +48,7 @@ const ImageSlider = ({ onChange,props, parentCallback, maincount, images, slides
       {
         breakpoint: 820,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 3,
           slidesToScroll: 1,
         },
       },
@@ -69,9 +66,9 @@ const ImageSlider = ({ onChange,props, parentCallback, maincount, images, slides
           className={idx === imageIndex ? "activeSlide" : "slide"}
           key={image._id}
         >
-            {console.log(images)}
+   
             {
-              images.length>1**(
+              images.length>1&&(
                 <div className="slideWrapper">
                 {image.code ? image.code : <img src={image.url} alt={image.alt} />}
               </div>

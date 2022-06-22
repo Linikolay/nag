@@ -59,7 +59,7 @@ class RightBaners extends Component {
 
             })
         };
-        fetch('/auth/getbaner', requestOptions)
+        fetch('https://new.itmag.uz/auth/getbaner', requestOptions)
             .then((response) => response.json())
 
             .then(data => {
@@ -84,11 +84,12 @@ class RightBaners extends Component {
     
                 })
             };
-            fetch('/auth/getParther', requestOptions1)
+            fetch('https://new.itmag.uz/auth/getParther', requestOptions1)
                 .then((response) => response.json())
     
                 .then(data => {
                     console.log(data)
+                 
                     this.setState({
                         parth: data,
                         isLoaded: true
@@ -106,7 +107,7 @@ class RightBaners extends Component {
     render() {
         const settings1 = {
             dots: false,
-            infinite: true,
+            infinite: false,
             speed: 500,
             slidesToShow: 5,
             // autoplay: true,
@@ -228,7 +229,7 @@ return(
 
         {this.state.parth.data.map((data) =>
         <a href={data.url} className='banerimg'>
-         <img className='partnerbanner'  src={ data.icon} />
+         <img className='partnerbanner'  src={ "https://new.itmag.uz"+data.icon} />
     </a>
         )}
             

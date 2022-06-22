@@ -74,12 +74,15 @@ class Category extends Component {
         })
     }
     changeimg(vals) {
-
+        console.log(vals)
+        console.log(this.state.src.id)
         if (this.state.src._id == vals._id) {
 
         } else {
+            console.log("test")
             this.setState({
-                src: vals
+                src: vals,
+             
             })
         }
 
@@ -125,7 +128,7 @@ class Category extends Component {
         var pathArray = window.location.pathname.split('/');
         console.log(pathArray)
 
-        fetch('http://localhost:5000/auth/oneproduct/' + pathArray[2], requestOptions)
+        fetch('https://new.itmag.uz/auth/oneproduct/' + pathArray[2], requestOptions)
             .then((response) => response.json())
 
             .then(data => {
@@ -312,16 +315,15 @@ class Category extends Component {
                                                         <div className='btnaddcartsrav btnaddcartsravdet'><img src={srav}></img></div>
                                                         <div className='btnaddcartfavorite btnaddcartfavoritedet'><img src={favorite}></img></div>
                                                     </div>
+                                                    {console.log(this.state.src)}
                                                     <img className='imgproductdetals' src={this.state.src.url}></img>
-                                                    <p><h1>{this.state.src.id}</h1></p>
+                                                    {/* <p><h1>{this.state.src.id}</h1></p> */}
 
                                                     <div className='container'>
-                                                        <ImageSlider onChange={this.changeimg} maincount={this.state.maincount} images={
-
-                                                            main.image
-
-                                                        } />
-
+                                                        {console.log(main.image)}
+                                                        <ImageSlider onChange={this.changeimg} maincount={this.state.maincount} images={main.image} />
+                                                        {/* <ImageSlider onChange={this.changeimg} maincount={this.state.maincount} images={LARGE_IMAGES} /> */}
+                                                        
                                                     </div>
                                                 </div>
 

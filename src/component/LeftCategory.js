@@ -19,7 +19,7 @@ class LeftCategory extends Component {
         super()
         this.state = {
             isLoad: false,
-           
+
             main: ""
         }
 
@@ -32,13 +32,16 @@ class LeftCategory extends Component {
 
             })
         };
-        fetch('http://localhost:5000/auth/allcategory', requestOptions)
+        fetch('https://new.itmag.uz/auth/allcategory', requestOptions)
             .then((response) => response.json())
 
             .then(data => {
-                // console.log(data)
+                // const result = data.data.filter((word, index) => index < 7);
+
+                console.log(data)
                 this.setState({
                     main: data,
+                    category: data.categors,
                     isLoad: true
                 })
             }
@@ -50,44 +53,44 @@ class LeftCategory extends Component {
             });
     }
     render() {
-            const {isLoad, main} = this.state
-            if(!isLoad){
-                return(
-                    <p></p>
-                )
-            }else{
-        return (
-            <div className="page-wrap catereseed1">
-                <div className="main-body">
-                {this.state.main.data.map((data) =>
-   <NavLink href={"category/" + data._id} className='blockcatersrre'>
-   <img className='imgtemp' src={data.icon} />
-   <div className='blockcater'>
-       <p className='textcategory'>{data.nameru}</p>
-       <p className='brandcategory'>
-           
-       {data.child.map((con) =>
+        const { isLoad, main, category } = this.state
+        if (!isLoad) {
+            return (
+                <p></p>
+            )
+        } else {
+            return (
+                <div className="page-wrap catereseed1">
+                    <div className="main-body">
+                        {category.map((data, id) =>
+                            <NavLink key={data._id} href={"category/" + data._id} className='blockcatersrre'>
+                                <img  className='imgtemp' src={data.icon} />
+                                <div key={data.icon} className='blockcater'>
+                                    <p key={data.nameru} className='textcategory'>{data.nameru}</p>
+                                    <p key={data.id} className='brandcategory'>
 
-        <span>{con.nameru}, </span>
-)}
-           </p>
-   </div>
-   <img className='nextcateg' src={next} />
+                                        {data.child.map((con) =>
+
+                                            <span key={con._id}>{con.nameru}, </span>
+                                        )}
+                                    </p>
+                                </div>
+                                <img className='nextcateg' src={next} />
 
 
-</NavLink>
-                )}
-                 
+                            </NavLink>
+                        )}
 
-                </div>
 
-                <NavLink className='botallcateg'>
+                    </div>
+
+                    <NavLink href={"category/allcategory"} className='botallcateg'>
                         <img src={allcategory} />
                         <span className='botallcategtext'>Показать все категории</span>
                     </NavLink>
-            </div>
-        )
-    }
+                </div>
+            )
+        }
     }
 }
 

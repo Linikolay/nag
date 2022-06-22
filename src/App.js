@@ -12,6 +12,7 @@ const Headers = React.lazy(() => import('./component/Headers'));
 const Footer = React.lazy(() => import('./component/Footer'));
 const MainPage = React.lazy(() => import('./component/MainPage'));
 const Category = React.lazy(() => import('./component/Product/Category'));
+const All = React.lazy(() => import('./component/Product/All'));
 const Product = React.lazy(() => import('./component/Product/Product'));
 lazy(() => import('bootstrap/dist/css/bootstrap.min.css'))
 lazy(() => import('./App.css'))
@@ -30,6 +31,7 @@ class App extends Component {
               <Routes>
             
                 <Route path="/" element={<MainPage/>} />
+                <Route path="/all" element={<All/>} />
                 <Route path="/category/:id" element={<Category/>} />
                 <Route  path="/view/:id"
               

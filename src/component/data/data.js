@@ -1,7 +1,7 @@
 
 export const LARGE_IMAGES = [
   {
-    id: 1,
+    id: 5,
     src: "/router.png",
     alt: "Placeholder image",
   },

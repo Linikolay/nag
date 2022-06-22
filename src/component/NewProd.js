@@ -83,7 +83,7 @@ class NewProd extends Component {
 
             })
         };
-        fetch('/auth/getallnewproduct', requestOptions)
+        fetch('https://new.itmag.uz/auth/getallnewproduct', requestOptions)
             .then((response) => response.json())
 
             .then(data => {

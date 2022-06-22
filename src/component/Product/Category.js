@@ -39,16 +39,122 @@ class Category extends Component {
         this.state = {
             isLoad: false,
             values: [0, 500000],
-            main: ""
+            categories: "",
+            main: "",
+            activepage: 1,
+            all: false,
+            mini: ''
         }
         this.change = this.change.bind(this);
+        this.handleScroll = this.handleScroll.bind(this);
+        this.load = this.load.bind(this);
     }
     change = e => {
         this.setState({
             sle: e
         })
     }
+    handleScroll() {
+        const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
+        const body = document.body;
+        const html = document.documentElement;
+        const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
+        const windowBottom = windowHeight + window.pageYOffset;
+        // console.log(this.state.product)
+        if (windowBottom >= docHeight) {
+            // console.log('bottom reached')
+            var pathArray = window.location.pathname.split('/');
+        //   
+            // console.log(this.state.allpage)
+            if(this.state.activepage == this.state.allpage+200 || this.state.allpage == 0 || this.state.allpage == null){
+
+            }else{
+
+          
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    currentpage: this.state.activepage+1,
+                })
+            };
+            fetch('http://localhost:7000/auth/getonecategoryscontroll/' + pathArray[2], requestOptions)
+                .then((response) => response.json())
+         
+                .then(data => {
+                    // console.log(data)
+                    const concater = [...this.state.product, ...data.child.product]
+                    console.log(concater)
+                    // this.state.product.concat(data.child.product)
+                    this.setState({
+                        isLoad: true,
+                        activepage: data.activepage,
+                        allpage: data.allpage,
+                        product: concater
+                    })
+                if(data.data.lvl == 2){
+                    
+                    const concater = [...this.state.product, ...data.child.product]
+                    this.setState({
+                        construktor: [],
+                        isLoad: true,
+                        product: concater,
+                        activepage: data.activepage,
+                        allpage: data.allpage
+                    })
+                }else{
+                    const maina = data.data.filter((cll, id) => id <= 2);
+                    
+                    console.log(maina)
+                    if(data.data.length > 3){
+                        this.setState({
+                            construktor: maina,
+                            isLoad: true,
+                            mini: maina,
+                        })
+                    }else{
+                        console.log(data.data.child)
+                        if(data.data.child){
+                            if(data.data.child.length > 0){
+                                const concater = [...this.state.product, ...data.child.product]
+                                this.setState({
+                                  
+                                    isLoad: true,
+                                    product: concater,
+                                    activepage: data.activepage,
+                                    allpage: data.allpage
+                                })
+                            }
+                        }
+                      else{
+                        const concater = [...this.state.product, ...data.child.product]
+                            this.setState({
+                                isLoad: true,
+                                product: concater,
+                                activepage: data.activepage,
+                                allpage: data.allpage
+                            })
+                        }
+                        
+                    }
+                }
+                  
+                }
+                )
+    
+    
+                .catch((error) => {
+                    console.error(error);
+                });
+              }
+            } else {
+           
+         
+        }
+    }
     componentDidMount() {
+        window.addEventListener('scroll', this.handleScroll);
+
         var pathArray = window.location.pathname.split('/');
         console.log(pathArray)
 
@@ -56,18 +162,64 @@ class Category extends Component {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-
+                currentpage: 1
             })
         };
-        fetch('http://localhost:5000/auth/getonecategory/' + pathArray[2], requestOptions)
+        fetch('http://localhost:7000/auth/getonecategoryscontroll/' + pathArray[2], requestOptions)
             .then((response) => response.json())
 
             .then(data => {
                 console.log(data)
                 this.setState({
-                    main: data,
-                    isLoad: true
+                    maincategor: data.data,
+                    product: data.child.product,
+                    activepage: data.activepage,
+                    allpage: data.allpage
                 })
+            if(data.data.lvl == 2){
+                this.setState({
+                    construktor: [],
+                    isLoad: true,
+                    product: data.child.product,
+                    activepage: data.activepage,
+                    allpage: data.allpage
+                })
+            }else{
+                const maina = data.data.filter((cll, id) => id <= 2);
+                
+                console.log(maina)
+                if(data.data.length > 3){
+                    this.setState({
+                        construktor: maina,
+                        isLoad: true,
+                        mini: maina,
+                    })
+                }else{
+                    console.log(data.data.child)
+                    if(data.data.child){
+                        if(data.data.child.length > 0){
+                            this.setState({
+                                construktor: data.data.child,
+                                isLoad: true,
+                                product: data.child.product,
+                                activepage: data.activepage,
+                                allpage: data.allpage
+                            })
+                        }
+                    }
+                  else{
+                        this.setState({
+                            construktor: data.data,
+                            isLoad: true,
+                            product: data.child.product,
+                            activepage: data.activepage,
+                            allpage: data.allpage
+                        })
+                    }
+                    
+                }
+            }
+              
             }
             )
 
@@ -76,8 +228,27 @@ class Category extends Component {
                 console.error(error);
             });
     }
+    load(){
+        console.log(this.state.mini)
+        if(this.state.all == false){
+            this.setState({
+                all:true,
+                construktor: this.state.maincategor
+
+            })
+        }else{
+            this.setState({
+                all:false,
+                construktor: this.state.mini
+            })
+        }
+      
+    }
+
+      
     render() {
         const { isLoad } = this.state
+    
         // ariaLabel={['Lower thumb', 'Upper thumb']}
         if (!isLoad) {
             return (
@@ -113,7 +284,60 @@ class Category extends Component {
                                     <Row>
                                         <Col xs={2}>
                                             <Row>
+                                            {
+                                                    this.state.construktor.length > 0 &&(
+                                                       
+                                                 
+                                            <Col className=' cladco' xs={12}>
+                                            
+                                                        <button className='btnbrands'>
+                                                        <span>Категории</span>
+                                                       
+                                                            
+                                                        </button>
+                                                  
 
+
+                                                   <img className='imgdowncater' src={down}></img>
+                                                 
+                                                    <div>
+                                                  
+
+                                                    {this.state.construktor.map((data) =>
+                                                     <div className="form-group1 margcat">
+                                                    
+                                                    <a className={"linkcaters"} href={'/category/' + data._id}>{data.nameru}</a>
+                                                 </div>
+                                                    )}
+                                              
+                                                
+                                                        {(() => {
+                                                           
+                                                            if(this.state.maincategor.length > 3){
+                                                                if(this.state.all == false){
+                                                                    return(
+                                                                        <button onClick={this.load} >Еще</button>
+                                                                    )
+                                                                }else{
+                                                                    return(
+                                                                        <button onClick={this.load} >Скрыть</button>
+                                                                    )
+                                                                }
+                                                               
+                                                            }else{
+                                                                return(
+                                                                    <p></p>
+                                                                )
+                                                            }
+                                                        })()}
+
+                                                        
+                                                      
+                                                        
+                                                    </div>
+                                                </Col>
+   )
+}
                                                 <Col className=' cladco' xs={12}>
                                                     <button className='btnbrands'>
                                                         Производитель
@@ -326,7 +550,7 @@ class Category extends Component {
 
 
                                             <Row>
-                                                {this.state.main.tesr.map((data) =>
+                                                 {this.state.product.map((data) =>
                                                     <Col className='nopadd' xs={3}>
                                                         <div className='productercateg' id="1">
                                                             <div className='goruptopproducer'>
@@ -403,7 +627,7 @@ class Category extends Component {
 
                                                     </Col>
 
-                                                )}
+                                                )} 
 
                                             </Row>
 
