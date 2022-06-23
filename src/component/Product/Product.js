@@ -30,7 +30,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 
-class Category extends Component {
+class Prdocut extends Component {
 
     static propTypes = {
         match: PropTypes.object.isRequired,
@@ -52,7 +52,7 @@ class Category extends Component {
             har: false,
             doc: false,
             pers: {
-                filter:[]
+                filter: []
             },
             src: { _id: 9999999999, url: "" },
 
@@ -74,15 +74,14 @@ class Category extends Component {
         })
     }
     changeimg(vals) {
-        console.log(vals)
-        console.log(this.state.src.id)
+
         if (this.state.src._id == vals._id) {
 
         } else {
-            console.log("test")
+
             this.setState({
                 src: vals,
-             
+
             })
         }
 
@@ -110,7 +109,7 @@ class Category extends Component {
         })
     }
     componentDidMount() {
-        console.log(this.slider2)
+
         this.setState({
             nav1: this.slider1,
             nav2: this.slider2,
@@ -126,7 +125,7 @@ class Category extends Component {
             })
         };
         var pathArray = window.location.pathname.split('/');
-        console.log(pathArray)
+
 
         fetch('https://new.itmag.uz/auth/oneproduct/' + pathArray[2], requestOptions)
             .then((response) => response.json())
@@ -134,28 +133,28 @@ class Category extends Component {
             .then(data => {
                 var cont = data
                 console.log(data)
-                var ArrB = {...data}
-                console.log(ArrB)
+                var ArrB = { ...data }
+
                 for (var i = 0; i < cont.product.mainparams.length; i++) {
 
 
                     for (var b = 0; b < cont.product.mainparams[i].filter.length; b++) {
-                       
+
                         for (var f = 0; f < cont.product.mainparams[i].filter[b].filterchild.length; f++) {
 
-                           
+
 
                             for (var t = 0; t < cont.product.mainparams[i].filterchild.length; t++) {
 
-                              
-                                
-                            
-                                if ( cont.product.mainparams[i].filter[b].filterchild[f]._id == cont.product.mainparams[i].filterchild[t]._id) {
-                                    console.log("fefe")
+
+
+
+                                if (cont.product.mainparams[i].filter[b].filterchild[f]._id == cont.product.mainparams[i].filterchild[t]._id) {
+
                                     cont.product.mainparams[i].filter[b].product.push(cont.product.mainparams[i].filterchild[t])
-                                
-                                
-                     
+
+
+
 
                                 }
 
@@ -175,7 +174,7 @@ class Category extends Component {
                 }
 
 
-             
+
                 if (data.product.image.length > 3) {
                     this.setState({
                         maincount: 3
@@ -208,7 +207,7 @@ class Category extends Component {
             });
     }
     plus() {
-        console.log(this.state.curen * this.state.count)
+
         this.setState({
             count: this.state.count + 1,
             curen: this.state.curenter * (this.state.count + 1)
@@ -218,7 +217,7 @@ class Category extends Component {
     minus() {
         if (this.state.count <= 1) {
         } else {
-            console.log((this.state.count * this.state.curen) - this.state.curen)
+
             this.setState({
                 count: this.state.count - 1,
                 curen: ((this.state.count - 1) * this.state.curenter)
@@ -252,7 +251,7 @@ class Category extends Component {
 
                             <Row>
                                 <Breadcrumb className='breadr'>
-                                    <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
+                                    <Breadcrumb.Item href="/">Главная</Breadcrumb.Item>
                                     <Breadcrumb.Item href="https://getbootstrap.com/docs/4.0/components/breadcrumb/">
                                         Library
                                     </Breadcrumb.Item>
@@ -260,7 +259,7 @@ class Category extends Component {
                                 </Breadcrumb>
                                 <Col className='nopadd' xs={12}>
 
-                                    <span className='populartitle'> Популярные товары</span>
+                                    <span className='populartitle'> {this.state.main.nameru}</span>
 
                                 </Col>
                                 <Col className='nopadd cladco productblocked textpssss' xs={12}>
@@ -315,15 +314,15 @@ class Category extends Component {
                                                         <div className='btnaddcartsrav btnaddcartsravdet'><img src={srav}></img></div>
                                                         <div className='btnaddcartfavorite btnaddcartfavoritedet'><img src={favorite}></img></div>
                                                     </div>
-                                                    {console.log(this.state.src)}
+
                                                     <img className='imgproductdetals' src={this.state.src.url}></img>
-                                                    {/* <p><h1>{this.state.src.id}</h1></p> */}
+
 
                                                     <div className='container'>
-                                                        {console.log(main.image)}
+
                                                         <ImageSlider onChange={this.changeimg} maincount={this.state.maincount} images={main.image} />
-                                                        {/* <ImageSlider onChange={this.changeimg} maincount={this.state.maincount} images={LARGE_IMAGES} /> */}
-                                                        
+
+
                                                     </div>
                                                 </div>
 
@@ -348,44 +347,30 @@ class Category extends Component {
                                                 <img className='artimges' src={arti}></img>
                                                 <p className='articul'>Артикул         </p>
                                                 <p className='snerstest'> {main.artikul}</p>
-                                                <p className='maldesctiptiom'>
-                                                    {main.minidescriptionru}</p>
+                                                <p className='maldesctiptiom' dangerouslySetInnerHTML={{ __html: (main.minidescriptionru) }}>
+
+                                                </p>
 
                                                 <div className='linebottoms'></div>
 
-
-                                                <div className='types'>
-                                                    <p className='minitext'>Тип лазера</p>
-                                                    <p className='minitext1'>DFB</p>
-
-
-                                                </div>
-
-                                                <div className='types'>
-                                                    <p className='minitext'>Тип лазера</p>
-                                                    <p className='minitext1'>DFB</p>
+                                                {this.state.main.meta[0].map((data, idx) =>
+                                                
+                                               <div>
+                                                   {data.text.t2.length>0 && idx <=4 && (
+     <div className='types'>
+     <p className='minitext'>{data.text.t1}</p>
+     <p className='minitext1'>{data.text.t2}</p>
 
 
-                                                </div>
+ </div>
+                                                   )
+                                                   }
+                                               
+                                                   </div>
+                                                )}
+                                                
 
-                                                <div className='types'>
-                                                    <p className='minitext'>Тип лазера</p>
-                                                    <p className='minitext1'>DFB</p>
-
-
-                                                </div>
-                                                <div className='types'>
-                                                    <p className='minitext'>Тип лазера</p>
-                                                    <p className='minitext1'>DFB</p>
-
-
-                                                </div>
-                                                <div className='types'>
-                                                    <p className='minitext'>Тип лазера</p>
-                                                    <p className='minitext1'>DFB</p>
-
-
-                                                </div>
+                                                
                                             </div>
 
                                         </Col>
@@ -439,9 +424,15 @@ class Category extends Component {
 
                                                 Описание
                                             </button>
-                                            <button onClick={this.har} className={this.state.har ? 'btnactive' : 'btnactiveno'}>
-                                                Характеристики
-                                            </button>
+                                        
+                                            {
+                                                this.state.main.meta[0].length > 0&&(
+                                                    <button onClick={this.har} className={this.state.har ? 'btnactive' : 'btnactiveno'}>
+                                                    Характеристики
+                                                </button>
+                                                )
+                                            }
+
                                             {
                                                 main.files.length > 0 && (
                                                     <button onClick={this.doc} className={this.state.doc ? 'btnactive' : 'btnactiveno'}>
@@ -458,7 +449,7 @@ class Category extends Component {
                                         {
                                             this.state.dec == true && (
                                                 <Col className=' clasrightline opisanser' xs={12}>
-                                                    {main.descriptionru}
+                                                    <div dangerouslySetInnerHTML={{ __html: (main.descriptionru) }}  ></div>
 
                                                 </Col>
                                             )
@@ -466,7 +457,113 @@ class Category extends Component {
                                         {
                                             this.state.har == true && (
                                                 <Col className=' clasrightline opisanser' xs={12}>
-                                                    {console.log(this.state.main)}
+                                                    <Row>
+                                                        <Col xs={9}>
+
+
+                                                            {this.state.main.meta[0].map((data, idx) =>
+
+
+
+                                                                <div>
+
+
+                                                                    <div className=''>
+                                                                  
+                                                                            {
+                                                                                data.text.t2.length == 0 && (
+                                                                                   <div className='haeaasaas'>  <spnan className={"fdsfdsss233f"}> {data.text.t1}</spnan></div>
+                                                                                )
+                                                                            }
+                                                                    
+                                                                  
+                                                                                {(() => {
+                                                                                    if (data.text.t2.length > 0) {
+                                                                                        if (Number.isInteger(idx / 2)) {
+                                                                                            return (
+                                                                                                <Row className='grmain'>
+                                                                                                    <Col className='mainlable' xs={6}>
+                                                                                                        <div>
+
+                                                                                                            {data.text.t1}
+
+                                                                                                        </div>
+
+                                                                                                    </Col>
+
+                                                                                                    <Col className='mainlable' xs={6}>
+                                                                                                        <div>
+
+
+
+                                                                                                            <div>
+
+                                                                                                            {data.text.t2}
+                                                                                                            </div>
+
+
+                                                                                                        </div>
+                                                                                                    </Col>
+
+                                                                                                </Row>
+                                                                                            )
+                                                                                        } else {
+                                                                                            return (
+                                                                                                <Row className=''>
+                                                                                                    <Col className='mainlable' xs={6}>
+                                                                                                        <div>
+
+                                                                                                        {data.text.t1}
+
+                                                                                                        </div>
+
+                                                                                                    </Col>
+
+                                                                                                    <Col className='mainlable' xs={6}>
+                                                                                                        <div>
+
+
+
+                                                                                                            <div>
+
+                                                                                                            {data.text.t2}
+                                                                                                            </div>
+
+
+                                                                                                        </div>
+                                                                                                    </Col>
+
+                                                                                                </Row>
+                                                                                            )
+                                                                                        }
+                                                                                    }
+
+                                                                                })()}
+
+
+                                                                        
+
+
+
+
+
+                                                                    </div>
+
+                                                                </div>
+                                                            )}
+
+
+                                                        </Col>
+
+                                                    </Row>
+
+
+
+
+
+
+
+
                                                     {this.state.main.mainparams.map((data, idx) =>
 
 
@@ -480,14 +577,15 @@ class Category extends Component {
                                                                     <Row>
                                                                         <Col xs={9}>
                                                                             {(() => {
-                                                                                console.log(data)
+
                                                                                 const ids = data.filter.map(o => o._id)
                                                                                 const filtered = data.filter.filter(({ _id }, index) => !ids.includes(_id, index + 1))
-                                                                                console.log(filtered)
+
 
                                                                                 return (
                                                                                     <div>
-                                                                                        {filtered.map((data1, idx) =>
+
+                                                                                        {/* {filtered.map((data1, idx) =>
 
                                                                                             <div>
                                                                                                 {(() => {
@@ -554,7 +652,7 @@ class Category extends Component {
                                                                                             </div>
 
 
-                                                                                        )}
+                                                                                        )} */}
                                                                                     </div>
                                                                                 )
                                                                             })()}
@@ -611,4 +709,4 @@ class Category extends Component {
     }
 }
 
-export default Category;
+export default Prdocut;

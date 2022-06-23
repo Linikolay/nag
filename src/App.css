@@ -129,14 +129,14 @@ width: 30px;
 .textcategory{
 margin: 0px;
 font-weight: 600;
-font-size: 14px;
+font-size: 16px;
 }
 .brandcategory{
 margin: 0px;
 color: #000000;
 
 opacity: 0.3;
-font-size: 13px;
+font-size: 15px;
 white-space: nowrap; /* Запрещаем перенос строк */
 overflow: hidden; /* Обрезаем все, что не помещается в область */
 
@@ -823,14 +823,14 @@ padding-bottom: 10px;
   border: 1px solid #ECECF3;
 }
 .textlogonoew{
-  font-size: 10px;
+  font-size: 13px;
   
 }
 .tel{
   font-size: 12px;
 }
 .date{
-  font-size: 10px;
+  font-size: 13px;
 }
 .rgtopbuttn {
   font-size: 12px;
@@ -1358,12 +1358,14 @@ color: #B2B5C2;
 margin: 0px;
 display: inline-block;
 width: 50%;
+vertical-align: middle;
 }
 .minitext1{
 margin: 0px;
 color: black;
 display: inline-block;
 width: 50%;
+vertical-align: middle;
 }
 .brandconts{
 float: right;
@@ -1559,4 +1561,16 @@ position: relative;
 .margcat{
   padding-bottom: 10px;
   padding-left: 5px;
+}
+.ffdfdf{
+  background-color: transparent;
+  border: 0px;
+  color: #0C8FD9;
+}
+.haeaasaas{
+  text-align: center;
+}
+.fdsfdsss233f{
+  font-family: "RubikBold";
+    font-size: 20px;
 }

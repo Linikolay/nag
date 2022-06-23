@@ -64,7 +64,7 @@ class LeftCategory extends Component {
                     <div className="main-body">
                         {category.map((data, id) =>
                             <NavLink key={data._id} href={"category/" + data._id} className='blockcatersrre'>
-                                <img  className='imgtemp' src={data.icon} />
+                                {/* <img  className='imgtemp' src={data.icon} /> */}
                                 <div key={data.icon} className='blockcater'>
                                     <p key={data.nameru} className='textcategory'>{data.nameru}</p>
                                     <p key={data.id} className='brandcategory'>

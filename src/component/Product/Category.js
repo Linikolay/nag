@@ -78,7 +78,7 @@ class Category extends Component {
                     currentpage: this.state.activepage+1,
                 })
             };
-            fetch('http://localhost:7000/auth/getonecategoryscontroll/' + pathArray[2], requestOptions)
+            fetch('/auth/getonecategoryscontroll/' + pathArray[2], requestOptions)
                 .then((response) => response.json())
          
                 .then(data => {
@@ -165,7 +165,7 @@ class Category extends Component {
                 currentpage: 1
             })
         };
-        fetch('http://localhost:7000/auth/getonecategoryscontroll/' + pathArray[2], requestOptions)
+        fetch('/auth/getonecategoryscontroll/' + pathArray[2], requestOptions)
             .then((response) => response.json())
 
             .then(data => {
@@ -316,11 +316,11 @@ class Category extends Component {
                                                             if(this.state.maincategor.length > 3){
                                                                 if(this.state.all == false){
                                                                     return(
-                                                                        <button onClick={this.load} >Еще</button>
+                                                                        <button className='ffdfdf' onClick={this.load} >Еще</button>
                                                                     )
                                                                 }else{
                                                                     return(
-                                                                        <button onClick={this.load} >Скрыть</button>
+                                                                        <button className='ffdfdf' onClick={this.load} >Скрыть</button>
                                                                     )
                                                                 }
                                                                
@@ -338,7 +338,7 @@ class Category extends Component {
                                                 </Col>
    )
 }
-                                                <Col className=' cladco' xs={12}>
+                                                {/* <Col className=' cladco' xs={12}>
                                                     <button className='btnbrands'>
                                                         Производитель
                                                     </button>
@@ -539,7 +539,7 @@ class Category extends Component {
                                                         </div>
 
                                                     </div>
-                                                </Col>
+                                                </Col> */}
 
 
                                             </Row>
@@ -598,7 +598,7 @@ class Category extends Component {
                                                             <div className='catevnuters'>
                                                                 {
                                                                     data.image.length>0&&(
-                                                                        <img className='routers' src={ data.image[0].url} />
+                                                                        <img className='routers' src={data.image[0].url} />
                                                                     )
                                                                 }
                                                       
