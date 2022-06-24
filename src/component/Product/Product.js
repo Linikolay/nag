@@ -352,25 +352,33 @@ class Prdocut extends Component {
                                                 </p>
 
                                                 <div className='linebottoms'></div>
+                                         
+                                                {
+                                                    this.state.main.meta.length > 0 && (
+                                                        <div>
+                                               {this.state.main.meta[0].map((data, idx) =>
 
-                                                {this.state.main.meta[0].map((data, idx) =>
-                                                
-                                               <div>
-                                                   {data.text.t2.length>0 && idx <=4 && (
-     <div className='types'>
-     <p className='minitext'>{data.text.t1}</p>
-     <p className='minitext1'>{data.text.t2}</p>
+<div>
+    {data.text.t2.length > 0 && idx <= 4 && (
+        <div className='types'>
+            <p className='minitext'>{data.text.t1}</p>
+            <p className='minitext1'>{data.text.t2}</p>
 
 
- </div>
-                                                   )
-                                                   }
-                                               
-                                                   </div>
-                                                )}
-                                                
+        </div>
+    )
+    }
 
-                                                
+</div>
+)}
+                                                        </div>
+                                                    )
+                                                }
+
+ 
+
+
+
                                             </div>
 
                                         </Col>
@@ -424,12 +432,12 @@ class Prdocut extends Component {
 
                                                 Описание
                                             </button>
-                                        
+
                                             {
-                                                this.state.main.meta[0].length > 0&&(
+                                                this.state.main.meta.length > 0 && (
                                                     <button onClick={this.har} className={this.state.har ? 'btnactive' : 'btnactiveno'}>
-                                                    Характеристики
-                                                </button>
+                                                        Характеристики
+                                                    </button>
                                                 )
                                             }
 
@@ -469,79 +477,79 @@ class Prdocut extends Component {
 
 
                                                                     <div className=''>
-                                                                  
-                                                                            {
-                                                                                data.text.t2.length == 0 && (
-                                                                                   <div className='haeaasaas'>  <spnan className={"fdsfdsss233f"}> {data.text.t1}</spnan></div>
-                                                                                )
+
+                                                                        {
+                                                                            data.text.t2.length == 0 && (
+                                                                                <div className='haeaasaas'>  <spnan className={"fdsfdsss233f"}> {data.text.t1}</spnan></div>
+                                                                            )
+                                                                        }
+
+
+                                                                        {(() => {
+                                                                            if (data.text.t2.length > 0) {
+                                                                                if (Number.isInteger(idx / 2)) {
+                                                                                    return (
+                                                                                        <Row className='grmain'>
+                                                                                            <Col className='mainlable' xs={6}>
+                                                                                                <div>
+
+                                                                                                    {data.text.t1}
+
+                                                                                                </div>
+
+                                                                                            </Col>
+
+                                                                                            <Col className='mainlable' xs={6}>
+                                                                                                <div>
+
+
+
+                                                                                                    <div>
+
+                                                                                                        {data.text.t2}
+                                                                                                    </div>
+
+
+                                                                                                </div>
+                                                                                            </Col>
+
+                                                                                        </Row>
+                                                                                    )
+                                                                                } else {
+                                                                                    return (
+                                                                                        <Row className=''>
+                                                                                            <Col className='mainlable' xs={6}>
+                                                                                                <div>
+
+                                                                                                    {data.text.t1}
+
+                                                                                                </div>
+
+                                                                                            </Col>
+
+                                                                                            <Col className='mainlable' xs={6}>
+                                                                                                <div>
+
+
+
+                                                                                                    <div>
+
+                                                                                                        {data.text.t2}
+                                                                                                    </div>
+
+
+                                                                                                </div>
+                                                                                            </Col>
+
+                                                                                        </Row>
+                                                                                    )
+                                                                                }
                                                                             }
-                                                                    
-                                                                  
-                                                                                {(() => {
-                                                                                    if (data.text.t2.length > 0) {
-                                                                                        if (Number.isInteger(idx / 2)) {
-                                                                                            return (
-                                                                                                <Row className='grmain'>
-                                                                                                    <Col className='mainlable' xs={6}>
-                                                                                                        <div>
 
-                                                                                                            {data.text.t1}
-
-                                                                                                        </div>
-
-                                                                                                    </Col>
-
-                                                                                                    <Col className='mainlable' xs={6}>
-                                                                                                        <div>
+                                                                        })()}
 
 
 
-                                                                                                            <div>
-
-                                                                                                            {data.text.t2}
-                                                                                                            </div>
-
-
-                                                                                                        </div>
-                                                                                                    </Col>
-
-                                                                                                </Row>
-                                                                                            )
-                                                                                        } else {
-                                                                                            return (
-                                                                                                <Row className=''>
-                                                                                                    <Col className='mainlable' xs={6}>
-                                                                                                        <div>
-
-                                                                                                        {data.text.t1}
-
-                                                                                                        </div>
-
-                                                                                                    </Col>
-
-                                                                                                    <Col className='mainlable' xs={6}>
-                                                                                                        <div>
-
-
-
-                                                                                                            <div>
-
-                                                                                                            {data.text.t2}
-                                                                                                            </div>
-
-
-                                                                                                        </div>
-                                                                                                    </Col>
-
-                                                                                                </Row>
-                                                                                            )
-                                                                                        }
-                                                                                    }
-
-                                                                                })()}
-
-
-                                                                        
 
 
 

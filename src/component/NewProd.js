@@ -83,7 +83,7 @@ class NewProd extends Component {
 
             })
         };
-        fetch('https://new.itmag.uz/auth/getallnewproduct', requestOptions)
+        fetch('/auth/getallnewproduct', requestOptions)
             .then((response) => response.json())
 
             .then(data => {
@@ -236,7 +236,7 @@ class NewProd extends Component {
 
     </div>
     <div className='catevnuters'>
-        <img className='routers' src={routersimg} />
+        <img className='routers' src={data.image[0].url} />
         {
             data.brand.length > 0&&(
   <p className='brandtextvers'>{data.brand[0].nameru}

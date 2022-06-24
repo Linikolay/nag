@@ -43,6 +43,8 @@ class Category extends Component {
             main: "",
             activepage: 1,
             all: false,
+            breadchild: "",
+            breadcat: "",
             mini: ''
         }
         this.change = this.change.bind(this);
@@ -169,33 +171,41 @@ class Category extends Component {
             .then((response) => response.json())
 
             .then(data => {
-                console.log(data)
+           console.log(data)
                 this.setState({
                     maincategor: data.data,
                     product: data.child.product,
                     activepage: data.activepage,
+                    breadcat: data.bradcat,
+                    breadchild:data.breadchild,
                     allpage: data.allpage
                 })
             if(data.data.lvl == 2){
+                
                 this.setState({
                     construktor: [],
                     isLoad: true,
                     product: data.child.product,
                     activepage: data.activepage,
-                    allpage: data.allpage
+                    allpage: data.allpage,
+                    breadcat: data.bradcat,
+                    breadchild:data.breadchild,
                 })
             }else{
                 const maina = data.data.filter((cll, id) => id <= 2);
                 
-                console.log(maina)
+             
                 if(data.data.length > 3){
+                    
                     this.setState({
                         construktor: maina,
                         isLoad: true,
                         mini: maina,
+                        breadcat: data.bradcat,
+                        breadchild:data.breadchild,
                     })
                 }else{
-                    console.log(data.data.child)
+                
                     if(data.data.child){
                         if(data.data.child.length > 0){
                             this.setState({
@@ -203,17 +213,22 @@ class Category extends Component {
                                 isLoad: true,
                                 product: data.child.product,
                                 activepage: data.activepage,
-                                allpage: data.allpage
+                                allpage: data.allpage,
+                                breadcat: data.bradcat,
+                                breadchild:data.breadchild,
                             })
                         }
                     }
                   else{
+                 
                         this.setState({
                             construktor: data.data,
                             isLoad: true,
                             product: data.child.product,
                             activepage: data.activepage,
-                            allpage: data.allpage
+                            allpage: data.allpage,
+                            breadcat: data.bradcat,
+                            breadchild:data.breadchild,
                         })
                     }
                     
@@ -263,13 +278,45 @@ class Category extends Component {
                         <Container className='controlerspadr'>
 
                             <Row>
-                                <Breadcrumb className='breadr'>
-                                    <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
-                                    <Breadcrumb.Item href="https://getbootstrap.com/docs/4.0/components/breadcrumb/">
-                                        Library
-                                    </Breadcrumb.Item>
-                                    <Breadcrumb.Item active>Data</Breadcrumb.Item>
-                                </Breadcrumb>
+                                
+                                    {console.log(this.state.breadcat.length)}
+                                    {(() => {
+                                        if(this.state.breadchild.length==0 && this.state.breadcat.length==0){
+                                            return(
+                                                <Breadcrumb className='breadr'>
+                                                <Breadcrumb.Item href="/">Главная</Breadcrumb.Item>
+                                                            <Breadcrumb.Item active>
+                                                            Категории
+                                                        </Breadcrumb.Item>
+                                                        
+                                                         </Breadcrumb>
+                                            )
+                                        }else if(this.state.breadchild.length==0 && this.state.breadcat.length == undefined){
+                                            return(
+                                                <Breadcrumb className='breadr'>
+                                    <Breadcrumb.Item href="/">Главная</Breadcrumb.Item>
+                                                <Breadcrumb.Item href="/category/allcategory">
+                                                Категории
+                                            </Breadcrumb.Item>
+                                             <Breadcrumb.Item active>{this.state.breadcat.nameru}</Breadcrumb.Item>
+                                             </Breadcrumb>
+                                            )
+                                        }else if(this.state.breadchild.length==undefined && this.state.breadcat.length == undefined){
+                                            return(
+                                                <Breadcrumb className='breadr'>
+                                    <Breadcrumb.Item href="/">Главная</Breadcrumb.Item>
+                                                <Breadcrumb.Item href="/category/allcategory">
+                                                Категории
+                                            </Breadcrumb.Item>
+                                             <Breadcrumb.Item href={'/category/'+ this.state.breadcat._id}>{this.state.breadcat.nameru}</Breadcrumb.Item>
+                                             <Breadcrumb.Item active>{this.state.breadchild.nameru}</Breadcrumb.Item>
+
+                                             </Breadcrumb>
+                                            )
+                                        }
+})()}
+                               
+                                   
                                 <Col className='nopadd' xs={12}>
 
                                     <span className='populartitle'> Популярные товары</span>
@@ -304,13 +351,20 @@ class Category extends Component {
                                                   
 
                                                     {this.state.construktor.map((data) =>
-                                                     <div className="form-group1 margcat">
+                                                   <div>
+                                                       {
+                                                           data.product.length > 0&&(
+                                                            <div className="form-group1 margcat">
                                                     
-                                                    <a className={"linkcaters"} href={'/category/' + data._id}>{data.nameru}</a>
-                                                 </div>
+                                                            <a className={"linkcaters"} href={'/category/' + data._id}>{data.nameru}</a>
+                                                         </div>
+                                                           )
+                                                       }
+                                                     
+                                                   </div>
                                                     )}
                                               
-                                                
+                                             
                                                         {(() => {
                                                            
                                                             if(this.state.maincategor.length > 3){

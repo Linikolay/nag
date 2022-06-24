@@ -49,7 +49,7 @@ class Popular extends Component {
 
             })
         };
-        fetch('https://new.itmag.uz/auth/getallpopularproduct', requestOptions)
+        fetch('/auth/getallpopularproduct', requestOptions)
             .then((response) => response.json())
 
             .then(data => {
@@ -235,7 +235,7 @@ class Popular extends Component {
 
                                                 </div>
                                                 <div className='catevnuters'>
-                                                    <img className='routers' src={routersimg} />
+                                                    <img className='routers' src={data.image[0].url} />
                                                     {
                                                         data.brand.length > 0 && (
                                                             <p className='brandtextvers'>{data.brand[0].nameru}
