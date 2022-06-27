@@ -229,7 +229,7 @@ return(
 
         {this.state.parth.data.map((data) =>
         <a href={data.url} className='banerimg'>
-         <img className='partnerbanner'  src={ "https://new.itmag.uz"+data.icon} />
+         <img className='partnerbanner'  src={data.icon} />
     </a>
         )}
             

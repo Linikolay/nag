@@ -1574,3 +1574,17 @@ position: relative;
   font-family: "RubikBold";
     font-size: 20px;
 }
+.mainlst{
+  position: absolute;
+  background-color: white;
+  padding: 20px;
+  z-index: 1000;
+  max-width: 600px;
+}
+.searchimg{
+  max-width: 75px;
+}
+.product_list{
+  color: black;
+  text-decoration: none;
+}
