@@ -49,7 +49,7 @@ class Popular extends Component {
 
             })
         };
-        fetch('/auth/getallpopularproduct', requestOptions)
+        fetch('http://localhost:7000/auth/getallpopularproduct', requestOptions)
             .then((response) => response.json())
 
             .then(data => {
@@ -109,7 +109,32 @@ class Popular extends Component {
             speed: 500,
             slidesToShow: 5,
             // autoplay: true,
+            responsive: [
+                {
+                    breakpoint: 1199,
+                    settings: {
+                      slidesToShow: 4,
+                  
+                    }
+                  },
+                  {
+                    breakpoint: 991,
+                    settings: {
+                      slidesToShow: 3,
+                  
+                    }
+                  },
+                  {
+                    breakpoint: 749,
+                    settings: {
+                      slidesToShow: 2,
+                  
+                    }
+                  }
 
+            ]
+            
+            ,
             slidesToScroll: 1,
 
             appendDots: dots => (
@@ -235,7 +260,7 @@ class Popular extends Component {
 
                                                 </div>
                                                 <div className='catevnuters'>
-                                                    <img className='routers' src={data.image[0].url} />
+                                                    <img className='routers' src={"https://new.itmag.uz"+data.image[0].url} />
                                                     {
                                                         data.brand.length > 0 && (
                                                             <p className='brandtextvers'>{data.brand[0].nameru}

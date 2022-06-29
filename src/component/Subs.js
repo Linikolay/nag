@@ -19,16 +19,11 @@ class Subs extends Component {
     }
     render() {
         return (
-            <div className="page-wrap">
+            <div className="page-wrap suberes">
                 <div className="main-body">
-
-
                     <Container className=''>
                         <div className='subsblock'>
                             <Row>
-
-
-
                                 <Col className='' xs={5}>
                                     <p className='titlesubs'>Будьте вкурсе событий</p>
                                     <p className='dessubs'>Лучшие предложения от нас и наших партнеров будут приходить вам на мпочту</p>
@@ -48,16 +43,9 @@ class Subs extends Component {
                                         <span className='boulkdtext1'> политикой конфеденциальности</span>
                                     </div>
                                 </Col>
-
-
-
-
-
                             </Row>
                         </div>
                     </Container>
-
-
                 </div></div>
         )
     }

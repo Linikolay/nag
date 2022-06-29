@@ -37,22 +37,7 @@ const ImageSlider = ({ onChange,props, parentCallback, maincount, images, slides
     nextArrow: <NextArrow onClick />,
     prevArrow: <PrevArrow onClick />,
     beforeChange: (current, next) => setImageIndex(next),
-    responsive: [
-      {
-        breakpoint: 1490,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 820,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-        },
-      },
-    ],
+  
   };
 
   const templateImages = images.map((image, idx) => {
@@ -63,14 +48,14 @@ const ImageSlider = ({ onChange,props, parentCallback, maincount, images, slides
       }
       return (
         <div
-          className={idx === imageIndex ? "activeSlide" : "slide"}
+          className={idx === imageIndex ? "activeSlide actpoper" : "slide"}
           key={image._id}
         >
    
             {
               images.length>1&&(
                 <div className="slideWrapper">
-                {image.code ? image.code : <img src={image.url} alt={image.alt} />}
+                {image.code ? image.code : <img src={"https://new.itmag.uz"+image.url} alt={image.alt} />}
               </div>
               )
             }

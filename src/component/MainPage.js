@@ -15,6 +15,7 @@ import "../App.css"
 
 const LeftCategory = React.lazy(() => import('./LeftCategory'));
 const RightBaners = React.lazy(() => import('./RightBaners'));
+const MobBaners = React.lazy(() => import('./MoBaners'));
 const Statis = React.lazy(() => import('./Statis'));
 const Popular = React.lazy(() => import('./Popular'));
 const NewProd = React.lazy(() => import('./NewProd'));
@@ -24,6 +25,68 @@ const Subs = React.lazy(() => import('./Subs'));
 
 
 class MainPage extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+
+            part: false,
+            get: false
+        }
+
+        this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+ 
+
+    }
+
+    updateWindowDimensions = () => {
+
+        if (window.innerWidth <= 991) {
+            this.setState({
+                get: true
+            })
+        } else {
+            this.setState({
+                get: false
+            })
+        }
+
+        if (window.innerWidth <= 1199) {
+            this.setState({
+                part: true
+            })
+        } else {
+            this.setState({
+                part: false
+            })
+        }
+    }
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.updateWindowDimensions);
+    }
+
+
+    componentDidMount(){
+        if (window.innerWidth <= 991) {
+            this.setState({
+                get: true
+            })
+        } else {
+            this.setState({
+                get: false
+            })
+        }
+
+        if (window.innerWidth <= 1199) {
+            this.setState({
+                part: true
+            })
+        } else {
+            this.setState({
+                part: false
+            })
+        }
+        window.addEventListener('resize', this.updateWindowDimensions);
+    }
     render() {
 
         return (
@@ -38,10 +101,32 @@ class MainPage extends Component {
                         <Container>
                             <Row>
                                 <Col className='leftsider' xs={3}><LeftCategory /></Col>
-                                <Col className='centerbanners' xs={9}>
-                                    <RightBaners />
+                                {this.state.get == false&&(
+  <Col className='centerbanners'  xs={9}>
+  <RightBaners />
 
-                                </Col>
+</Col>
+
+                                )}
+                                {this.state.get == true&&(
+                                      <Col className='centerbanners'  xs={12}>
+                                      <RightBaners />
+  
+                                  </Col>
+  
+                                    )}
+
+                              
+
+
+                                {this.state.part == true &&(
+  <Col className='centerbanners' xs={12}>
+  <MobBaners />
+
+</Col>
+                                )}
+                              
+
                                 <Col className='centerbanners bodymaincontrollers' xs={12}>
                                     <Popular />
 
@@ -72,7 +157,7 @@ class MainPage extends Component {
                                     <Aboutmini />
 
                                 </Col>
-                                <Col className='centerbanners ' xs={12}>
+                                <Col className='centerbanners partnernoe ' xs={12}>
                                     <Parther />
 
                                 </Col>

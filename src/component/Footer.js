@@ -30,12 +30,12 @@ class Footer extends Component {
 
 
 
-                                <Col className='' xs={2}>
+                                <Col className='' xs={12} sm={12} md={2} lg={2} xl={2} >
                                   <img src={logofooter}/>
                                   <p className='logotext'>Сетевое и телекоммуникационное оборудование</p>
                                 </Col>
                              
-                                <Col className='' xs={2}>
+                                <Col className='' xs={12} sm={12} md={2} lg={2} xl={2}>
                                     <p className=' textfootertop'>Lider Team </p>
                                     <p className='linkfootertext'>О компании</p>
                                     <p className='linkfootertext'>Лицензии</p>
@@ -46,7 +46,7 @@ class Footer extends Component {
                                 </Col>
                              
                                  
-                                <Col className='' xs={2}>
+                                <Col className=''xs={12} sm={12} md={2} lg={2} xl={2}>
                                     <p className=' textfootertop'>Магазин</p>
                                     <p className='linkfootertext'>Личный кабинет</p>
                                     <p className='linkfootertext'>Каталог товаров</p>
@@ -58,7 +58,7 @@ class Footer extends Component {
                                 </Col>
 
                                    
-                                <Col className='' xs={2}>
+                                <Col className='' xs={12} sm={12} md={2} lg={2} xl={2}>
                                     <p className=' textfootertop'>Прочее </p>
                                     <p className='linkfootertext'>F.A.Q</p>
                                     <p className='linkfootertext'>Способы оплаты</p>
@@ -69,17 +69,17 @@ class Footer extends Component {
                                 </Col>
 
                                    
-                                <Col className='' xs={2}>
+                                <Col className='' xs={12} sm={12} md={2} lg={2} xl={2}>
                                     <p className=' textfootertop'>Рассылка </p>
                                     <p className='linkfootertext'>Подпишитесь на рассылку что бы быть в курсе всех событий</p>
                              <button className='footbtnsubs'>Подписаться</button>
                                   
                                 </Col>
                                    
-                                <Col className='' xs={2}>
-                                    <p className=' numbertxt'>+998 71 205-85-85
+                                <Col className='' xs={12} sm={12} md={2} lg={2} xl={2}>
+                                    <a href="tel:+998712058585" className=' numbertxt'>+998 71 205-85-85
 
-</p>
+</a>
                                     <p className='linkfootertext'>Пн-Пт 09:00-18:00</p>
                                    
                                   

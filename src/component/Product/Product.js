@@ -127,7 +127,7 @@ class Prdocut extends Component {
         var pathArray = window.location.pathname.split('/');
 
 
-        fetch('https://new.itmag.uz/auth/oneproduct/' + pathArray[2], requestOptions)
+        fetch('http://localhost:7000/auth/oneproduct/' + pathArray[2], requestOptions)
             .then((response) => response.json())
 
             .then(data => {
@@ -195,6 +195,7 @@ class Prdocut extends Component {
                 this.setState({
                     main: data.product,
                     isLoad: true,
+                    test: data.apro,
                     curen: data.product.sum,
                     curenter: data.product.sum,
                 })
@@ -246,22 +247,18 @@ class Prdocut extends Component {
             return (
                 <div className="page-wrap">
                     <div className="main-body">
-
+{console.log(this.state.test)}
                         <Container className='controlerspadr'>
 
-                            <Row>
+                            <Row className='nootstup'>
                                 <Breadcrumb className='breadr'>
                                     <Breadcrumb.Item href="/">Главная</Breadcrumb.Item>
                                     <Breadcrumb.Item href="https://getbootstrap.com/docs/4.0/components/breadcrumb/">
-                                        Library
+                                        Категории
                                     </Breadcrumb.Item>
                                     <Breadcrumb.Item active>Data</Breadcrumb.Item>
                                 </Breadcrumb>
-                                <Col className='nopadd' xs={12}>
-
-                                    <span className='populartitle'> {this.state.main.nameru}</span>
-
-                                </Col>
+                        
                                 <Col className='nopadd cladco productblocked textpssss' xs={12}>
 
 
@@ -269,8 +266,8 @@ class Prdocut extends Component {
 
 
 
-                                    <Row>
-                                        <Col className=' clasrightline' xs={4}>
+                                    <Row className='nootstup'>
+                                        <Col className=' clasrightline classmobile'  xs={12} sm={12} md={12} lg={12} xl={4}>
                                             <div className='blokersstree'>
                                                 <div className='slideralign'>
 
@@ -315,10 +312,10 @@ class Prdocut extends Component {
                                                         <div className='btnaddcartfavorite btnaddcartfavoritedet'><img src={favorite}></img></div>
                                                     </div>
 
-                                                    <img className='imgproductdetals' src={this.state.src.url}></img>
+                                                    <img className='imgproductdetals' src={"https://new.itmag.uz"+this.state.src.url}></img>
 
 
-                                                    <div className='container'>
+                                                    <div className='container maincontro'>
 
                                                         <ImageSlider onChange={this.changeimg} maincount={this.state.maincount} images={main.image} />
 
@@ -341,7 +338,7 @@ class Prdocut extends Component {
                                             </div>
 
                                         </Col>
-                                        <Col className='' xs={4}>
+                                        <Col className='alabmobiles' xs={12} sm={12} md={12} lg={12} xl={4}>
                                             <div className='midlblock'>
                                                 <p className='midletextproduct'>{main.nameru}</p>
                                                 <img className='artimges' src={arti}></img>
@@ -382,7 +379,7 @@ class Prdocut extends Component {
                                             </div>
 
                                         </Col>
-                                        <Col className='' xs={4}>
+                                        <Col className='classmobilehlders' xs={12} sm={12} md={12} lg={12} xl={4}>
                                             <div className='rightblockproduct'>
                                                 <div className='topers'>
                                                     <div className='groupelipse grtonamecontrolers'>

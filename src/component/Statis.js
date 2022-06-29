@@ -90,7 +90,30 @@ class Statis extends Component {
             // autoplay: true,
 
             slidesToScroll: 1,
+            responsive: [
+                {
+                    breakpoint: 1199,
+                    settings: {
+                      slidesToShow: 4,
+                  
+                    }
+                  },
+                  {
+                    breakpoint: 991,
+                    settings: {
+                      slidesToShow: 3,
+                  
+                    }
+                  },
+                  {
+                    breakpoint: 749,
+                    settings: {
+                      slidesToShow: 2,
+                  
+                    }
+                  }
 
+            ],
             appendDots: dots => (
                 <div
                     style={{

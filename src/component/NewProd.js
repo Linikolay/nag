@@ -83,7 +83,7 @@ class NewProd extends Component {
 
             })
         };
-        fetch('/auth/getallnewproduct', requestOptions)
+        fetch('http://localhost:7000/auth/getallnewproduct', requestOptions)
             .then((response) => response.json())
 
             .then(data => {
@@ -118,7 +118,32 @@ class NewProd extends Component {
             speed: 500,
             slidesToShow: 5,
             // autoplay: true,
-          
+            responsive: [
+                {
+                    breakpoint: 1199,
+                    settings: {
+                      slidesToShow: 4,
+                  
+                    }
+                  },
+                  {
+                    breakpoint: 991,
+                    settings: {
+                      slidesToShow: 3,
+                  
+                    }
+                  },
+                  {
+                    breakpoint: 749,
+                    settings: {
+                      slidesToShow: 2,
+                  
+                    }
+                  }
+
+            ]
+            
+            ,
             slidesToScroll: 1,
 
             appendDots: dots => (
@@ -167,7 +192,7 @@ class NewProd extends Component {
 
                             <Col className='nopadd' xs={12}>
 
-                                <span className='populartitle'> Новинки</span>
+                                <span className='populartitle'> Новые поступления</span>
 
 
                                 <div className='brnpop'>
@@ -236,10 +261,10 @@ class NewProd extends Component {
 
     </div>
     <div className='catevnuters'>
-        <img className='routers' src={data.image[0].url} />
+        <img className='routers' src={"https://new.itmag.uz"+data.image[0].url} />
         {
             data.brand.length > 0&&(
-  <p className='brandtextvers'>{data.brand[0].nameru}
+  <p className='brandtextvers'>{"https://new.itmag.uz"+data.brand[0].nameru}
         </p>
             )
         }

@@ -20,7 +20,7 @@ import "slick-carousel/slick/slick-theme.css";
 import "bootstrap/dist/css/bootstrap.min.css"
 
 
-class RightBaners extends Component {
+class MoBaners extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -69,15 +69,6 @@ class RightBaners extends Component {
     }
 
     componentDidMount() {
-              if (window.innerWidth <= 1199) {
-            this.setState({
-                part: true
-            })
-        } else {
-            this.setState({
-                part: false
-            })
-        }
         window.addEventListener('resize', this.updateWindowDimensions);
         const requestOptions = {
             method: 'POST',
@@ -197,53 +188,14 @@ class RightBaners extends Component {
 
                         <Container>
                             <Row>
-                                <Col className='centerbanners alignbaner maincatalogs' xs={12} sm={12} md={12} lg={12} xl={8} >
+                               
+                             
 
 
-
-                                    <button className="le" onClick={this.previous1}>
-                                        <img className='imgback' src={back}></img>
-                                    </button>
-                                    <button className="rg" onClick={this.next1}>
-                                        <img className='imgnext' src={next1}></img>
-                                    </button>
-
-
-                                    {
-                                        this.state.main.data.length > 0 && (
-
-                                            <Slider ref={c => (this.slider1 = c)}{...settings}>
-
-
-                                                {this.state.main.data.map((data) =>
-                                                    <a href={data.url} className='mainnon img44444'>
-                                                        <img src={"https://new.itmag.uz" + data.icon} />
-                                                    </a>
-                                                )}
-
-
-                                            </Slider>
-                                        )
-                                    }
-
-                                </Col>
-                     
-                                    <Col className='centerbanners centerbannersmini mediaminicontainer' xs={1} sm={1} md={1} lg={12} xl={4}>
-                                    <img className='mini1' src={mini1} />
-                                    <img className='mini2' src={mini2} />
-                                </Col>
-
-                           
-                                {this.state.part == false&&
-                                (
-                                    <Col className='' xs={12}>
+                                <Col className='' xs={12}>
                                     <p className='nasvibirat'>Нас выбирают</p>
                                 </Col>
-
-                                )}
- {this.state.part == false&&
-                                (
-                                    <Col className='centerbanners alignbaner mainmalabs' xs={1} sm={1} md={1} lg={12} xl={12}>
+                                <Col className='centerbanners alignbaner mainmalabs' xs={12} sm={12} md={12} lg={12} xl={12}>
 
 
 
@@ -272,9 +224,6 @@ class RightBaners extends Component {
                                     }
 
                                 </Col>
-                                )}
-                              
-                                
                             </Row>
 
                         </Container>
@@ -291,5 +240,5 @@ class RightBaners extends Component {
     }
 }
 
-export default RightBaners;
+export default MoBaners;
 
