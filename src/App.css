@@ -234,7 +234,7 @@ nav {
 
 .mini2 {
   height: 182px;
-  margin-top: 10px;
+  margin-top: 4px;
 }
 
 .centerbannersmini {
@@ -389,26 +389,43 @@ nav {
 
 .catageters {
   padding: 15px;
-  height: 440px;
+  height: 434px;
   position: relative;
   background-color: white;
   border-radius: 8px;
   margin-right: 6px;
-  width: auto !important;
+ width: 99% !important;
 
 }
-
-.catevnuters {
-  padding: 6px;
-  transition: 1s;
-  /* Время эффекта */
-  border-radius: 8px;
+.absoluuuu{
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  padding: 25px;
 }
+.cartbtners {
+  width: 100%;
+  height: 30px;
+  display: inline-block;
+
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
+}
+
 
 .catageters:hover {
+
   box-shadow: 6px 6px 30px rgba(0, 0, 0, 0.05);
   transform: scale(1.0);
   height: auto;
+
+ 
+}
+.catevnuters:hover .cartbtners {
+  visibility: visible;
+  opacity: 1;
+  text-align: center;
 }
 
 .btnaddcart {
@@ -464,8 +481,9 @@ nav {
   font-weight: 900;
   font-size: 14px;
   font-family: "RubikBold";
-  height: 70px;
+ 
   overflow: hidden;
+  max-height: 65px;
 }
 
 .brandtextvers {
@@ -584,6 +602,7 @@ nav {
 .mainmalabs {
   background-color: white;
   border-radius: 8px;
+  margin-top: 13px;
 }
 
 .nopadd {
@@ -743,12 +762,17 @@ nav {
 }
 
 .parthmain {
-  width: 100%;
+  width: 60%;
   padding: 15px;
 }
-
+.awaitcount{
+  color: #ffaa00;
+}
+.awaitbtn{
+  background-color: #ffaa00;
+}
 .imgparmauioage {
-  max-width: 271px;
+  width: 270px;
   display: inline-block;
   margin-bottom: 10px;
 }
@@ -1022,6 +1046,7 @@ nav {
 .breadr {
   background-color: transparent;
   box-shadow: 0px 4px 15px rgb(0 0 0 / 0%);
+  margin-bottom: 25px;
 }
 
 .breadcrumb {
@@ -1033,7 +1058,8 @@ nav {
   padding: 25px;
   margin: 5px;
   padding-bottom: 0px;
-  height: 420px;
+position: relative;
+  min-height: 420px;
 }
 
 .btnbrands {
@@ -1052,14 +1078,42 @@ nav {
 
 
 
+.dopscrumbs{
+  margin-left: 5px;
+  margin-right: 5px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  display: inline-block;
+}
 
+.dopscrumbs .btn-success {
+   /* padding-top: 0px;
+  padding-bottom: 0px; */
+  color: #0A8ED8;
+background-color: #E2F3FF;
+border: 0px;
+}
+.mainurl{
+  margin-right: 5px;
+  color: #0000004D;
+}
+.decomargins{
+  margin-left: 5px;
+  margin-right: 5px;
+  color: #0000004D;
+}
+.rgconsole{
+  margin-left: 5px;
+  color: black;
+  text-decoration: none;
+  font-weight: 900;
+}
 
-
-
-
-
-
-
+.rgconsole:hover{
+  margin-left: 5px;
+  color: black;
+  text-decoration: none;
+}
 
 .form-group1 {
   display: inline-block;
@@ -1494,7 +1548,14 @@ body {
   margin: 0px;
   display: inline-block;
   margin-right: 10px;
-  color: rgba(0, 0, 0, 0.24)
+  color: rgba(0, 0, 0, 0.24);
+  background-color: transparent;
+  border: 0px
+
+}
+.inpourtrdic{
+  visibility: hidden;
+  position: absolute;
 }
 
 .snerstest {
@@ -1502,6 +1563,9 @@ body {
   display: inline-block;
   font-weight: 600;
   margin-left: 10px;
+  background-color: transparent;
+  border: 0px;
+  text-align: left;
 }
 
 .maldesctiptiom {
@@ -2125,16 +2189,45 @@ max-width: 50%;
 
 @media only screen and (max-width: 500px) {
   .productercateg{
-    padding: 0px;
+    padding: 10px;
   }
   .partnernoe{
     display: none;
   }
+  .btnaddcartsrav{
+width: 30%;
+text-align: center;
+margin-top: 10px;
+  }
+  .btnaddcartfavorite{
+    width: 30%;
+    text-align: center;
+    margin-top: 10px;
+  }
   .bodymaincontrollers {
-    height: 492px;
+ 
+}
+.catageters{
+  height: 474px;
+}
+.catageters:hover{
+  height: 474px;
+}
+.btnaddcart{
+  width: 100%;
+  text-align: center;
+}
+.cartbtners{
+  opacity: 1;
+  visibility: inherit;
+  text-align: center;
+
+}
+.catevnuters{
+  height: 100px;
 }
 .bodymaincontrollers{
-  display: none;
+margin-bottom: 30px;
 }
   }
   
@@ -2178,4 +2271,22 @@ padding: 0px;
   .container{
     padding: 0px;
   }
+}
+
+.imgzagl{
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+}
+.contrtopbars{
+  position: relative;
+}
+.icosearch{
+  width: 30px;
+  position: absolute;
+  top: 7px;
+  right: 10px;
+}
+.searchform{
+  padding-right: 43px;
 }

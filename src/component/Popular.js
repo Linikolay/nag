@@ -9,7 +9,8 @@ import mini2 from '../img/mini2.png';
 import banner from '../img/banner.png';
 import routersimg from '../img/router.png';
 import partner from '../img/partner.png';
-
+import {NotificationContainer, NotificationManager} from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
 import Slider from "react-slick";
 
 import back from "../img/back.svg";
@@ -40,7 +41,13 @@ class Popular extends Component {
         this.next1 = this.next1.bind(this);
         this.previous1 = this.previous1.bind(this);
     }
+    bufer = e =>{
 
+        navigator.clipboard.writeText(e)
+        /* Скопируйте текст внутри текстового поля */
+        NotificationManager.success(e , 'Артикул Скопирован' );
+   
+    }
     componentDidMount() {
         const requestOptions = {
             method: 'POST',
@@ -49,7 +56,7 @@ class Popular extends Component {
 
             })
         };
-        fetch('http://localhost:7000/auth/getallpopularproduct', requestOptions)
+        fetch('/auth/getallpopularproduct', requestOptions)
             .then((response) => response.json())
 
             .then(data => {
@@ -177,7 +184,7 @@ class Popular extends Component {
             return (
                 <div className="page-wrap">
                     <div className="main-body">
-
+                    <NotificationContainer/>
 
                         <Container className='controlerspadr'>
                             <Row>
@@ -260,7 +267,7 @@ class Popular extends Component {
 
                                                 </div>
                                                 <div className='catevnuters'>
-                                                    <img className='routers' src={"https://new.itmag.uz"+data.image[0].url} />
+                                                <Link className={"mainlinkblackcolor"} to={"/view/" + data._id}> <img className='routers' src={data.image[0].url} /></Link>
                                                     {
                                                         data.brand.length > 0 && (
                                                             <p className='brandtextvers'>{data.brand[0].nameru}
@@ -271,11 +278,46 @@ class Popular extends Component {
                                                     <p className='textrowproduct'><Link className={"mainlinkblackcolor"} to={"/view/" + data._id}>{data.nameru}</Link>
                                                     </p>
                                                     <div className='groupelipse'>
-                                                        <div className='elipse'></div>
-                                                        <span className='elipsenals'>В наличии</span>
-                                                        <span className='elipseart'>Арт.: {data.artikul}</span>
+                                                       
+                                                        {
+                                                            data.count == 0&&(
+                                                                <div className='elipse awaitbtn'></div>
+                                                            )
+                                                        }
+                                                           {
+                                                            data.count >0&&(
+                                                                <div className='elipse'></div>
+                                                            )
+                                                        }
+
+                                                        {
+                                                            data.count == 0&&(
+                                                                <span className='elipsenals awaitcount'>Ожидается</span>
+                                                            )
+                                                        }
+                                                           {
+                                                            data.count >0&&(
+                                                                <span className='elipsenals'>В наличии</span>
+                                                            )
+                                                        }
+
+                                                     
+                                                        <button  onClick={() => this.bufer(data.artikul)}  className='snerstest'><span className='elipseart'>Арт.: {data.artikul}</span></button>
+                                                         
+
                                                     </div>
-                                                    <p className='titleboldcena'>{data.sum.toLocaleString()} сум</p>
+
+                                                    {
+                                                            data.sum ==0&&(
+                                                                <p className='titleboldcena'>По запросу</p>
+                                                            )
+                                                        }
+                                                         {
+                                                            data.sum >0&&(
+                                                                <p className='titleboldcena'>{Math.ceil(data.sum).toLocaleString()} сум</p>
+                                                            )
+                                                        }
+                                                 
 
                                                     <div className='cartbtners'>
 

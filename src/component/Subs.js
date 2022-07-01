@@ -26,7 +26,7 @@ class Subs extends Component {
                             <Row>
                                 <Col className='' xs={5}>
                                     <p className='titlesubs'>Будьте вкурсе событий</p>
-                                    <p className='dessubs'>Лучшие предложения от нас и наших партнеров будут приходить вам на мпочту</p>
+                                    <p className='dessubs'>Лучшие предложения от нас и наших партнеров будут приходить вам в телеграм</p>
                                 </Col>
                                 <Col className='' xs={7}>
                                     <div className='formmailblock'>

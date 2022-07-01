@@ -57,7 +57,7 @@ class All extends Component {
             headers: { 'Content-Type': 'application/json' },
          
         };
-        fetch('https://new.itmag.uz/auth/test', requestOptions)
+        fetch('http://localhost:7000/auth/test', requestOptions)
             .then((response) => response.json())
 
             .then(data => {

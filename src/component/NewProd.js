@@ -12,7 +12,8 @@ import routersimg from '../img/router.png';
 import partner from '../img/partner.png';
 
 import Slider from "react-slick";
-
+import {NotificationContainer, NotificationManager} from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
 import back from "../img/back.svg";
 import backp from "../img/backp.svg";
 
@@ -74,7 +75,13 @@ class NewProd extends Component {
         e.target.classList.remove('red')
 
     }
+    bufer = e =>{
 
+        navigator.clipboard.writeText(e)
+        /* Скопируйте текст внутри текстового поля */
+        NotificationManager.success(e , 'Артикул Скопирован' );
+   
+    }
     componentDidMount() {
         const requestOptions = {
             method: 'POST',
@@ -83,7 +90,7 @@ class NewProd extends Component {
 
             })
         };
-        fetch('http://localhost:7000/auth/getallnewproduct', requestOptions)
+        fetch('/auth/getallnewproduct', requestOptions)
             .then((response) => response.json())
 
             .then(data => {
@@ -185,14 +192,14 @@ class NewProd extends Component {
         return (
             <div className="page-wrap">
                 <div className="main-body">
-
+                <NotificationContainer/>
 
                     <Container className='controlerspadr'>
                         <Row>
 
                             <Col className='nopadd' xs={12}>
 
-                                <span className='populartitle'> Новые поступления</span>
+                                <span className='populartitle'> Новинки</span>
 
 
                                 <div className='brnpop'>
@@ -261,10 +268,10 @@ class NewProd extends Component {
 
     </div>
     <div className='catevnuters'>
-        <img className='routers' src={"https://new.itmag.uz"+data.image[0].url} />
+    <Link className={"mainlinkblackcolor"} to={"/view/" + data._id}> <img className='routers' src={data.image[0].url} /></Link>
         {
             data.brand.length > 0&&(
-  <p className='brandtextvers'>{"https://new.itmag.uz"+data.brand[0].nameru}
+  <p className='brandtextvers'>{data.brand[0].nameru}
         </p>
             )
         }
@@ -272,12 +279,42 @@ class NewProd extends Component {
         <p className='textrowproduct'><Link className={"mainlinkblackcolor"} to={"/view/"+data._id}>{data.nameru}</Link>
         </p>
         <div className='groupelipse'>
-            <div className='elipse'></div>
-            <span className='elipsenals'>В наличии</span>
-            <span className='elipseart'>Арт.: {data.artikul}</span>
-        </div>
-        <p className='titleboldcena'>{data.sum.toLocaleString()} сум</p>
+        {
+                                                            data.count == 0&&(
+                                                                <div className='elipse awaitbtn'></div>
+                                                            )
+                                                        }
+                                                           {
+                                                            data.count >0&&(
+                                                                <div className='elipse'></div>
+                                                            )
+                                                        }
 
+                                                        {
+                                                            data.count == 0&&(
+                                                                <span className='elipsenals awaitcount'>Ожидается</span>
+                                                            )
+                                                        }
+                                                           {
+                                                            data.count >0&&(
+                                                                <span className='elipsenals'>В наличии</span>
+                                                            )
+                                                        }
+                                                        <button  onClick={() => this.bufer(data.artikul)}  className='snerstest'><span className='elipseart'>Арт.:{data.artikul}</span></button>
+                                                                        
+    
+        </div>
+    
+        {
+                                                            data.sum ==0&&(
+                                                                <p className='titleboldcena'>По запросу</p>
+                                                            )
+                                                        }
+                                                         {
+                                                            data.sum >0&&(
+                                                                <p className='titleboldcena'>{Math.ceil(data.sum).toLocaleString()} сум</p>
+                                                            )
+                                                        }
         <div className='cartbtners'>
 
             <div className='btnaddcart'><img src={cartbtn}></img> Добавить</div>

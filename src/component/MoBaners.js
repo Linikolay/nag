@@ -19,6 +19,30 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "bootstrap/dist/css/bootstrap.min.css"
 
+import a from "../part/1.png";
+import aa from "../part/2.jpeg";
+import aaa from "../part/3.jpg";
+import aaaa from "../part/4.png";
+import aaaaa from "../part/5.png";
+import aaaaaa from "../part/6.png";
+import aaaaaaas from "../part/7.png";
+import aaaaaaa from "../part/8.jpg";
+import aaaaaaaaas from "../part/9.png";
+import aaaaaaaaaaa from "../part/10.png";
+
+const IMAGE = [
+    {src: a},
+    {src: aa},
+    {src: aaa},
+    {src: aaaa},
+    {src: aaaaa},
+    {src: aaaaaa},
+    {src: aaaaaaa},
+    {src: aaaaaaaaas},
+    {src: aaaaaaas},
+    {src: aaaaaaaaas},
+    {src: aaaaaaaaaaa},
+]
 
 class MoBaners extends Component {
     constructor(props) {
@@ -212,9 +236,9 @@ class MoBaners extends Component {
                                             <Slider className='' ref={c => (this.slider = c)}{...settings1}>
 
 
-                                                {this.state.parth.data.map((data) =>
+                                                {IMAGE.map((data) =>
                                                     <a href={data.url} className='banerimg'>
-                                                        <img className='partnerbanner miniparh' src={"https://new.itmag.uz" + data.icon} />
+                                                        <img className='partnerbanner miniparh' src={ data.src} />
                                                     </a>
                                                 )}
 

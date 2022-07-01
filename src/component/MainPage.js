@@ -131,7 +131,7 @@ class MainPage extends Component {
                                     <Popular />
 
                                 </Col>
-                                <img className='reklna' src={reklana}></img>
+                                {/* <img className='reklna' src={reklana}></img> */}
 
                                 <Col className='centerbanners bodymaincontrollers' xs={12}>
                                     <NewProd />

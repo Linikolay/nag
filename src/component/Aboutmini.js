@@ -56,7 +56,9 @@ class Aboutmini extends Component {
 
                                 <img src={logoser}></img>
                                 <p className='abotitle'>О компании</p>
-                                <p className='discaboutmal'>На нашем сайте вы найдете широкий ассортимент сетевого оборудования, такого как: коммутаторы; маршрутизаторы; телекоммуникационные шкафы; оптические патч-корды и кабели; беспроводное оборудование; оптические кроссы и муфты. Вся предлагаемая продукция сертифицирована и лицензирована.</p>
+                                <p className='discaboutmal'>Мы предоставляем активное и пассивное телекоммуникационное оборудование: волоконно-оптический кабель, оптические патч-корды, коммутаторы, медиаконвертеры, SFP модули, муфты, кроссы, серверные шкафы и много другое.
+
+Компания имеет большой опыт в реализации проектов по сетевой и системной интеграции любой степени сложности с использованием оборудования ведущих производителей и в соответствии с узбекскими и международными стандартами качества.</p>
                                 <button className='urblbtnabout'>Побробнее</button>
                             </Col>
 
@@ -67,16 +69,16 @@ class Aboutmini extends Component {
 
                                     <div className='absblocktext'>
                                         <div className='abominiblock'>
-                                            <p className='aboint'>835+</p>
+                                            <p className='aboint'>1000+</p>
                                             <p className='abostr'>наименований продукции</p>
                                         </div>
                                         <div className='abominiblock'>
-                                            <p className='aboint'>835+</p>
-                                            <p className='abostr'>наименований продукции</p>
+                                            <p className='aboint'>1500+</p>
+                                            <p className='abostr'>реализованных проектов</p>
                                         </div>
                                         <div className='abominiblock'>
-                                            <p className='aboint'>835+</p>
-                                            <p className='abostr'>наименований продукции</p>
+                                            <p className='aboint'>9+</p>
+                                            <p className='abostr'>лет на рынке</p>
                                         </div>
                                         
                                     </div>

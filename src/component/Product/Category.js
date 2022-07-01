@@ -13,8 +13,8 @@ import partner from '../../img/partner.png';
 
 import countico from '../../img/countico.svg';
 import filtericon from '../../img/filtericon.svg';
-
-
+import {NotificationContainer, NotificationManager} from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
 
 import sortico from '../../img/sortico.svg';
 
@@ -95,6 +95,13 @@ class Category extends Component {
         }
 
 
+    }
+    bufer = e =>{
+
+        navigator.clipboard.writeText(e)
+        /* Скопируйте текст внутри текстового поля */
+        NotificationManager.success(e , 'Артикул Скопирован' );
+   
     }
     change = e => {
         this.setState({
@@ -222,7 +229,7 @@ class Category extends Component {
                 currentpage: 1
             })
         };
-        fetch('http://localhost:7000/auth/getonecategoryscontroll/' + pathArray[2], requestOptions)
+        fetch('/auth/getonecategoryscontroll/' + pathArray[2], requestOptions)
             .then((response) => response.json())
 
             .then(data => {
@@ -236,17 +243,21 @@ class Category extends Component {
                     breadchild: data.breadchild,
                     allpage: data.allpage
                 })
-                if (data.data.lvl == 2) {
+                if (data.data.lvl) {
+if(data.data.lvl==2){
+    this.setState({
+        construktor: [],
+        isLoad: true,
+        product: data.child.product,
+        activepage: data.activepage,
+        allpage: data.allpage,
+        breadcat: data.bradcat,
+        breadchild: data.breadchild,
+    })
+}
+                 
 
-                    this.setState({
-                        construktor: [],
-                        isLoad: true,
-                        product: data.child.product,
-                        activepage: data.activepage,
-                        allpage: data.allpage,
-                        breadcat: data.bradcat,
-                        breadchild: data.breadchild,
-                    })
+                  
                 } else {
                     const maina = data.data.filter((cll, id) => id <= 2);
 
@@ -319,7 +330,7 @@ class Category extends Component {
 
     render() {
         const { isLoad } = this.state
-
+        console.log(this.state.construktor)
         // ariaLabel={['Lower thumb', 'Upper thumb']}
         if (!isLoad) {
             return (
@@ -328,6 +339,7 @@ class Category extends Component {
         } else {
             return (
                 <div className="page-wrap">
+                       <NotificationContainer/>
                     {this.state.pops==true&&(
                         <div className='custompopups'>
                             <div className='titlepopuresfilter'>Фильтр</div>
@@ -648,8 +660,8 @@ class Category extends Component {
 
                                                             <Col className=' cladco' xs={12}>
 
-                                                                <button className='btnbrands'>
-                                                                    <span>Категории</span>
+                                                                <button  className='btnbrands'>
+                                                                    <span > Категории</span>
 
 
                                                                 </button>
@@ -966,7 +978,7 @@ class Category extends Component {
                                                                     <div className='catevnuters'>
                                                                         {
                                                                             data.image.length > 0 && (
-                                                                                <img className='routers' src={"http://new.itmag.uz" + data.image[0].url} />
+                                                                                <img className='routers' src={ data.image[0].url} />
                                                                             )
                                                                         }
 
@@ -983,7 +995,9 @@ class Category extends Component {
                                                                         <div className='groupelipse'>
                                                                             <div className='elipse'></div>
                                                                             <span className='elipsenals'>В наличии</span>
-                                                                            <span className='elipseart'>{data.artikul}</span>
+                                                                            
+                                                                        <button  onClick={() => this.bufer(data.artikul)}  className='snerstest'><span className='elipseart'>{data.artikul}</span></button>
+                                                                        
                                                                         </div>
                                                                         <p className='titleboldcena'>{data.sum.toLocaleString()}  сум</p>
 
@@ -1074,10 +1088,10 @@ class Category extends Component {
 
 
                                                                     </div>
-                                                                    <div className='catevnuters'>
+                                                                    <div className='catevnuters absoluuuu'>
                                                                         {
                                                                             data.image.length > 0 && (
-                                                                                <img className='routers' src={"http://new.itmag.uz" + data.image[0].url} />
+                                                                                <Link className={"mainlinkblackcolor"} to={"/view/" + data._id}>     <img className='routers' src={ data.image[0].url} /></Link>
                                                                             )
                                                                         }
 
@@ -1092,11 +1106,40 @@ class Category extends Component {
                                                                         </p></Link>
 
                                                                         <div className='groupelipse'>
-                                                                            <div className='elipse'></div>
-                                                                            <span className='elipsenals'>В наличии</span>
-                                                                            <span className='elipseart'>{data.artikul}</span>
+                                                                        {
+                                                            data.count == 0&&(
+                                                                <div className='elipse awaitbtn'></div>
+                                                            )
+                                                        }
+                                                           {
+                                                            data.count >0&&(
+                                                                <div className='elipse'></div>
+                                                            )
+                                                        }
+
+                                                        {
+                                                            data.count == 0&&(
+                                                                <span className='elipsenals awaitcount'>Ожидается</span>
+                                                            )
+                                                        }
+                                                           {
+                                                            data.count >0&&(
+                                                                <span className='elipsenals'>В наличии</span>
+                                                            )
+                                                        }
+                                                                          <button  onClick={() => this.bufer(data.artikul)}  className='snerstest'><span className='elipseart'>{data.artikul}</span></button>
                                                                         </div>
-                                                                        <p className='titleboldcena'>{data.sum.toLocaleString()}  сум</p>
+                                                                        {
+                                                            data.sum ==0&&(
+                                                                <p className='titleboldcena'>По запросу</p>
+                                                            )
+                                                        }
+                                                         {
+                                                            data.sum >0&&(
+                                                                <p className='titleboldcena'>{Math.ceil(data.sum).toLocaleString() } сум</p>
+                                                            )
+                                                        }
+                                                                   
 
 
                                                                     </div>

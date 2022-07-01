@@ -8,6 +8,9 @@ import reg from '../img/reg.svg';
 import cart from '../img/cart.svg';
 import favorite from '../img/favorite.svg';
 import start from '../img/start.svg';
+import seaicobn from '../img/seaicobn.svg';
+
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -79,7 +82,7 @@ class Headers extends Component {
 
             })
         };
-        fetch('http://localhost:7000/auth/getOneCategorysControllers', requestOptions)
+        fetch('/auth/getOneCategorysControllers', requestOptions)
             .then((response) => response.json())
 
             .then(data => {
@@ -145,8 +148,8 @@ class Headers extends Component {
 
                                     </div>
                                 </Navbar.Brand>
-                                <FormGroup>
-                                    <FormControl onFocus={this.focused} className='searchform' onChange={this.search} type="text" placeholder="Например: Управляемый коммутатор " />
+                                <FormGroup className='contrtopbars'>
+                                    <FormControl onFocus={this.focused} className='searchform' onChange={this.search} type="text" placeholder="Например: Управляемый коммутатор " ></FormControl>
                                     {
                                         this.state.search == true && (
                                             <div className='mainlst'>
@@ -163,7 +166,7 @@ class Headers extends Component {
                                     }
 
 
-
+<img className='icosearch' src={seaicobn}></img>
                                 </FormGroup>{' '}
                                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                                 <Navbar.Collapse className='justify-content-end' id="basic-navbar-nav">
