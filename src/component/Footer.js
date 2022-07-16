@@ -37,33 +37,35 @@ class Footer extends Component {
 
                                 <Col className='' xs={12} sm={12} md={2} lg={2} xl={2}>
                                     <p className=' textfootertop'>Lider Team </p>
-                                    <p className='linkfootertext'>О компании</p>
-                                    <p className='linkfootertext'>Лицензии</p>
-                                    <p className='linkfootertext'>Гарантия</p>
-                                    <p className='linkfootertext'>Контакты</p>
-                                    <p className='linkfootertext'>Партнеры</p>
+                            
+                                    <a href={'https://liderteam.uz'} className='linkfootertext'><p>О компании</p></a>
+                                    {/* <p className='linkfootertext'>Лицензии</p> */}
+                                    {/* <p className='linkfootertext'>Гарантия</p> */}
+                                    <a href={'/contacts'} className='linkfootertext'>Контакты</a>
+                                    {/* <p className='linkfootertext'>Партнеры</p> */}
 
                                 </Col>
 
 
                                 <Col className='' xs={12} sm={12} md={2} lg={2} xl={2}>
-                                    <p className=' textfootertop'>Магазин</p>
-                                    <p className='linkfootertext'>Личный кабинет</p>
-                                    <p className='linkfootertext'>Каталог товаров</p>
-                                    <p className='linkfootertext'>Новинки</p>
-                                    <p className='linkfootertext'>Скидки</p>
-                                    <p className='linkfootertext'>Акции</p>
-                                    <p className='linkfootertext'>Партнеры</p>
+                                    <p className=' textfootertop'>Форма оплаты</p>
+                                    <p className='linkfootertext'>Наличные</p>
+                                    <p className='linkfootertext'>Терминал</p>
+                                    <p className='linkfootertext'>Перечисление</p>
+                                    <p className='linkfootertext'>PayMe, Apelsin</p>
+                                    {/* <p className='linkfootertext'>Скидки</p> */}
+                                    {/* <p className='linkfootertext'>Акции</p> */}
+                                    {/* <p className='linkfootertext'>Партнеры</p> */}
 
                                 </Col>
 
 
                                 <Col className='' xs={12} sm={12} md={2} lg={2} xl={2}>
                                     <p className=' textfootertop'>Прочее </p>
-                                    <p className='linkfootertext'>F.A.Q</p>
+                                    {/* <p className='linkfootertext'>F.A.Q</p> */}
                                     <p className='linkfootertext'>Способы оплаты</p>
                                     <p className='linkfootertext'>Как оформить заказ</p>
-                                    <p className='linkfootertext'>Политика конфиденциальности</p>
+                                    {/* <p className='linkfootertext'>Политика конфиденциальности</p> */}
 
 
                                 </Col>
@@ -82,8 +84,8 @@ class Footer extends Component {
 
                                     </a>
                                     <a href="tel:+998911509707" className=' numbertxt'>
-                                        <p>+998 (91) 150-97-07 г. Фергана
-</p>
+                                        <p>+998 (97) 740-97-22 г. Фергана
+                                        </p>
                                     </a>
                                     <a href="tel:+998972058585" className=' numbertxt'>+998 (97) 740-79-11 г. Самарканд
 
@@ -108,7 +110,7 @@ class Footer extends Component {
                                     </p>
                                 </Col>
                                 <Col className='' xs={6}>
-                                    <p className='linkfootertext linkfootertextbtntext'>info@nag.uz</p>
+                                    <p className='linkfootertext linkfootertextbtntext'>info@itmag.uz</p>
                                 </Col>
                             </Row>
                         </Container>

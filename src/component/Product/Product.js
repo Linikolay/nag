@@ -136,7 +136,7 @@ class Prdocut extends Component {
         var pathArray = window.location.pathname.split('/');
 
 
-        fetch('/auth/oneproduct/' + pathArray[2], requestOptions)
+        fetch(process.env.REACT_APP_BASE_URL+'/auth/oneproduct/' + pathArray[2], requestOptions)
             .then((response) => response.json())
 
             .then(data => {
@@ -435,7 +435,7 @@ class Prdocut extends Component {
                                                         <div className='btnaddcartfavorite btnaddcartfavoritedet'><img src={favorite}></img></div>
                                                     </div>
 
-                                                    <img className='imgproductdetals' src={this.state.src.url}></img>
+                                                    <img className='imgproductdetals' src={process.env.REACT_APP_IMG+this.state.src.url}></img>
 
 
                                                     <div className='container maincontro'>
@@ -465,7 +465,7 @@ class Prdocut extends Component {
                                             <div className='midlblock'>
                                                 <p className='midletextproduct'>{main.nameru}</p>
                                                 <img className='artimges' src={arti}></img>
-                                                <button onClick={() => this.bufer(main.artikul)} className='articul'>Артикул         </button>
+                                                <button onClick={() => this.bufer(main.artikul)} className='articul'>Артикул</button>
                                                 <button id='snerstest' value={'fdsfsdf'} className='snerstest' onClick={() => this.bufer(main.artikul)}>   {main.artikul}</button>
                                                 <p className='maldesctiptiom' dangerouslySetInnerHTML={{ __html: (main.minidescriptionru) }}>
 
@@ -475,10 +475,11 @@ class Prdocut extends Component {
 
                                                 {
                                                     this.state.main.meta.length > 0 && (
-                                                        <div>
+                                                        <div className='listharaktersmyname'>
+                                                            <div className='gradientblock'></div>
                                                             {this.state.main.meta[0].map((data, idx) =>
 
-                                                                <div>
+                                                                <div >
                                                                     {data.text.t2.length > 0 && idx <= 4 && (
                                                                         <div className='types'>
                                                                             <p className='minitext'>{data.text.t1}</p>

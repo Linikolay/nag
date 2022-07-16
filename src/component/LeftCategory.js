@@ -19,10 +19,22 @@ class LeftCategory extends Component {
         super()
         this.state = {
             isLoad: false,
+            pop: false,
+            main: "",
 
-            main: ""
         }
 
+    }
+    popup = e =>{
+        console.log("test")
+        this.setState({
+            pop: true
+        })
+    }
+    exit = e =>{
+        this.setState({
+            pop: false
+        })   
     }
     componentDidMount() {
         const requestOptions = {
@@ -32,7 +44,7 @@ class LeftCategory extends Component {
 
             })
         };
-        fetch('https://new.itmag.uz/auth/allcategory', requestOptions)
+        fetch(process.env.REACT_APP_BASE_URL+'/auth/allcategory', requestOptions)
             .then((response) => response.json())
 
             .then(data => {
@@ -61,6 +73,69 @@ class LeftCategory extends Component {
         } else {
             return (
                 <div className="page-wrap catereseed1">
+                    {
+                        this.state.pop == true && (
+                            <div className='popers'>
+                                <button className='exitmyconfirm' onClick={this.exit}>X</button>
+                                <Container className='shdowmain'>
+                                    <Row>
+                                        <Col className='classscorll' xs={12}>
+                                        <div className='otlblosk'>
+                                                {main.data.map((data, id) =>
+                                             
+                                           
+                                                <div className=''>
+
+                                                    {data.child.length <= 2&&(
+                                                       
+                                                       <NavLink key={data._id} href={"category/" + data._id} className='mainoc blockcatersrre'>
+
+                                                                <div key={data.icon} className='osnova1'>
+                                                                    <p key={data.nameru} className='parrent1'>{data.nameru}</p>
+                                                                    <p key={data.id} className=''>
+                                                                        {data.child.map((con) =>
+                                                                            <a className='parrent2' href={"category/" + con._id} key={con._id}>{con.nameru}</a>
+                                                                        )}
+                                                                    </p>
+                                                                </div>
+                                                            </NavLink>
+                                                    )}
+                                                </div>
+
+                                                )}
+  </div>
+                                              
+                                             {main.data.map((data, id) =>
+                                             
+
+                                             <div className='agares'>
+
+                                                 {data.child.length > 2&&(
+                                                    
+                                                    <NavLink key={data._id} href={"category/" + data._id} className='mainoc blockcatersrre'>
+
+                                                             <div key={data.icon} className='osnova1'>
+                                                                 <p key={data.nameru} className='parrent1'>{data.nameru}</p>
+                                                                 <p key={data.id} className=''>
+                                                                     {data.child.map((con) =>
+                                                                         <a className='parrent2' href={"category/" + con._id} key={con._id}>{con.nameru}</a>
+                                                                     )}
+                                                                 </p>
+                                                             </div>
+                                                         </NavLink>
+                                                 )}
+                                             </div>
+
+                                             )}
+                                           
+                                        </Col>
+                                    </Row>
+                                </Container>
+
+                            </div>
+                        )
+                    }
+                  
                     <div className="main-body">
                         {category.map((data, id) =>
                             <NavLink key={data._id} href={"category/" + data._id} className='blockcatersrre'>
@@ -84,7 +159,7 @@ class LeftCategory extends Component {
 
                     </div>
 
-                    <NavLink href={"category/allcategory"} className='botallcateg'>
+                    <NavLink onClick={this.popup} className='botallcateg'>
                         <img src={allcategory} />
                         <span className='botallcategtext'>Показать все категории</span>
                     </NavLink>

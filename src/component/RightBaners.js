@@ -15,15 +15,16 @@ import next1 from "../img/next1.svg";
 import backp from "../img/backp.svg";
 
 import a from "../part/1.png";
-import aa from "../part/2.jpeg";
-import aaa from "../part/3.jpg";
+import aa from "../part/2.png";
+import aaa from "../part/3.png";
 import aaaa from "../part/4.png";
 import aaaaa from "../part/5.png";
 import aaaaaa from "../part/6.png";
 import aaaaaaas from "../part/7.png";
-import aaaaaaa from "../part/8.jpg";
+import aaaaaaa from "../part/8.png";
 import aaaaaaaaas from "../part/9.png";
 import aaaaaaaaaaa from "../part/10.png";
+import aaaaaaaaaaaa from "../part/11.png";
 
 
 import nextp from "../img/nextp.svg";
@@ -44,7 +45,7 @@ const IMAGE = [
     {src: aaaaaaa},
     {src: aaaaaaaaas},
     {src: aaaaaaas},
-
+    {src: aaaaaaaaaaaa},
     {src: aaaaaaaaaaa},
 ]
 class RightBaners extends Component {
@@ -113,7 +114,7 @@ class RightBaners extends Component {
 
             })
         };
-        fetch('https://new.itmag.uz/auth/getbaner', requestOptions)
+        fetch(process.env.REACT_APP_BASE_URL+'/auth/getbaner', requestOptions)
             .then((response) => response.json())
 
             .then(data => {
@@ -138,7 +139,7 @@ class RightBaners extends Component {
 
             })
         };
-        fetch('https://new.itmag.uz/auth/getParther', requestOptions1)
+        fetch(process.env.REACT_APP_BASE_URL+'/auth/getParther', requestOptions1)
             .then((response) => response.json())
 
             .then(data => {
@@ -176,7 +177,7 @@ class RightBaners extends Component {
             infinite: true,
             speed: 500,
             slidesToShow: 1,
-            // autoplay: true,
+            autoplay: true,
 
             slidesToScroll: 1,
 
@@ -244,7 +245,7 @@ class RightBaners extends Component {
 
                                                 {this.state.main.data.map((data) =>
                                                     <a href={data.url} className='mainnon img44444'>
-                                                        <img src={data.icon} />
+                                                        <img src={process.env.REACT_APP_IMG+data.icon} />
                                                     </a>
                                                 )}
 

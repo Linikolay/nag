@@ -27,8 +27,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 
-
-
 class Popular extends Component {
     constructor(props) {
         super()
@@ -56,7 +54,7 @@ class Popular extends Component {
 
             })
         };
-        fetch('/auth/getallpopularproduct', requestOptions)
+        fetch(process.env.REACT_APP_BASE_URL+'/auth/getallpopularproduct', requestOptions)
             .then((response) => response.json())
 
             .then(data => {
@@ -267,7 +265,7 @@ class Popular extends Component {
 
                                                 </div>
                                                 <div className='catevnuters'>
-                                                <Link className={"mainlinkblackcolor"} to={"/view/" + data._id}> <img className='routers' src={data.image[0].url} /></Link>
+                                                <Link className={"mainlinkblackcolor"} to={"/view/" + data._id}> <img className='routers' src={process.env.REACT_APP_IMG+data.image[0].url} /></Link>
                                                     {
                                                         data.brand.length > 0 && (
                                                             <p className='brandtextvers'>{data.brand[0].nameru}

@@ -55,7 +55,7 @@ const ImageSlider = ({ onChange,props, parentCallback, maincount, images, slides
             {
               images.length>1&&(
                 <div className="slideWrapper">
-                {image.code ? image.code : <img src={image.url} alt={image.alt} />}
+                {image.code ? image.code : <img src={process.env.REACT_APP_IMG+image.url} alt={image.alt} />}
               </div>
               )
             }

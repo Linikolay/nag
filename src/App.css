@@ -4,6 +4,29 @@
   font-display: auto
 }
 
+
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #b5b5b5 white;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #e9e9e9;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #b5b5b5;
+  border-radius: 20px;
+  border: 3px solid white;
+}
+
+
 @font-face {
   font-family: "RubikBold";
   src: url("./font/Rubik-Bold.ttf");
@@ -77,14 +100,22 @@ nav {
   top: 12px;
   margin-left: 11px;
 }
+.shdowmain{
+  box-shadow: 1200px 0 0px 0px rgba(207 207 207 / 38%), -1200px 0 0px 0px rgba(207 207 207 / 38%);
+  
+}
+
 
 .grtextlogo0 {
   display: inline-block;
   margin-top: 0px;
   position: relative;
-  top: 8px;
+  top: 0px;
   margin-left: 11px;
+  margin-right: 10px;
+  width: 141px;
 }
+
 
 .textlogo {
   margin: 0px;
@@ -126,7 +157,16 @@ nav {
   width: 123px;
   text-align: center;
 }
-
+.agares{
+width: 25%;
+float: left;
+display: inline-block;
+}
+.otlblosk{
+width: 25%;
+float: left;
+display: inline-block;
+}
 .imgtemp {
   float: left;
   position: relative;
@@ -185,9 +225,16 @@ nav {
   margin-bottom: 12px;
   background-color: #F9F9F8;
 }
-
+.polezstt{
+  font-size: 40px;
+  font-family: 'RubikBold';
+}
 .slick-list {
   /* background-color: white; */
+}
+.sttiimages33{
+  width: 100%;
+  padding: 20px;
 }
 
 .botallcategtext {
@@ -196,7 +243,9 @@ nav {
   padding-left: 10px;
   opacity: 0.5;
 }
-
+.sttiimages{
+  padding: 25px;
+}
 .textcategory {
   color: black;
 }
@@ -293,7 +342,7 @@ nav {
 
 .partnerbanners {
   width: 100%;
-  padding: 30px;
+  padding: 20px;
 }
 
 .miniparh {
@@ -301,7 +350,7 @@ nav {
 }
 
 .partnerbanner {
-  padding: 30px;
+  padding: 20px;
   width: 100%;
 }
 
@@ -384,25 +433,36 @@ nav {
 }
 
 .routers {
-  width: 100%;
+  max-width: 100%;
+  max-height: 226px;
 }
 
 .catageters {
-  padding: 15px;
+  padding: 30px;
   height: 434px;
   position: relative;
   background-color: white;
   border-radius: 8px;
   margin-right: 6px;
- width: 99% !important;
+  width: 99% !important;
+  padding-top: 42px;
 
 }
-.absoluuuu{
+
+.absoluuuu {
   position: absolute;
   bottom: 0px;
   left: 0px;
   padding: 25px;
 }
+
+.absoluuuu333 {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  padding: 25px;
+}
+
 .cartbtners {
   width: 100%;
   height: 30px;
@@ -420,7 +480,63 @@ nav {
   transform: scale(1.0);
   height: auto;
 
- 
+
+}
+.listharaktersmyname{
+  overflow: hidden;
+  max-height: 163px;
+  position: relative
+}
+.popers{
+background-color: white;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 500;
+}
+.mainoc{
+
+  display: inline-table;
+}
+.classscorll{
+  overflow: auto;
+    height: 100vh;
+}
+.noldder{
+  font-family: 'RubikBold';
+}
+.osnova1 p{
+margin: 0px;
+}
+.exitmyconfirm {
+  background-color: transparent;
+  border: 0px;
+  position: fixed;
+  right: 40px;
+  top: 10px;
+  font-size: 35px;
+}
+.parrent1{
+  color: black;
+  font-family: 'RubikBold';
+}
+.parrent2{
+  padding-left: 10px;
+  width: 100%;
+  display: inline-block;
+  color: #565656;
+}
+.gradientblock{
+  width: 100%;
+  height: 70px;
+  bottom: 0px;
+  position: absolute;
+  background: rgb(255,255,255);
+background: linear-gradient(180deg,hsl(0deg 0% 100% / 0%),hsl(0deg 0% 100% / 0%) 20%,#fff)
+
+
 }
 .catevnuters:hover .cartbtners {
   visibility: visible;
@@ -481,9 +597,9 @@ nav {
   font-weight: 900;
   font-size: 14px;
   font-family: "RubikBold";
- 
+
   overflow: hidden;
-  max-height: 65px;
+  height: 63px;
 }
 
 .brandtextvers {
@@ -608,7 +724,8 @@ nav {
 .nopadd {
   padding: 0px;
 }
-.nootstup{
+
+.nootstup {
   margin: 0px;
 }
 
@@ -683,6 +800,7 @@ nav {
   width: 100%;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+  height: 168px;
 }
 
 .grtextsttis {
@@ -708,7 +826,18 @@ nav {
 .aboimg {
   width: 100%;
 }
-
+.mainfileeer{
+  background-color: white;
+  padding: 40px;
+}
+.mainfileeer img {
+  width: 100%;
+}
+.titlenewsmaincintrollers{
+  font-family: "RubikBold";
+  font-size: 30px;
+  font-weight: 900;
+}
 .aboimgblock {
   position: relative;
 }
@@ -765,12 +894,15 @@ nav {
   width: 60%;
   padding: 15px;
 }
-.awaitcount{
+
+.awaitcount {
   color: #ffaa00;
 }
-.awaitbtn{
+
+.awaitbtn {
   background-color: #ffaa00;
 }
+
 .imgparmauioage {
   width: 270px;
   display: inline-block;
@@ -979,8 +1111,14 @@ nav {
   /* background-color: red; */
   border-radius: 8px;
   border: 1px solid #ECECF3;
+  height: 328px;
 }
-
+.testersssee{
+  border-radius: 8px;
+  border: 1px solid #ECECF3;
+  height: 305px;
+  margin-bottom: 24px;
+}
 .textlogonoew {
   font-size: 13px;
 
@@ -1058,8 +1196,8 @@ nav {
   padding: 25px;
   margin: 5px;
   padding-bottom: 0px;
-position: relative;
-  min-height: 420px;
+  position: relative;
+  min-height: 448px;
 }
 
 .btnbrands {
@@ -1078,7 +1216,7 @@ position: relative;
 
 
 
-.dopscrumbs{
+.dopscrumbs {
   margin-left: 5px;
   margin-right: 5px;
   padding-top: 0px;
@@ -1087,29 +1225,32 @@ position: relative;
 }
 
 .dopscrumbs .btn-success {
-   /* padding-top: 0px;
+  /* padding-top: 0px;
   padding-bottom: 0px; */
   color: #0A8ED8;
-background-color: #E2F3FF;
-border: 0px;
+  background-color: #E2F3FF;
+  border: 0px;
 }
-.mainurl{
+
+.mainurl {
   margin-right: 5px;
   color: #0000004D;
 }
-.decomargins{
+
+.decomargins {
   margin-left: 5px;
   margin-right: 5px;
   color: #0000004D;
 }
-.rgconsole{
+
+.rgconsole {
   margin-left: 5px;
   color: black;
   text-decoration: none;
   font-weight: 900;
 }
 
-.rgconsole:hover{
+.rgconsole:hover {
   margin-left: 5px;
   color: black;
   text-decoration: none;
@@ -1551,9 +1692,9 @@ body {
   color: rgba(0, 0, 0, 0.24);
   background-color: transparent;
   border: 0px
-
 }
-.inpourtrdic{
+
+.inpourtrdic {
   visibility: hidden;
   position: absolute;
 }
@@ -1790,7 +1931,9 @@ body {
   background: rgba(196, 196, 196, 0.1);
   padding: 20px;
 }
-
+.bg-light{
+  color: white;
+}
 .mainlable {
   margin: auto;
   padding: 15px;
@@ -1821,6 +1964,8 @@ body {
 
 .mainlinkblackcolor {
   color: black;
+  display: inline-block;
+
 }
 
 .mainlinkblackcolor:hover {
@@ -1877,7 +2022,8 @@ body {
   color: black;
   text-decoration: none;
 }
-.le{
+
+.le {
   position: absolute;
   top: 43%;
   z-index: 22;
@@ -1888,7 +2034,8 @@ body {
   width: 22px;
   padding: 5px;
 }
-.rg{
+
+.rg {
   position: absolute;
   z-index: 22;
   border: 0px;
@@ -1899,106 +2046,163 @@ body {
   width: 22px;
   padding: 5px;
 }
-.rg .imgnext{
+
+.rg .imgnext {
   background-color: transparent;
 }
-.le .imgback{
+
+.le .imgback {
   background-color: transparent !important;
 }
-.norow{
+
+.norow {
   padding: 0px;
   margin: 0px;
 }
-.sortdrops{
+
+.sortdrops {
   background-color: transparent;
   color: #1D2226;
   display: inline-block;
 
 }
-.sortdrops span{
+
+.sortdrops span {
   border-bottom: 1px solid #D0D0D0;
-  border-bottom-style: dashed ;
+  border-bottom-style: dashed;
   padding-bottom: 2px;
 }
-.sortdrops .btn-success{
+
+.sortdrops .btn-success {
   background-color: transparent;
   color: gray;
   border: 0px;
 }
-.sortdrops .btn-success:focus{
+
+.sortdrops .btn-success:focus {
   background-color: transparent;
   color: gray;
   border: 0px;
   box-shadow: none;
 }
-.sortdrops.btn-success:not(:disabled):not(.disabled).active, .btn-success:not(:disabled):not(.disabled):active, .show>.btn-success.dropdown-toggle {
+
+.sortdrops.btn-success:not(:disabled):not(.disabled).active,
+.btn-success:not(:disabled):not(.disabled):active,
+.show>.btn-success.dropdown-toggle {
   color: black;
   background-color: transparent;
   border-color: transparent;
 }
-.sortdrops .btn-success:not(:disabled):not(.disabled).active:focus, .btn-success:not(:disabled):not(.disabled):active:focus, .show>.btn-success.dropdown-toggle:focus {
+
+.sortdrops .btn-success:not(:disabled):not(.disabled).active:focus,
+.btn-success:not(:disabled):not(.disabled):active:focus,
+.show>.btn-success.dropdown-toggle:focus {
   box-shadow: none !important;
   background-color: transparent;
-  
+
 }
-.buttonclassmobilessrm{
+
+.buttonclassmobilessrm {
   background-color: transparent;
   border: 0px;
 }
-.countcategory{
-  /* position: absolute; */
- float: left;
-}
-.sortblock{
-  float: right;
-  }
-  .minitextccounttext{
-    font-family: "RubikBold";
-    padding-left: 15px;
-  }
-  .mobilesort{
-    display: inline-block;
-    padding-left: 20px;
-    margin-top: 5px;
-  }
-  .mobilblockers{
-    display: inline-block;
-    width: 100%;
-  }
-  .mobilblockers .sortblock{
-    float: left;
 
-  }
-  .mobilblockers .sortblock span{
-    padding-left: 0;
-  }
-  .filtermob{
-    float: right;
- 
-  }
-  .filtericon{
-    max-width: 25px;
-  }
-  .custompopups{
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background-color: white;
-    display: inline-block;
-    z-index: 55555;
-    top: 0px;
-    padding: 30px;
-  }
-  .closedpopus{
-    position: fixed;
-    right: 20px;
-    font-size: 40px;
-    top: 10px;
-    font-family: 'RubikBold';
-  }
-  .titlepopuresfilter{
-    font-size: 20px;
-  }
+.countcategory {
+  /* position: absolute; */
+  float: left;
+}
+
+.sortblock {
+  float: right;
+}
+
+
+.imgzagl {
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+}
+
+.contrtopbars {
+  position: relative;
+  width: 32%;
+}
+
+.icosearch {
+  width: 30px;
+  position: absolute;
+  top: 7px;
+  right: 10px;
+}
+
+.searchform {
+  padding-right: 43px;
+}
+
+.navbar-brand img{
+  position: relative;
+  top: -6px;
+}
+
+
+
+.minitextccounttext {
+  font-family: "RubikBold";
+  padding-left: 15px;
+}
+
+.mobilesort {
+  display: inline-block;
+  padding-left: 20px;
+  margin-top: 5px;
+}
+
+.mobilblockers {
+  display: inline-block;
+  width: 100%;
+}
+
+.mobilblockers .sortblock {
+  float: left;
+
+}
+
+.mobilblockers .sortblock span {
+  padding-left: 0;
+}
+
+.filtermob {
+  float: right;
+
+}
+
+.filtericon {
+  max-width: 25px;
+}
+
+.custompopups {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  display: inline-block;
+  z-index: 55555;
+  top: 0px;
+  padding: 30px;
+}
+
+.closedpopus {
+  position: fixed;
+  right: 20px;
+  font-size: 40px;
+  top: 10px;
+  font-family: 'RubikBold';
+}
+
+.titlepopuresfilter {
+  font-size: 20px;
+}
+
 /* MEDIA */
 @media only screen and (max-width: 1420px) {
   .mediaminicontainer {
@@ -2022,10 +2226,12 @@ body {
   width: 33.333333333%;
   padding-bottom: 6px;
 }
-.blocknoneres{
+
+.blocknoneres {
   display: none;
 }
-.classmobile{
+
+.classmobile {
   width: 456px;
   max-width: 456px;
 }
@@ -2036,29 +2242,50 @@ body {
     max-width: 29%;
     padding: 0px;
   }
-  .rightblockproduct{
+
+  .rightblockproduct {
     padding: 0px;
   }
 }
+@media only screen and (max-width: 1368px) {
+ .contrtopbars{
+  width: 30%;
+ }
+}
+
+
 @media only screen and (max-width: 1371px) {
-  .clasrightline .slick-list{
+  .clasrightline .slick-list {
     border: 0px;
   }
 }
 
+@media only screen and (max-width: 1335px) {
+  .contrtopbars{
+   width: 25%;
+  }
+ }
+
+ @media only screen and (max-width: 1249px) {
+  .contrtopbars{
+    width: 20%;
+   }
+}
 @media only screen and (max-width: 1257px) {
-   .alabmobiles{
- max-width: 28%;
-}
-.midlblock{
-  padding: 0px;
-}
+  .alabmobiles {
+    max-width: 28%;
+  }
+
+  .midlblock {
+    padding: 0px;
+  }
 }
 
 @media only screen and (max-width: 1199px) {
-  .suberes{
+  .suberes {
     display: none;
   }
+
   .mediaminicontainer {
     max-width: 100%;
     text-align: center;
@@ -2083,6 +2310,12 @@ body {
     padding: 0px;
   }
 }
+@media only screen and (max-width: 1275px) {
+  .contrtopbars{
+    width: 15%;
+   }
+}
+
 
 @media only screen and (max-width: 1123px) {
   .grtextlogo {
@@ -2110,33 +2343,46 @@ body {
     padding-right: 10px;
   }
 }
+
 @media only screen and (max-width: 1107px) {
-  .alabmobiles{
-max-width: 50%;
+  .alabmobiles {
+    max-width: 50%;
+  }
+
+  .classmobilehlders {
+    width: 50%;
+    max-width: 50%;
+  }
+
+  .classmobile {
+    max-width: 100%;
+    width: 100%;
+
+  }
+
+  .blokersstree {
+    border: 0px;
+  }
+
+  .midlblock {
+    padding: 20px;
+  }
 }
-.classmobilehlders {
-  width: 50%;
-  max-width: 50%;
-}
-.classmobile  {
-  max-width: 100%;
-  width: 100%;
-  
-}
-.blokersstree{
-  border: 0px;
-}
-.midlblock{
- padding: 20px;
-}
-}
+
 @media only screen and (max-width: 991px) {
   .leftsider {
     display: none;
   }
-  .blocknoneres{
+  .grtextlogo0{
+    display: none;
+  }
+.contrtopbars{
+  display: none;
+}
+  .blocknoneres {
     display: inline-block;
   }
+
   .searchform {
     display: none;
   }
@@ -2149,144 +2395,175 @@ max-width: 50%;
     display: none;
   }
 }
+
 @media only screen and (max-width: 767px) {
   .footbtnsubs {
- width: 150px;
+    width: 150px;
   }
-  .footer{
+
+  .footer {
     padding: 15px;
   }
 }
+
 @media only screen and (max-width: 678px) {
 
-.alabmobiles  {
-  width: 100%;
-  max-width: 100%;
+  .alabmobiles {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .alabmobiles {
+    border: 0px;
+  }
+
+  .midlblock {
+    border: 0px;
+  }
+
+  .classmobilehlders {
+    max-width: 100%;
+    width: 100%;
+
+  }
 }
-.alabmobiles {
-  border: 0px;
-}
-.midlblock{
-  border: 0px;
-}
-.classmobilehlders   {
-  max-width: 100%;
-  width: 100%;
-  
-}
-}
+
 @media only screen and (max-width: 618px) {
-  .maincatersheader{
+  .maincatersheader {
     width: 50%;
   }
 }
+
 @media only screen and (max-width: 537px) {
-  .bodymaincontrollers{
-   height: 700px;
+  .bodymaincontrollers {
+    height: 700px;
   }
+}
+
+.containerimg {
+  display: inline-block;
+  padding: 35px;
 }
 
 
 @media only screen and (max-width: 500px) {
-  .productercateg{
+  .containerimg {
+
+    padding: 0px;
+  }
+  .productercateg {
     padding: 10px;
   }
-  .partnernoe{
+
+  .partnernoe {
     display: none;
   }
-  .btnaddcartsrav{
-width: 30%;
-text-align: center;
-margin-top: 10px;
-  }
-  .btnaddcartfavorite{
+
+  .btnaddcartsrav {
     width: 30%;
     text-align: center;
     margin-top: 10px;
   }
-  .bodymaincontrollers {
- 
-}
-.catageters{
-  height: 474px;
-}
-.catageters:hover{
-  height: 474px;
-}
-.btnaddcart{
-  width: 100%;
-  text-align: center;
-}
-.cartbtners{
-  opacity: 1;
-  visibility: inherit;
-  text-align: center;
 
-}
-.catevnuters{
-  height: 100px;
-}
-.bodymaincontrollers{
-margin-bottom: 30px;
-}
+  .btnaddcartfavorite {
+    width: 30%;
+    text-align: center;
+    margin-top: 10px;
   }
-  
+
+  .bodymaincontrollers {}
+
+  .catageters {
+    height: 474px;
+ 
+  }
+
+  .catageters:hover {
+    height: 474px;
+  }
+
+  .btnaddcart {
+    width: 100%;
+    text-align: center;
+  }
+
+  .cartbtners {
+    opacity: 1;
+    visibility: inherit;
+    text-align: center;
+
+  }
+
+  .catevnuters {
+    height: 100px;
+    position: absolute;
+    bottom: 0px;
+    background-color: red;
+  }
+ 
+  .bodymaincontrollers {
+    margin-bottom: 30px;
+  }
+  .absoluuuu333{
+   height: auto; 
+  }
+}
+
 @media only screen and (max-width: 481px) {
-  .grtextlogo{
+  .grtextlogo {
     display: none;
   }
 }
+
 @media only screen and (max-width: 438px) {
-  .goruptopproducer{
+  .goruptopproducer {
     left: 0px;
   }
-  .slideralign{
-    padding: 0px;
-  }
-}
-@media only screen and (max-width: 419px) {
-  .goruptopproducer{
-    left: 0px;
-  }
-  .slideralign{
-    padding: 0px;
-  }
-  .clasrightline{
-padding: 0px;
-  }
-  .row{
-    margin: 0px;
-  }
-}
-@media only screen and (max-width: 389px) {
-  .goruptopproducer{
-    left: 0px;
-  }
-  .slideralign{
-    padding: 0px;
-  }
-  .clasrightline{
-padding: 0px;
-  }
-  .container{
+
+  .slideralign {
     padding: 0px;
   }
 }
 
-.imgzagl{
-  width: 100%;
-  display: inline-block;
-  text-align: center;
+@media only screen and (max-width: 419px) {
+  .goruptopproducer {
+    left: 0px;
+  }
+
+  .slideralign {
+    padding: 0px;
+  }
+
+  .clasrightline {
+    padding: 0px;
+  }
+
+  .row {
+    margin: 0px;
+  }
 }
-.contrtopbars{
-  position: relative;
+
+@media only screen and (max-width: 389px) {
+  .goruptopproducer {
+    left: 0px;
+  }
+
+  .slideralign {
+    padding: 0px;
+  }
+
+  .clasrightline {
+    padding: 0px;
+  }
+
+  .container {
+    padding: 0px;
+  }
 }
-.icosearch{
-  width: 30px;
-  position: absolute;
-  top: 7px;
-  right: 10px;
+
+
+/* .catevnutersss{
+position: absolute;
+bottom: 0px;
 }
-.searchform{
-  padding-right: 43px;
-}
+ */

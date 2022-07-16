@@ -80,8 +80,37 @@ class Statis extends Component {
         e.target.classList.remove('red')
 
     }
-    render() {
+    componentDidMount() {
 
+        const requestOptions = {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' },
+
+        };
+        fetch(process.env.REACT_APP_BASE_URL + '/auth/news', requestOptions)
+            .then((response) => response.json())
+
+            .then(data => {
+                console.log(data)
+                this.setState({
+                    main: data,
+                    isLoad: true
+                })
+            }
+            )
+
+
+            .catch((error) => {
+                console.error(error);
+            });
+
+
+    };
+
+
+
+    render() {
+        const { isLoad } = this.state
         const settings = {
             dots: true,
             infinite: true,
@@ -94,24 +123,24 @@ class Statis extends Component {
                 {
                     breakpoint: 1199,
                     settings: {
-                      slidesToShow: 4,
-                  
+                        slidesToShow: 4,
+
                     }
-                  },
-                  {
+                },
+                {
                     breakpoint: 991,
                     settings: {
-                      slidesToShow: 3,
-                  
+                        slidesToShow: 3,
+
                     }
-                  },
-                  {
+                },
+                {
                     breakpoint: 749,
                     settings: {
-                      slidesToShow: 2,
-                  
+                        slidesToShow: 2,
+
                     }
-                  }
+                }
 
             ],
             appendDots: dots => (
@@ -141,182 +170,62 @@ class Statis extends Component {
             )
 
         };
-        return (
-            <div className="page-wrap">
-                <div className="main-body bodysttis">
+        if (!isLoad) {
+            return (
+                <div></div>
+            )
+        } else {
+            return (
+                <div className="page-wrap">
+                    <div className="main-body bodysttis">
 
 
-                    <Container className='controlerspadr'>
-                        <Row>
+                        <Container className='controlerspadr'>
+                            <Row>
+                                <Col className='nopadd' xs={12}>
+                                    <span className='populartitle'> Полезные статьи</span>
+                                    <div className='brnpop'>
+                                        <a href={"/allstat"} className='btnstatis'>Смотреть все</a>
 
-
-
-
-
-                            <Col className='nopadd' xs={12}>
-
-                                <span className='populartitle'> Полезные статьи</span>
-
-
-                                <div className='brnpop'>
-                                    <button className='btnstatis'>Смотреть все</button>
-
-                                    <button className="minn" onClick={this.previous1}>
-                                        <img src={backp}></img>
-                                    </button>
-                                    <button className="minn" onClick={this.next1}>
-                                        <img src={nextp}></img>
-                                    </button>
-
-
-
-
-
-
-                                </div>
-
-
-
-
-                            </Col>
-
-
-                            <Col className='nopadd columstatis' xs={12}>
-                                <Slider ref={c => (this.slider = c)}{...settings}>
-                                    <div className='statblock' id="1">
-
-                                        <div className='testersss'>
-                                            <img className='' src={statis} />
-
-
-                                            <div className='grtextsttis'>
-                                                <p className='brandtextvers'>21.04.2020
-                                                </p>
-                                                <p className='textrowproduct'>Wi-Fi марш рутизатор SNR-CPE-MD1.1
-                                                    Wi-Fi маршрутизатор SNR-CPE-MD1.1
-                                                </p>
-                                            </div>
-
-                                        </div>
-
+                                        <button className="minn" onClick={this.previous1}>
+                                            <img src={backp}></img>
+                                        </button>
+                                        <button className="minn" onClick={this.next1}>
+                                            <img src={nextp}></img>
+                                        </button>
                                     </div>
+                                </Col>
+                                <Col className='nopadd columstatis' xs={12}>
+                                    <Slider ref={c => (this.slider = c)}{...settings}>
+                                        {this.state.main.news.map((data) =>
+                                            <div className='statblock' id="1">
+                                                <div className='testersss'>
+                                                    <a href={"/one/" + data._id}><img className='sttiimages' src={process.env.REACT_APP_IMG + data.icon} /></a>
+                                                    <div className='grtextsttis'>
+                                                        <p className='brandtextvers'>21.04.2020
+                                                        </p>
+                                                        <a href={"/one/" + data._id} className='textrowproduct'>{data.nameru}
+                                                        </a>
+                                                    </div>
 
-                                    <div className='statblock' id="1">
+                                                </div>
 
-                                        <div className='testersss'>
-                                            <img className='' src={statis} />
-
-
-                                            <div className='grtextsttis'>
-                                                <p className='brandtextvers'>21.04.2020
-                                                </p>
-                                                <p className='textrowproduct'>Wi-Fi марш рутизатор SNR-CPE-MD1.1
-                                                    Wi-Fi маршрутизатор SNR-CPE-MD1.1
-                                                </p>
                                             </div>
-
-                                        </div>
-
-                                    </div>
-
-                                    <div className='statblock' id="1">
-
-                                        <div className='testersss'>
-                                            <img className='' src={statis} />
+                                        )}
+                                    </Slider>
 
 
-                                            <div className='grtextsttis'>
-                                                <p className='brandtextvers'>21.04.2020
-                                                </p>
-                                                <p className='textrowproduct'>Wi-Fi марш рутизатор SNR-CPE-MD1.1
-                                                    Wi-Fi маршрутизатор SNR-CPE-MD1.1
-                                                </p>
-                                            </div>
+                                </Col>
 
-                                        </div>
+                            </Row>
 
-                                    </div>
-
-                                    <div className='statblock' id="1">
-
-                                        <div className='testersss'>
-                                            <img className='' src={statis} />
+                        </Container>
 
 
-                                            <div className='grtextsttis'>
-                                                <p className='brandtextvers'>21.04.2020
-                                                </p>
-                                                <p className='textrowproduct'>Wi-Fi марш рутизатор SNR-CPE-MD1.1
-                                                    Wi-Fi маршрутизатор SNR-CPE-MD1.1
-                                                </p>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                    <div className='statblock' id="1">
-
-                                        <div className='testersss'>
-                                            <img className='' src={statis} />
-
-
-                                            <div className='grtextsttis'>
-                                                <p className='brandtextvers'>21.04.2020
-                                                </p>
-                                                <p className='textrowproduct'>Wi-Fi марш рутизатор SNR-CPE-MD1.1
-                                                    Wi-Fi маршрутизатор SNR-CPE-MD1.1
-                                                </p>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-
-
-
-
-
-
-
-                                </Slider>
-
-
-                            </Col>
-
-                        </Row>
-
-                    </Container>
-
-
-                </div></div>
-        )
+                    </div></div>
+            )
+        }
     }
 }
 
 export default Statis;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

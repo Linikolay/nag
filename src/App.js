@@ -11,6 +11,10 @@ import logo from './logo.svg';
 const Headers = React.lazy(() => import('./component/Headers'));
 const Footer = React.lazy(() => import('./component/Footer'));
 const MainPage = React.lazy(() => import('./component/MainPage'));
+const Contacts = React.lazy(() => import('./component/Contacts'));
+
+const Allstat = React.lazy(() => import('./component/Allstat'));
+
 const Category = React.lazy(() => import('./component/Product/Category'));
 const All = React.lazy(() => import('./component/Product/All'));
 const One = React.lazy(() => import('./component/news/one'));
@@ -34,8 +38,10 @@ class App extends Component {
                 <Route path="/" element={<MainPage/>} />
                 <Route path="/all" element={<All/>} />
                 <Route path="/one/:id" element={<One/>} />
+                <Route path="/contacts" element={<Contacts/>} />
+                <Route path="/allstat" element={<Allstat/>} />
                 
-
+                
                 <Route path="/category/:id" element={<Category/>} />
                 <Route  path="/view/:id"
               

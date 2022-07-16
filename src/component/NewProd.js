@@ -90,7 +90,7 @@ class NewProd extends Component {
 
             })
         };
-        fetch('/auth/getallnewproduct', requestOptions)
+        fetch(process.env.REACT_APP_BASE_URL+'/auth/getallnewproduct', requestOptions)
             .then((response) => response.json())
 
             .then(data => {
@@ -268,7 +268,7 @@ class NewProd extends Component {
 
     </div>
     <div className='catevnuters'>
-    <Link className={"mainlinkblackcolor"} to={"/view/" + data._id}> <img className='routers' src={data.image[0].url} /></Link>
+    <Link className={"mainlinkblackcolor"} to={"/view/" + data._id}> <img className='routers' src={process.env.REACT_APP_IMG+data.image[0].url} /></Link>
         {
             data.brand.length > 0&&(
   <p className='brandtextvers'>{data.brand[0].nameru}

@@ -57,7 +57,7 @@ class All extends Component {
             headers: { 'Content-Type': 'application/json' },
          
         };
-        fetch('http://localhost:7000/auth/test', requestOptions)
+        fetch(process.env.REACT_APP_BASE_URL+'/auth/test', requestOptions)
             .then((response) => response.json())
 
             .then(data => {

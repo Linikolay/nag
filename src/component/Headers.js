@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 
-import { Navbar, Nav, Container, NavDropdown, FormGroup, FormControl, Button } from 'react-bootstrap';
+import { Navbar, Form, Nav, Container, NavDropdown, FormGroup, FormControl, Button, Dropdown } from 'react-bootstrap';
 import logo from '../img/logo.svg';
 import { BrowserRouter as Link, Route, Routes } from 'react-router-dom'
 import reg from '../img/reg.svg';
@@ -51,7 +51,7 @@ class Headers extends Component {
             headers: { 'Content-Type': 'application/json' },
 
         };
-        fetch('/auth/search?text=' + e.target.value, requestOptions)
+        fetch( process.env.REACT_APP_BASE_URL+'/auth/search?text=' + e.target.value, requestOptions)
             .then((response) => response.json())
 
             .then(data => {
@@ -82,13 +82,10 @@ class Headers extends Component {
 
             })
         };
-        fetch('/auth/getOneCategorysControllers', requestOptions)
+        fetch(process.env.REACT_APP_BASE_URL+'/auth/getOneCategorysControllers', requestOptions)
             .then((response) => response.json())
 
             .then(data => {
-                // const result = data.data.filter((word, index) => index < 7);
-
-                console.log(data)
                 this.setState({
 
                     category: data.data,
@@ -142,12 +139,17 @@ class Headers extends Component {
                                         <p className='textlogo textlogonoew'> телекоммуникационное </p>
                                         <p className='textlogo textlogonoew'>оборудование</p>
                                     </div>
-                                    <div className='grtextlogo0'>
-                                        <p className='textlogo tel'>998 (97) 777-70-60 </p>
-                                        <p className='textlogo date'> Пн-Пт 09:00-18:00 </p>
-
-                                    </div>
+                                 
+         
                                 </Navbar.Brand>
+       
+                                <div className='grtextlogo0'>
+                                 <a href={"tel:+998712058585"}> <p className='textlogo tel'>998 (71) 205-85-85 </p> </a>   
+                                    <p className='textlogo date'> Пн-Сб 09:00-18:00 </p>
+
+                                </div>
+
+    
                                 <FormGroup className='contrtopbars'>
                                     <FormControl onFocus={this.focused} className='searchform' onChange={this.search} type="text" placeholder="Например: Управляемый коммутатор " ></FormControl>
                                     {
@@ -166,24 +168,20 @@ class Headers extends Component {
                                     }
 
 
-<img className='icosearch' src={seaicobn}></img>
-                                </FormGroup>{' '}
+                                    <img className='icosearch' src={seaicobn}></img>
+                                </FormGroup>
                                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                                 <Navbar.Collapse className='justify-content-end' id="basic-navbar-nav">
                                     <div className='blocknoneres'>
-                                     
-                                    {this.state.category.map((data, id) =>
-                            <a key={data._id} href={"category/" + data._id} className='maincatersheader'>
-                                {/* <img  className='imgtemp' src={data.icon} /> */}
-                                <div key={data.icon} className='blockcater'>
-                                    <p key={data.nameru} className='textcategory'>{data.nameru}</p>
-                               
-                                </div>
-                            
 
-
-                            </a>
-                        )}
+                                        {this.state.category.map((data, id) =>
+                                            <a key={data._id} href={"category/" + data._id} className='maincatersheader'>
+                                                {/* <img  className='imgtemp' src={data.icon} /> */}
+                                                <div key={data.icon} className='blockcater'>
+                                                    <p key={data.nameru} className='textcategory'>{data.nameru}</p>
+                                                </div>
+                                            </a>
+                                        )}
 
                                     </div>
                                     <Nav className="me-auto">

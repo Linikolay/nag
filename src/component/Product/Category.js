@@ -13,7 +13,7 @@ import partner from '../../img/partner.png';
 
 import countico from '../../img/countico.svg';
 import filtericon from '../../img/filtericon.svg';
-import {NotificationContainer, NotificationManager} from 'react-notifications';
+import { NotificationContainer, NotificationManager } from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
 
 import sortico from '../../img/sortico.svg';
@@ -56,6 +56,10 @@ class Category extends Component {
             breadcat: "",
             get: false,
             pops: false,
+            banload: true,
+            catload: true,
+            cenload: true,
+            tipload: true,
             mini: ''
         }
         this.change = this.change.bind(this);
@@ -63,15 +67,59 @@ class Category extends Component {
         this.load = this.load.bind(this);
         this.pops = this.pops.bind(this);
         this.closepop = this.closepop.bind(this);
-        
+
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     }
-    closepop=()=>{
+    tip = () =>{
+        if(this.state.tipload == true){
+            this.setState({
+                tipload: false
+            })
+        }else{
+            this.setState({
+                tipload: true
+            })
+        }
+    }
+    cen = ()=>{
+        if(this.state.cenload == true){
+            this.setState({
+                cenload: false
+            })
+        }else{
+            this.setState({
+                cenload: true
+            })
+        }
+    }
+    ban = () =>{
+        if(this.state.banload == true){
+            this.setState({
+                banload: false
+            })
+        }else{
+            this.setState({
+                banload: true
+            })
+        }
+    }
+    categ = ()=>{
+        if(this.state.catload == true){
+            this.setState({
+                catload: false
+            })
+        }else{
+            this.setState({
+                catload: true
+            })
+        }
+    }
+    closepop = () => {
         this.setState({
             pops: false
         })
     }
-    pops=()=>{
+    pops = () => {
         console.log("gjdfkgjl")
         this.setState({
             pops: true
@@ -96,12 +144,12 @@ class Category extends Component {
 
 
     }
-    bufer = e =>{
+    bufer = e => {
 
         navigator.clipboard.writeText(e)
         /* Скопируйте текст внутри текстового поля */
-        NotificationManager.success(e , 'Артикул Скопирован' );
-   
+        NotificationManager.success(e, 'Артикул Скопирован');
+
     }
     change = e => {
         this.setState({
@@ -132,7 +180,7 @@ class Category extends Component {
                         currentpage: this.state.activepage + 1,
                     })
                 };
-                fetch('/auth/getonecategoryscontroll/' + pathArray[2], requestOptions)
+                fetch(process.env.REACT_APP_BASE_URL+'/auth/getonecategoryscontroll/' + pathArray[2], requestOptions)
                     .then((response) => response.json())
 
                     .then(data => {
@@ -229,7 +277,7 @@ class Category extends Component {
                 currentpage: 1
             })
         };
-        fetch('/auth/getonecategoryscontroll/' + pathArray[2], requestOptions)
+        fetch(process.env.REACT_APP_BASE_URL+'/auth/getonecategoryscontroll/' + pathArray[2], requestOptions)
             .then((response) => response.json())
 
             .then(data => {
@@ -244,20 +292,20 @@ class Category extends Component {
                     allpage: data.allpage
                 })
                 if (data.data.lvl) {
-if(data.data.lvl==2){
-    this.setState({
-        construktor: [],
-        isLoad: true,
-        product: data.child.product,
-        activepage: data.activepage,
-        allpage: data.allpage,
-        breadcat: data.bradcat,
-        breadchild: data.breadchild,
-    })
-}
-                 
+                    if (data.data.lvl == 2) {
+                        this.setState({
+                            construktor: [],
+                            isLoad: true,
+                            product: data.child.product,
+                            activepage: data.activepage,
+                            allpage: data.allpage,
+                            breadcat: data.bradcat,
+                            breadchild: data.breadchild,
+                        })
+                    }
 
-                  
+
+
                 } else {
                     const maina = data.data.filter((cll, id) => id <= 2);
 
@@ -339,219 +387,466 @@ if(data.data.lvl==2){
         } else {
             return (
                 <div className="page-wrap">
-                       <NotificationContainer/>
-                    {this.state.pops==true&&(
+                    <NotificationContainer />
+                    {this.state.pops == true && (
                         <div className='custompopups'>
                             <div className='titlepopuresfilter'>Фильтр</div>
-                        <button onClick={this.closepop} className='closedpopus buttonclassmobilessrm'>X</button>
+                            <button onClick={this.closepop} className='closedpopus buttonclassmobilessrm'>X</button>
 
 
 
 
-                        <Col className=' cladco' xs={12}>
+                            <Col className=' cladco' xs={12}>
+
+                                <Row>
 
 
-<button className='btnbrands'>
-    Производитель
-</button>
-<img className='imgdowncater' src={down}></img>
-<div>
-
-    <div className="form-group1">
-        <input type="checkbox" id="javascript" />
-        <label htmlFor="javascript"> SNR</label>
-    </div>
+                                    {
+                                        this.state.construktor.length > 0 && (
 
 
-    <div className="form-group1">
-        <input defaultChecked={true} type="checkbox" id="javascript1" />
-        <label htmlFor="javascript1"> MikroTik</label>
-    </div>
+                                            <Col className=' cladco' xs={12}>
+
+                                                <button className='btnbrands'>
+                                                    <span > Подкатегории</span>
 
 
-    <div className="form-group1">
-        <input type="checkbox" id="javascript2" />
-        <label htmlFor="javascript2"> PowerTone</label>
-    </div>
-
-</div>
-</Col>
-<Col>     <button className='btnbrands'>
-Фильтр по цене
-</button>
-<img className='imgdowncater' src={down}></img>
-</Col>
-<Col className=' cladco sliderfilters' xs={12}>
-
-<Range
-    values={this.state.values}
-    step={STEP}
-    min={MIN}
-    max={MAX}
-    onChange={values => this.setState({ values })}
-    renderTrack={({ props, children }) => (
-        <div className='zaglushe'
-            onMouseDown={props.onMouseDown}
-            onTouchStart={props.onTouchStart}
-            style={{
-                ...props.style,
-                height: "23px",
-                display: "flex",
-                width: "100%"
-            }}
-        >
-            <div
-                className='colpser'
-                ref={props.ref}
-                style={{
-                    height: "10px",
-                    width: "100%",
-                    borderRadius: "4px",
-                    backgroundColor: 'red',
-                    background: getTrackBackground({
-                        values: this.state.values,
-                        colors: COLORS2,
-                        min: MIN,
-                        max: MAX
-                    }),
-                    alignSelf: "center"
-                }}
-            >
-
-            </div>
-        </div>
-    )}
-    renderThumb={({ props, isDragged }) => (
-        <div
-            {...props}
-            style={{
-                ...props.style,
-
-            }}
-        >
-
-        </div>
-    )}
-/>
-<Range
-    values={this.state.values}
-    step={STEP}
-    min={MIN}
-    max={MAX}
-    onChange={values => this.setState({ values })}
-    renderTrack={({ props, children }) => (
-        <div
-            onMouseDown={props.onMouseDown}
-            onTouchStart={props.onTouchStart}
-
-            style={{
-                ...props.style,
-                height: "23px",
-                display: "flex",
-                width: "100%"
-            }}
-        >
-            <div
-                ref={props.ref}
-                className={"maincikir"}
-                style={{
-                    height: "5px",
-                    width: "100%",
-                    borderRadius: "4px",
-                    backgroundColor: 'red',
-                    background: getTrackBackground({
-                        values: this.state.values,
-                        colors: COLORS,
-                        min: MIN,
-                        max: MAX
-                    }),
-                    alignSelf: "center"
-                }}
-            >
-                {children}
-            </div>
-        </div>
-    )}
-    renderThumb={({ props, isDragged }) => (
-        <div
-            {...props}
-            style={{
-                ...props.style,
-
-
-                backgroundColor: "transparent",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-
-            }}
-        >
-            <span
-
-            >
-                <img className='slidergttn' src={slidebtn}></img>
-                <span
-                    style={{
-                        fontFamily: "Arial",
-                        fontSize: "12px",
-                        position: "absolute",
-                        marginTop: "-20px",
-
-                        marginLeft: "-2px"
-                    }}
-                >
-
-
-                </span>
-            </span>
-
-        </div>
-
-    )}
-/>
+                                                </button>
 
 
 
-<div className='dislbbbdf'>
-    <span className='tas1'><div className='textmiongo1'>от</div>{this.state.values[0]}<div className='textmiongo2'>сум</div></span>
-    <span className='tas2'><div className='textmiongo3'>до</div>{this.state.values[1]}<div className='textmiongo4'>сум</div></span>
-</div>
+                                                <img className='imgdowncater' src={down}></img>
+
+                                                <div>
+
+
+                                                    {this.state.construktor.map((data) =>
+                                                        <div>
+                                              
+                                                                    <div className="form-group1 margcat">
+
+                                                                        <a className={"linkcaters"} href={'/category/' + data._id}>{data.nameru}</a>
+                                                                    </div>
+                                                          
+
+                                                        </div>
+                                                    )}
+
+
+                                                    {(() => {
+
+                                                        if (this.state.maincategor.length > 3) {
+                                                            if (this.state.all == false) {
+                                                                return (
+                                                                    <button className='ffdfdf' onClick={this.load} >Еще</button>
+                                                                )
+                                                            } else {
+                                                                return (
+                                                                    <button className='ffdfdf' onClick={this.load} >Скрыть</button>
+                                                                )
+                                                            }
+
+                                                        } else {
+                                                            return (
+                                                                <p></p>
+                                                            )
+                                                        }
+                                                    })()}
 
 
 
 
-
-</Col>
-
-
-
-
-<Col className=' cladco' xs={12}>
-<button className='btnbrands'>
-    Тип товара
-</button>
-<img className='imgdowncater' src={down}></img>
-<div>
-
-    <div className="form-group1">
-        <input type="checkbox" id="javascript5" />
-        <label htmlFor="javascript5"> Новые поступления</label>
-    </div>
+                                                </div>
+                                            </Col>
+                                        )
+                                    }
+                                    <Col className=' cladco' xs={12}>
 
 
-    <div className="form-group1">
-        <input defaultChecked={true} type="checkbox" id="javascript16" />
-        <label htmlFor="javascript16"> Акции</label>
-    </div>
+                                        <button className='btnbrands'>
+                                            Производитель
+                                        </button>
+                                        <img className='imgdowncater' src={down}></img>
+                                        <div>
+
+                                            <div className="form-group1">
+                                                <input type="checkbox" id="javascript" />
+                                                <label htmlFor="javascript"> SNR</label>
+                                            </div>
 
 
-    <div className="form-group1">
-        <input type="checkbox" id="javascript27" />
-        <label htmlFor="javascript27"> Рекомендуем</label>
-    </div>
+                                            <div className="form-group1">
+                                                <input defaultChecked={true} type="checkbox" id="javascript1" />
+                                                <label htmlFor="javascript1"> MikroTik</label>
+                                            </div>
 
-</div>
-</Col>
+
+                                            <div className="form-group1">
+                                                <input type="checkbox" id="javascript2" />
+                                                <label htmlFor="javascript2"> PowerTone</label>
+                                            </div>
+
+                                        </div>
+                                    </Col>
+                                    <Col>     <button className='btnbrands'>
+                                        Фильтр по цене
+                                    </button>
+                                        <img className='imgdowncater' src={down}></img>
+                                    </Col>
+                                    <Col className=' cladco sliderfilters' xs={12}>
+
+                                        <Range
+                                            values={this.state.values}
+                                            step={STEP}
+                                            min={MIN}
+                                            max={MAX}
+                                            onChange={values => this.setState({ values })}
+                                            renderTrack={({ props, children }) => (
+                                                <div className='zaglushe'
+                                                    onMouseDown={props.onMouseDown}
+                                                    onTouchStart={props.onTouchStart}
+                                                    style={{
+                                                        ...props.style,
+                                                        height: "23px",
+                                                        display: "flex",
+                                                        width: "100%"
+                                                    }}
+                                                >
+                                                    <div
+                                                        className='colpser'
+                                                        ref={props.ref}
+                                                        style={{
+                                                            height: "10px",
+                                                            width: "100%",
+                                                            borderRadius: "4px",
+                                                            backgroundColor: 'red',
+                                                            background: getTrackBackground({
+                                                                values: this.state.values,
+                                                                colors: COLORS2,
+                                                                min: MIN,
+                                                                max: MAX
+                                                            }),
+                                                            alignSelf: "center"
+                                                        }}
+                                                    >
+
+                                                    </div>
+                                                </div>
+                                            )}
+                                            renderThumb={({ props, isDragged }) => (
+                                                <div
+                                                    {...props}
+                                                    style={{
+                                                        ...props.style,
+
+                                                    }}
+                                                >
+
+                                                </div>
+                                            )}
+                                        />
+                                        <Range
+                                            values={this.state.values}
+                                            step={STEP}
+                                            min={MIN}
+                                            max={MAX}
+                                            onChange={values => this.setState({ values })}
+                                            renderTrack={({ props, children }) => (
+                                                <div
+                                                    onMouseDown={props.onMouseDown}
+                                                    onTouchStart={props.onTouchStart}
+
+                                                    style={{
+                                                        ...props.style,
+                                                        height: "23px",
+                                                        display: "flex",
+                                                        width: "100%"
+                                                    }}
+                                                >
+                                                    <div
+                                                        ref={props.ref}
+                                                        className={"maincikir"}
+                                                        style={{
+                                                            height: "5px",
+                                                            width: "100%",
+                                                            borderRadius: "4px",
+                                                            backgroundColor: 'red',
+                                                            background: getTrackBackground({
+                                                                values: this.state.values,
+                                                                colors: COLORS,
+                                                                min: MIN,
+                                                                max: MAX
+                                                            }),
+                                                            alignSelf: "center"
+                                                        }}
+                                                    >
+                                                        {children}
+                                                    </div>
+                                                </div>
+                                            )}
+                                            renderThumb={({ props, isDragged }) => (
+                                                <div
+                                                    {...props}
+                                                    style={{
+                                                        ...props.style,
+
+
+                                                        backgroundColor: "transparent",
+                                                        display: "flex",
+                                                        justifyContent: "center",
+                                                        alignItems: "center",
+
+                                                    }}
+                                                >
+                                                    <span
+
+                                                    >
+                                                        <img className='slidergttn' src={slidebtn}></img>
+                                                        <span
+                                                            style={{
+                                                                fontFamily: "Arial",
+                                                                fontSize: "12px",
+                                                                position: "absolute",
+                                                                marginTop: "-20px",
+
+                                                                marginLeft: "-2px"
+                                                            }}
+                                                        >
+
+
+                                                        </span>
+                                                    </span>
+
+                                                </div>
+
+                                            )}
+                                        />
+
+
+
+                                        <div className='dislbbbdf'>
+                                            <span className='tas1'><div className='textmiongo1'>от</div>{this.state.values[0]}<div className='textmiongo2'>сум</div></span>
+                                            <span className='tas2'><div className='textmiongo3'>до</div>{this.state.values[1]}<div className='textmiongo4'>сум</div></span>
+                                        </div>
+
+
+
+
+
+                                    </Col>
+
+
+
+
+
+                                </Row>
+
+
+
+                                <button onClick={this.ban} className='btnbrands'>
+                                    Производитель
+                                </button>
+                                <img className='imgdowncater' src={down}></img>
+                                
+                                             <div>
+                                      
+                                             <div className="form-group1">
+                                                 <input type="checkbox" id="javascript" />
+                                                 <label htmlFor="javascript"> SNR</label>
+                                             </div>
+         
+         
+                                             <div className="form-group1">
+                                                 <input defaultChecked={true} type="checkbox" id="javascript1" />
+                                                 <label htmlFor="javascript1"> MikroTik</label>
+                                             </div>
+         
+         
+                                             <div className="form-group1">
+                                                 <input type="checkbox" id="javascript2" />
+                                                 <label htmlFor="javascript2"> PowerTone</label>
+                                             </div>
+         
+                                         </div>
+                                      
+                               
+                            </Col>
+                            <Col>     <button className='btnbrands'>
+                                Фильтр по цене
+                            </button>
+                                <img className='imgdowncater' src={down}></img>
+                            </Col>
+                            <Col className=' cladco sliderfilters' xs={12}>
+
+                                <Range
+                                    values={this.state.values}
+                                    step={STEP}
+                                    min={MIN}
+                                    max={MAX}
+                                    onChange={values => this.setState({ values })}
+                                    renderTrack={({ props, children }) => (
+                                        <div className='zaglushe'
+                                            onMouseDown={props.onMouseDown}
+                                            onTouchStart={props.onTouchStart}
+                                            style={{
+                                                ...props.style,
+                                                height: "23px",
+                                                display: "flex",
+                                                width: "100%"
+                                            }}
+                                        >
+                                            <div
+                                                className='colpser'
+                                                ref={props.ref}
+                                                style={{
+                                                    height: "10px",
+                                                    width: "100%",
+                                                    borderRadius: "4px",
+                                                    backgroundColor: 'red',
+                                                    background: getTrackBackground({
+                                                        values: this.state.values,
+                                                        colors: COLORS2,
+                                                        min: MIN,
+                                                        max: MAX
+                                                    }),
+                                                    alignSelf: "center"
+                                                }}
+                                            >
+
+                                            </div>
+                                        </div>
+                                    )}
+                                    renderThumb={({ props, isDragged }) => (
+                                        <div
+                                            {...props}
+                                            style={{
+                                                ...props.style,
+
+                                            }}
+                                        >
+
+                                        </div>
+                                    )}
+                                />
+                                <Range
+                                    values={this.state.values}
+                                    step={STEP}
+                                    min={MIN}
+                                    max={MAX}
+                                    onChange={values => this.setState({ values })}
+                                    renderTrack={({ props, children }) => (
+                                        <div
+                                            onMouseDown={props.onMouseDown}
+                                            onTouchStart={props.onTouchStart}
+
+                                            style={{
+                                                ...props.style,
+                                                height: "23px",
+                                                display: "flex",
+                                                width: "100%"
+                                            }}
+                                        >
+                                            <div
+                                                ref={props.ref}
+                                                className={"maincikir"}
+                                                style={{
+                                                    height: "5px",
+                                                    width: "100%",
+                                                    borderRadius: "4px",
+                                                    backgroundColor: 'red',
+                                                    background: getTrackBackground({
+                                                        values: this.state.values,
+                                                        colors: COLORS,
+                                                        min: MIN,
+                                                        max: MAX
+                                                    }),
+                                                    alignSelf: "center"
+                                                }}
+                                            >
+                                                {children}
+                                            </div>
+                                        </div>
+                                    )}
+                                    renderThumb={({ props, isDragged }) => (
+                                        <div
+                                            {...props}
+                                            style={{
+                                                ...props.style,
+
+
+                                                backgroundColor: "transparent",
+                                                display: "flex",
+                                                justifyContent: "center",
+                                                alignItems: "center",
+
+                                            }}
+                                        >
+                                            <span
+
+                                            >
+                                                <img className='slidergttn' src={slidebtn}></img>
+                                                <span
+                                                    style={{
+                                                        fontFamily: "Arial",
+                                                        fontSize: "12px",
+                                                        position: "absolute",
+                                                        marginTop: "-20px",
+
+                                                        marginLeft: "-2px"
+                                                    }}
+                                                >
+
+
+                                                </span>
+                                            </span>
+
+                                        </div>
+
+                                    )}
+                                />
+
+
+
+                                <div className='dislbbbdf'>
+                                    <span className='tas1'><div className='textmiongo1'>от</div>{this.state.values[0]}<div className='textmiongo2'>сум</div></span>
+                                    <span className='tas2'><div className='textmiongo3'>до</div>{this.state.values[1]}<div className='textmiongo4'>сум</div></span>
+                                </div>
+
+
+
+
+
+                            </Col>
+
+
+
+
+                            <Col className=' cladco' xs={12}>
+                                <button className='btnbrands'>
+                                    Тип товара
+                                </button>
+                                <img className='imgdowncater' src={down}></img>
+                                <div>
+
+                                    <div className="form-group1">
+                                        <input type="checkbox" id="javascript5" />
+                                        <label htmlFor="javascript5"> Новые поступления</label>
+                                    </div>
+
+
+                                    <div className="form-group1">
+                                        <input defaultChecked={true} type="checkbox" id="javascript16" />
+                                        <label htmlFor="javascript16"> Акции</label>
+                                    </div>
+
+
+                                    <div className="form-group1">
+                                        <input type="checkbox" id="javascript27" />
+                                        <label htmlFor="javascript27"> Рекомендуем</label>
+                                    </div>
+
+                                </div>
+                            </Col>
 
 
                         </div>
@@ -632,7 +927,7 @@ if(data.data.lvl==2){
                                             </div>
                                             <div className='filtermob'>
                                                 <button onClick={this.pops} className='buttonclassmobilessrm'><img className='filtericon' src={filtericon}></img></button>
-                                            
+
                                             </div>
                                         </div>
                                     )}
@@ -660,8 +955,8 @@ if(data.data.lvl==2){
 
                                                             <Col className=' cladco' xs={12}>
 
-                                                                <button  className='btnbrands'>
-                                                                    <span > Категории</span>
+                                                                <button onClick={this.categ} className='btnbrands'>
+                                                                    <span  className='noldder'> Подкатегории</span>
 
 
                                                                 </button>
@@ -675,14 +970,14 @@ if(data.data.lvl==2){
 
                                                                     {this.state.construktor.map((data) =>
                                                                         <div>
-                                                                            {
-                                                                                data.product.length > 0 && (
-                                                                                    <div className="form-group1 margcat">
+                                                                      {this.state.catload==true&&(
+                                                                                <div className="form-group1 margcat">
 
-                                                                                        <a className={"linkcaters"} href={'/category/' + data._id}>{data.nameru}</a>
-                                                                                    </div>
-                                                                                )
-                                                                            }
+                                                                                    <a className={"linkcaters"} href={'/category/' + data._id}>{data.nameru}</a>
+                                                                                </div>
+                                                                      )}
+                                                                                    
+                                                                            
 
                                                                         </div>
                                                                     )}
@@ -718,11 +1013,12 @@ if(data.data.lvl==2){
                                                     <Col className=' cladco' xs={12}>
 
 
-                                                        <button className='btnbrands'>
+                                                        <button onClick={this.ban} className='btnbrands'>
                                                             Производитель
                                                         </button>
                                                         <img className='imgdowncater' src={down}></img>
-                                                        <div>
+                                                        {this.state.banload == true&&(
+                                                            <div>
 
                                                             <div className="form-group1">
                                                                 <input type="checkbox" id="javascript" />
@@ -742,12 +1038,17 @@ if(data.data.lvl==2){
                                                             </div>
 
                                                         </div>
+                                            )}
+                                                        
                                                     </Col>
-                                                    <Col>     <button className='btnbrands'>
+                                                    <Col>     <button onClick={this.cen} className='btnbrands'>
                                                         Фильтр по цене
                                                     </button>
                                                         <img className='imgdowncater' src={down}></img>
                                                     </Col>
+                                                    {this.state.cenload == true&&(
+
+                                                    
                                                     <Col className=' cladco sliderfilters' xs={12}>
 
                                                         <Range
@@ -890,14 +1191,17 @@ if(data.data.lvl==2){
 
                                                     </Col>
 
-
+)}
 
 
                                                     <Col className=' cladco' xs={12}>
-                                                        <button className='btnbrands'>
+                                                        <button onClick={this.tip} className='btnbrands'>
                                                             Тип товара
                                                         </button>
                                                         <img className='imgdowncater' src={down}></img>
+                                                        {this.state.tipload == true&&(
+
+                                                       
                                                         <div>
 
                                                             <div className="form-group1">
@@ -918,6 +1222,7 @@ if(data.data.lvl==2){
                                                             </div>
 
                                                         </div>
+                                                         )}
                                                     </Col>
 
 
@@ -931,7 +1236,7 @@ if(data.data.lvl==2){
 
                                                     <Row className='norow'>
                                                         {this.state.product.map((data) =>
-                                                            <Col className='nopadd' xs={6} sm={6} md={6} lg={4} xl={4}>
+                                                            <Col className='nopadd' xs={6} sm={6} md={6} lg={4} xl={3}>
                                                                 <div className='productercateg' id="1">
                                                                     <div className='goruptopproducer'>
                                                                         {
@@ -975,10 +1280,13 @@ if(data.data.lvl==2){
 
 
                                                                     </div>
-                                                                    <div className='catevnuters'>
+                                                                    <div className='absoluuuu333 catevnuters'>
                                                                         {
                                                                             data.image.length > 0 && (
-                                                                                <img className='routers' src={ data.image[0].url} />
+                                                                                <div className='containerimg'>
+                                                                                    <img className='routers' src={ "https://new.itmag.uz"+data.image[0].url} />
+                                                                                </div>
+
                                                                             )
                                                                         }
 
@@ -995,9 +1303,9 @@ if(data.data.lvl==2){
                                                                         <div className='groupelipse'>
                                                                             <div className='elipse'></div>
                                                                             <span className='elipsenals'>В наличии</span>
-                                                                            
-                                                                        <button  onClick={() => this.bufer(data.artikul)}  className='snerstest'><span className='elipseart'>{data.artikul}</span></button>
-                                                                        
+
+                                                                            <button onClick={() => this.bufer(data.artikul)} className='snerstest'><span className='elipseart'>{data.artikul}</span></button>
+
                                                                         </div>
                                                                         <p className='titleboldcena'>{data.sum.toLocaleString()}  сум</p>
 
@@ -1023,26 +1331,27 @@ if(data.data.lvl==2){
 
 
                                                     <Row className='norow'>
-                                                        <Col xs={12}>
+                                                        {/* <Col xs={12}>
 
                                                             <div className='countcategory'>
                                                                 <img src={countico}></img> <span className='minitextccounttext'>Товаров: {this.state.count}</span>
                                                             </div>
                                                             <div className='sortblock'>
-                                                                <img src={sortico}></img>   <span className='minitextccounttext'>Сортировка по:</span><Dropdown className='sortdrops'>
+                                                                <img src={sortico}></img>   <span className='minitextccounttext'>Сортировка по:</span>
+                                                                <Dropdown className='sortdrops'>
                                                                     <Dropdown.Toggle variant="success" id="dropdown-basic">
                                                                         <span>Популярности</span>
                                                                     </Dropdown.Toggle>
 
-                                                                    {/* <Dropdown.Menu>
+                                                                    <Dropdown.Menu>
                                                                     <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
                                                                     <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
                                                                     <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-                                                                </Dropdown.Menu> */}
+                                                                </Dropdown.Menu>
                                                                 </Dropdown>
                                                             </div>
 
-                                                        </Col>
+                                                        </Col> */}
                                                         {this.state.product.map((data) =>
                                                             <Col className='nopadd' xs={6} sm={6} md={12} lg={4} xl={3}>
                                                                 <div className='productercateg' id="1">
@@ -1091,10 +1400,9 @@ if(data.data.lvl==2){
                                                                     <div className='catevnuters absoluuuu'>
                                                                         {
                                                                             data.image.length > 0 && (
-                                                                                <Link className={"mainlinkblackcolor"} to={"/view/" + data._id}>     <img className='routers' src={ data.image[0].url} /></Link>
+                                                                                <Link className={"mainlinkblackcolor"} to={"/view/" + data._id}>     <img className='routers' src={"https://new.itmag.uz"+data.image[0].url} /></Link>
                                                                             )
                                                                         }
-
                                                                         {
                                                                             data.brand.length > 0 && (
                                                                                 <p className='brandtextvers'>{data.brand[0].nameru}
@@ -1106,40 +1414,40 @@ if(data.data.lvl==2){
                                                                         </p></Link>
 
                                                                         <div className='groupelipse'>
-                                                                        {
-                                                            data.count == 0&&(
-                                                                <div className='elipse awaitbtn'></div>
-                                                            )
-                                                        }
-                                                           {
-                                                            data.count >0&&(
-                                                                <div className='elipse'></div>
-                                                            )
-                                                        }
+                                                                            {
+                                                                                data.count == 0 && (
+                                                                                    <div className='elipse awaitbtn'></div>
+                                                                                )
+                                                                            }
+                                                                            {
+                                                                                data.count > 0 && (
+                                                                                    <div className='elipse'></div>
+                                                                                )
+                                                                            }
 
-                                                        {
-                                                            data.count == 0&&(
-                                                                <span className='elipsenals awaitcount'>Ожидается</span>
-                                                            )
-                                                        }
-                                                           {
-                                                            data.count >0&&(
-                                                                <span className='elipsenals'>В наличии</span>
-                                                            )
-                                                        }
-                                                                          <button  onClick={() => this.bufer(data.artikul)}  className='snerstest'><span className='elipseart'>{data.artikul}</span></button>
+                                                                            {
+                                                                                data.count == 0 && (
+                                                                                    <span className='elipsenals awaitcount'>Ожидается</span>
+                                                                                )
+                                                                            }
+                                                                            {
+                                                                                data.count > 0 && (
+                                                                                    <span className='elipsenals'>В наличии</span>
+                                                                                )
+                                                                            }
+                                                                            <button onClick={() => this.bufer(data.artikul)} className='snerstest'><span className='elipseart'>{data.artikul}</span></button>
                                                                         </div>
                                                                         {
-                                                            data.sum ==0&&(
-                                                                <p className='titleboldcena'>По запросу</p>
-                                                            )
-                                                        }
-                                                         {
-                                                            data.sum >0&&(
-                                                                <p className='titleboldcena'>{Math.ceil(data.sum).toLocaleString() } сум</p>
-                                                            )
-                                                        }
-                                                                   
+                                                                            data.sum == 0 && (
+                                                                                <p className='titleboldcena'>По запросу</p>
+                                                                            )
+                                                                        }
+                                                                        {
+                                                                            data.sum > 0 && (
+                                                                                <p className='titleboldcena'>{Math.ceil(data.sum).toLocaleString()} сум</p>
+                                                                            )
+                                                                        }
+
 
 
                                                                     </div>

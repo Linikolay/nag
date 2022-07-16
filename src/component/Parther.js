@@ -10,11 +10,11 @@ import partner from '../img/partner.png';
 import a from './para/a.png';
 import aa from './para/aa.png';
 import aaa from './para/aaa.png';
-import aaaa from './para/aaaa.png';
+
 import aaaaa from './para/aaaaa.png';
+import fffff from './para/fffff.png';
+
 import aaaaaa from './para/aaaaaa.png';
-import aaaaaaa from './para/aaaaaaa.png';
-import aaaaaaaa from './para/aaaaaaaa.png';
 import aaaaaaaaa from './para/aaaaaaaaa.png';
 import aaaaaaaaaa from './para/aaaaaaaaaa.png';
 import aaaaaaaaaaa from './para/aaaaaaaaaaa.png';
@@ -43,19 +43,19 @@ class Parther extends Component {
                         <Row>
                             <p className='tetilepatrhners'>Наши партнеры</p>
                             <Col className='' xs={12}>
-                                
-                                <div className='imgparmauioage'>
-                                    <img className='parthmain' src={a}></img>
-                                </div>
+                               
                                 <div className='imgparmauioage'>
                                     <img className='parthmain' src={aa}></img>
                                 </div>
+                         
                                 <div className='imgparmauioage'>
                                     <img className='parthmain' src={aaa}></img>
                                 </div>
                                 <div className='imgparmauioage'>
-                                    <img className='parthmain' src={aaaa}></img>
+                                    <img className='parthmain' src={fffff}></img>
                                 </div>
+                                
+
                                 <div className='imgparmauioage'>
                                     <img className='parthmain' src={aaaaa}></img>
                                 </div>
@@ -65,28 +65,29 @@ class Parther extends Component {
 
 
                                 <div className='imgparmauioage'>
-                                    <img className='parthmain' src={aaaaaaa}></img>
-                                </div>
-
-
-                                <div className='imgparmauioage'>
-                                    <img className='parthmain' src={aaaaaaaa}></img>
-                                </div>
-
-
-                                <div className='imgparmauioage'>
                                     <img className='parthmain' src={aaaaaaaaa}></img>
                                 </div>
 
-
+                                <div className='imgparmauioage'>
+                                    <img className='parthmain' src={aaaaaaaaaa}></img>
+                                </div>
                            
-
+              
 
                                 <div className='imgparmauioage'>
                                     <img className='parthmain' src={aaaaaaaaaaa}></img>
                                 </div>
 
+                                <div className='imgparmauioage'>
+                                    <img className='parthmain' src={aaaaaaaaaaaaa}></img>
+                                </div>
 
+                                
+
+ 
+                                <div className='imgparmauioage'>
+                                    <img className='parthmain' src={a}></img>
+                                </div>
                             
                             </Col>
 
