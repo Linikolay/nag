@@ -37,6 +37,7 @@ class LeftCategory extends Component {
         })   
     }
     componentDidMount() {
+        
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -63,10 +64,31 @@ class LeftCategory extends Component {
             .catch((error) => {
                 console.error(error);
             });
+
+            fetch(process.env.REACT_APP_BASE_URL+'/auth/allcategorycop', requestOptions)
+            .then((response) => response.json())
+
+            .then(data => {
+                // const result = data.data.filter((word, index) => index < 7);
+
+                console.log(data)
+                this.setState({
+                    mains: data,
+                 
+                    isLoaded: true
+                })
+            }
+            )
+
+
+            .catch((error) => {
+                console.error(error);
+            });
+
     }
     render() {
-        const { isLoad, main, category } = this.state
-        if (!isLoad) {
+        const { isLoad, main, mains, category, isLoaded } = this.state
+        if (!isLoad && !isLoaded) {
             return (
                 <p></p>
             )
@@ -81,7 +103,7 @@ class LeftCategory extends Component {
                                     <Row>
                                         <Col className='classscorll' xs={12}>
                                         <div className='otlblosk'>
-                                                {main.data.map((data, id) =>
+                                                {mains.data.map((data, id) =>
                                              
                                            
                                                 <div className=''>
@@ -105,7 +127,7 @@ class LeftCategory extends Component {
                                                 )}
   </div>
                                               
-                                             {main.data.map((data, id) =>
+                                             {mains.data.map((data, id) =>
                                              
 
                                              <div className='agares'>

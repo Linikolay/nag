@@ -109,7 +109,7 @@ class Popular extends Component {
     }
     render() {
         const settings = {
-            dots: true,
+            dots: false,
             infinite: false,
             speed: 500,
             slidesToShow: 5,
@@ -214,14 +214,9 @@ class Popular extends Component {
 
 
                                 </Col>
-                                <Col className='nopadd cladco' xs={12}>
+                     
 
-                                    <button className='activecategorymain '>Все категории</button>
-                                    <button className='noactivecategorymain '>Все категории</button>
-                                </Col>
-
-                                <Col className='nopadd' xs={12}>
-                                    {/* <Carousel autoPlay={true} infinite={true} ref={(el) => (this.Carousel = el)} arrows={false} responsive={responsive}> */}
+                                <Col className='nopadd marginmaincontrolls' xs={12}>
                                     <Slider ref={c => (this.slider = c)}{...settings}>
                                         {this.state.main.product.map((data) =>
                                             <div className='catageters'>
@@ -288,7 +283,7 @@ class Popular extends Component {
                                                             )
                                                         }
 
-                                                        {
+                                                        {/* {
                                                             data.count == 0&&(
                                                                 <span className='elipsenals awaitcount'>Ожидается</span>
                                                             )
@@ -297,10 +292,10 @@ class Popular extends Component {
                                                             data.count >0&&(
                                                                 <span className='elipsenals'>В наличии</span>
                                                             )
-                                                        }
+                                                        } */}
 
                                                      
-                                                        <button  onClick={() => this.bufer(data.artikul)}  className='snerstest'><span className='elipseart'>Арт.: {data.artikul}</span></button>
+                                                        <button  onClick={() => this.bufer(data.artikul)}  className='snerstest'><span className='elipseart'> {data.artikul}</span></button>
                                                          
 
                                                     </div>

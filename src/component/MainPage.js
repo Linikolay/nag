@@ -9,9 +9,10 @@ import cart from '../img/cart.svg';
 import reklana from '../img/reklama.svg';
 import favorite from '../img/favorite.svg';
 import start from '../img/start.svg';
-
+import { Helmet } from 'react-helmet';
 import "bootstrap/dist/css/bootstrap.min.css"
 import "../App.css"
+import { FlapperSpinner } from "react-spinners-kit";
 
 const LeftCategory = React.lazy(() => import('./LeftCategory'));
 const RightBaners = React.lazy(() => import('./RightBaners'));
@@ -34,7 +35,7 @@ class MainPage extends Component {
         }
 
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
- 
+
 
     }
 
@@ -65,7 +66,7 @@ class MainPage extends Component {
     }
 
 
-    componentDidMount(){
+    componentDidMount() {
         if (window.innerWidth <= 991) {
             this.setState({
                 get: true
@@ -92,40 +93,43 @@ class MainPage extends Component {
         return (
 
             <div className="page-wrap">
+                 <Helmet>
+        <title>testerreessdsfdsf</title>
+        <meta name="description" content="amgggkkk" />
+        <meta name="theme-color" content="#008f68" />
+      </Helmet>
 
-                <Suspense fallback={
-                    <div>Load</div>
-                }>
+           
                     <div className="main-body">
 
                         <Container>
                             <Row>
                                 <Col className='leftsider' xs={3}><LeftCategory /></Col>
-                                {this.state.get == false&&(
-  <Col className='centerbanners'  xs={9}>
-  <RightBaners />
+                                {this.state.get == false && (
+                                    <Col className='centerbanners' xs={9}>
+                                        <RightBaners />
 
-</Col>
+                                    </Col>
 
                                 )}
-                                {this.state.get == true&&(
-                                      <Col className='centerbanners'  xs={12}>
-                                      <RightBaners />
-  
-                                  </Col>
-  
-                                    )}
+                                {this.state.get == true && (
+                                    <Col className='centerbanners' xs={12}>
+                                        <RightBaners />
 
-                              
+                                    </Col>
 
-
-                                {this.state.part == true &&(
-  <Col className='centerbanners' xs={12}>
-  <MobBaners />
-
-</Col>
                                 )}
-                              
+
+
+
+
+                                {this.state.part == true && (
+                                    <Col className='centerbanners' xs={12}>
+                                        <MobBaners />
+
+                                    </Col>
+                                )}
+
 
                                 <Col className='centerbanners bodymaincontrollers' xs={12}>
                                     <Popular />
@@ -140,16 +144,16 @@ class MainPage extends Component {
 
 
 
-                             
 
-                       
+
+
 
                             </Row>
 
                         </Container>
-                        <Statis/>
-                               
-                     
+                        <Statis />
+
+
                         <Container>
                             <Row>
 
@@ -171,7 +175,7 @@ class MainPage extends Component {
 
 
                     </div>
-                </Suspense>
+              
             </div>
         )
     }

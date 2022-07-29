@@ -120,7 +120,7 @@ class NewProd extends Component {
     render() {
 
         const settings = {
-            dots: true,
+            dots: false,
             infinite: false,
             speed: 500,
             slidesToShow: 5,
@@ -290,7 +290,7 @@ class NewProd extends Component {
                                                             )
                                                         }
 
-                                                        {
+                                                        {/* {
                                                             data.count == 0&&(
                                                                 <span className='elipsenals awaitcount'>Ожидается</span>
                                                             )
@@ -299,8 +299,8 @@ class NewProd extends Component {
                                                             data.count >0&&(
                                                                 <span className='elipsenals'>В наличии</span>
                                                             )
-                                                        }
-                                                        <button  onClick={() => this.bufer(data.artikul)}  className='snerstest'><span className='elipseart'>Арт.:{data.artikul}</span></button>
+                                                        } */}
+                                                        <button  onClick={() => this.bufer(data.artikul)}  className='snerstest'><span className='elipseart'>{data.artikul}</span></button>
                                                                         
     
         </div>

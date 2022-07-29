@@ -25,8 +25,6 @@ import aaaaaaa from "../part/8.png";
 import aaaaaaaaas from "../part/9.png";
 import aaaaaaaaaaa from "../part/10.png";
 import aaaaaaaaaaaa from "../part/11.png";
-
-
 import nextp from "../img/nextp.svg";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -177,7 +175,7 @@ class RightBaners extends Component {
             infinite: true,
             speed: 500,
             slidesToShow: 1,
-            autoplay: true,
+            autoplay: false,
 
             slidesToScroll: 1,
 
@@ -245,7 +243,7 @@ class RightBaners extends Component {
 
                                                 {this.state.main.data.map((data) =>
                                                     <a href={data.url} className='mainnon img44444'>
-                                                        <img src={process.env.REACT_APP_IMG+data.icon} />
+                                                        <img className='banerakmainsize' src={process.env.REACT_APP_IMG+data.icon} />
                                                     </a>
                                                 )}
 

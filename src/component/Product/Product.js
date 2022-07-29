@@ -282,7 +282,7 @@ class Prdocut extends Component {
                                 <div className='breadr'>
                                     <a className={'mainurl'} href="/">Главная</a>
                                     /
-                                    <a href={'/category/allcategory'} className={'decomargins'}>
+                                    <a href={'/allcat'} className={'decomargins'}>
                                         Категории
                                     </a >
                                     /
@@ -437,13 +437,18 @@ class Prdocut extends Component {
 
                                                     <img className='imgproductdetals' src={process.env.REACT_APP_IMG+this.state.src.url}></img>
 
-
-                                                    <div className='container maincontro'>
-
-                                                        <ImageSlider onChange={this.changeimg} maincount={this.state.maincount} images={main.image} />
-
-
-                                                    </div>
+                                                    {this.state.maincount > 1 && (
+                                                        <div className='container maincontro'>
+                                                            <ImageSlider onChange={this.changeimg} maincount={this.state.maincount} images={main.image} />
+                                                        </div>
+                                                    )
+                                                    }
+                                                    {this.state.maincount <= 1 && (
+                                                        <div className='nonemyconsoleser container maincontro'>
+                                                            <ImageSlider onChange={this.changeimg} maincount={this.state.maincount} images={main.image} />
+                                                        </div>
+                                                    )
+                                                    }
                                                 </div>
 
                                                 <div className='topgrgarant'>

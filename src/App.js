@@ -1,10 +1,10 @@
 
 import  React, { Component, Suspense, lazy } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import logo from './logo.svg';
 // import './App.css';
-
+import { FlapperSpinner } from "react-spinners-kit";
 // import MainPage from './component/MainPage'
 
 // const MainPage = lazy(() => import('./component/MainPage'));
@@ -19,40 +19,57 @@ const Category = React.lazy(() => import('./component/Product/Category'));
 const All = React.lazy(() => import('./component/Product/All'));
 const One = React.lazy(() => import('./component/news/one'));
 const Product = React.lazy(() => import('./component/Product/Product'));
-lazy(() => import('bootstrap/dist/css/bootstrap.min.css'))
-lazy(() => import('./App.css'))
+const AllCategory = React.lazy(() => import('./component/AllCategory'));
+
+
+// lazy(() => import('bootstrap/dist/css/bootstrap.min.css'))
+// lazy(() => import('./App.css'))
 class App extends Component {
   render() {
-    return (
+    return ( <Router>
       <div className="page-wrap">
-        <Suspense fallback={
-          <div>Load</div>
-        }>
-        <div className="main-body">
-          <Headers/>
-        
-          <Router>
-        
-              <Routes>
-            
-                <Route path="/" element={<MainPage/>} />
-                <Route path="/all" element={<All/>} />
-                <Route path="/one/:id" element={<One/>} />
-                <Route path="/contacts" element={<Contacts/>} />
-                <Route path="/allstat" element={<Allstat/>} />
-                
-                
-                <Route path="/category/:id" element={<Category/>} />
-                <Route  path="/view/:id"
-              
-                element={<Product props={":id"}/>} />
-              </Routes></Router>
+       
+        <div className="main-body gagwheth">
+      
+            <Headers />
+
+          <Suspense
+           fallback={
+            <div className="centered">
          
-             <Footer/>
+            </div>
+          }
+          >
+            <Switch>
+
+              <Route exact path="/" component={MainPage} />
+           
+              <Route path="/all" component={All} />
+              <Route path="/one/:id" component={One} />
+              <Route path="/contacts" component={Contacts} />
+              <Route path="/allstat" component={Allstat} />
+              <Route path="/allcat" component={AllCategory} />
+              <Route path="/category/:id/" component={Category} />
+              <Route path="/view/:id" component={Product} />
+
+
+
+            </Switch>
+
+
+
+
+          </Suspense>
+
+            
+      
+            <Footer />
         </div>
    
-        </Suspense></div>
+</div>
+</Router>
     )
+    
   }
 }
 

@@ -1,7 +1,8 @@
 
 import React, { Component, lazy } from 'react';
 import { Container, Row, Col, NavLink, Breadcrumb, Dropdown } from 'react-bootstrap';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
+import { Link, useHistory  } from 'react-router-dom'
+
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import styled from 'styled-components';
@@ -50,6 +51,7 @@ class Category extends Component {
             categories: "",
             main: "",
             activepage: 1,
+            brandfilter: [],
             count: "",
             all: false,
             breadchild: "",
@@ -255,6 +257,9 @@ class Category extends Component {
         }
     }
     componentDidMount() {
+
+        
+        console.log(this.props)
         if (window.innerWidth <= 1446) {
             this.setState({
                 get: true
@@ -282,8 +287,48 @@ class Category extends Component {
 
             .then(data => {
                 console.log(data)
+                const queryString = window.location.search;
+
+                const urlParams = new URLSearchParams(queryString);
+                
+                const brand = urlParams.get('brand')
+                console.log(brand)
+                let mainbrand = data.bradcat.brand
+              
+                if (brand != null ) {
+                    
+                    var minsplit = brand.split(',')
+                    if (mainbrand.length > 0) {
+                
+                    
+                        for(var i = 0; i<minsplit.length; i++){
+                          
+                            const fii = mainbrand.find(el => el.nameru == minsplit[i])
+                            const fiiindex = mainbrand.findIndex(el => el.nameru == minsplit[i])
+                            mainbrand[fiiindex].check = true 
+                            this.state.brandfilter.push(fii.nameru)
+                            console.log(fii)
+                            console.log(fiiindex)
+
+                        }
+                        this.setState({
+                            brand: mainbrand
+                        })
+    
+                    } else {
+                        this.setState({
+                            brand: data.bradcat.brand
+                        })
+                    }
+                } else {
+                    this.setState({
+                        brand: data.bradcat.brand
+                    })
+                }
+           
                 this.setState({
                     count: data.count,
+                  
                     maincategor: data.data,
                     product: data.child.product,
                     activepage: data.activepage,
@@ -357,6 +402,121 @@ class Category extends Component {
             .catch((error) => {
                 console.error(error);
             });
+    }
+    brand = e =>{
+      
+
+        console.log(e.target.name)
+      
+        const queryString = window.location.search;
+    
+        const urlParams = new URLSearchParams(queryString);
+        const brand = urlParams.get('brand')
+        console.log(brand)
+        const strArray = e.target.name.split(",");  
+     
+        if(e.target.checked == true){
+            const mypbj =strArray[0]
+   
+           this.state.brandfilter.push(mypbj)
+           this.props.history.replace({pathname: '/category/'+ this.props.match.params.id+'/'+'?brand='+this.state.brandfilter})
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    currentpage: 1,
+                    brand: this.state.brandfilter
+                })
+            };
+            fetch(process.env.REACT_APP_BASE_URL + '/auth/filterpost/', requestOptions)
+                .then((response) => response.json())
+
+                .then(data => {
+                    console.log(data)
+                    this.setState({
+                        product: data.allproducts
+                    })
+                }
+                )
+        } else {
+            const mypbj =strArray[0]
+            let myorigin = this.state.brandfilter
+            var pathArray = window.location.pathname.split('/');
+            const filimag = myorigin.filter(function(f) { return f !== mypbj });
+            console.log(mypbj)
+            this.setState({
+                brandfilter: filimag
+            })
+
+            this.props.history.replace({pathname: '/category/'+ this.props.match.params.id+'/'+'?brand='+filimag})
+
+
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    currentpage: 1,
+                    brand: filimag
+                })
+            };
+            if(filimag.length >0){
+
+            fetch(process.env.REACT_APP_BASE_URL + '/auth/filterpost/', requestOptions)
+                .then((response) => response.json())
+
+                .then(data => {
+                    console.log(data)
+                    this.setState({
+                        product: data.allproducts
+                    })
+                }
+                )
+
+            }else{
+                
+
+
+
+
+
+                const requestOptions = {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        currentpage: 1
+                    })
+                };
+                fetch(process.env.REACT_APP_BASE_URL+'/auth/getonecategoryscontroll/' + pathArray[2], requestOptions)
+                    .then((response) => response.json())
+        
+                    .then(data => {
+                        console.log(data)
+                        const queryString = window.location.search;
+        
+                        const urlParams = new URLSearchParams(queryString);
+                        
+                        const brand = urlParams.get('brand')
+                        console.log(brand)
+                        let mainbrand = data.bradcat.brand
+                 
+                   
+                        this.setState({
+                        
+                            product: data.child.product,
+                        
+                        })
+                     
+                    }
+                    )
+        
+        
+                    .catch((error) => {
+                        console.error(error);
+                    });
+            }
+        }
+
+    
     }
     load() {
         console.log(this.state.mini)
@@ -874,7 +1034,7 @@ class Category extends Component {
                                         return (
                                             <Breadcrumb className='breadr'>
                                                 <Breadcrumb.Item href="/">Главная</Breadcrumb.Item>
-                                                <Breadcrumb.Item href="/category/allcategory">
+                                                <Breadcrumb.Item href="/allcat">
                                                     Категории
                                                 </Breadcrumb.Item>
                                                 <Breadcrumb.Item active>{this.state.breadcat.nameru}</Breadcrumb.Item>
@@ -884,7 +1044,7 @@ class Category extends Component {
                                         return (
                                             <Breadcrumb className='breadr'>
                                                 <Breadcrumb.Item href="/">Главная</Breadcrumb.Item>
-                                                <Breadcrumb.Item href="/category/allcategory">
+                                                <Breadcrumb.Item href="/allcat">
                                                     Категории
                                                 </Breadcrumb.Item>
                                                 <Breadcrumb.Item href={'/category/' + this.state.breadcat._id}>{this.state.breadcat.nameru}</Breadcrumb.Item>
@@ -1017,25 +1177,19 @@ class Category extends Component {
                                                             Производитель
                                                         </button>
                                                         <img className='imgdowncater' src={down}></img>
+                                                        {console.log(this.state.brand)}
                                                         {this.state.banload == true&&(
                                                             <div>
-
-                                                            <div className="form-group1">
-                                                                <input type="checkbox" id="javascript" />
-                                                                <label htmlFor="javascript"> SNR</label>
-                                                            </div>
-
-
-                                                            <div className="form-group1">
-                                                                <input defaultChecked={true} type="checkbox" id="javascript1" />
-                                                                <label htmlFor="javascript1"> MikroTik</label>
-                                                            </div>
-
-
-                                                            <div className="form-group1">
-                                                                <input type="checkbox" id="javascript2" />
-                                                                <label htmlFor="javascript2"> PowerTone</label>
-                                                            </div>
+                                                                {/* breadcat */}
+                                                                {this.state.brand.map((data, idx) => 
+                                                                  <div className="form-group1">
+                                                               
+                                                                  <input onChange={this.brand} defaultChecked={data.check} name={[data.nameru, data._id]} idx={data._id} type="checkbox" id={idx} />
+                                                                  <label htmlFor={idx}>      {data.nameru}</label>
+                                                                 
+                                                              </div>
+                                                                )}
+                                                          
 
                                                         </div>
                                             )}
@@ -1226,6 +1380,40 @@ class Category extends Component {
                                                     </Col>
 
 
+  {/* breadcat */}
+  {this.state.breadcat.filter.map((data, idx) => 
+                                                                   <Col className=' cladco' xs={12}>
+                                                                   <button onClick={this.tip} className='btnbrands'>
+                                                                       {data.nameru}
+                                                                   </button>
+                                                                   <img className='imgdowncater' src={down}></img>
+                                                               
+           
+                                                                  
+                                                                   <div>
+                                                                   {data.filterchild.map((data1, idx) => 
+        <div className="form-group1">
+        <input type="checkbox" id="javascript5" />
+        <label htmlFor="javascript5"> {data1.nameru}</label>
+    </div>
+                                                                    )}
+                                                                       
+           
+           
+                                                                   
+           
+                                                                   </div>
+                                                               
+                                                               </Col>
+                                                                )}
+                                               
+
+
+
+
+
+  
+
                                                 </Row>
                                             </Col>
                                         )}
@@ -1352,6 +1540,7 @@ class Category extends Component {
                                                             </div>
 
                                                         </Col> */}
+                                                 
                                                         {this.state.product.map((data) =>
                                                             <Col className='nopadd' xs={6} sm={6} md={12} lg={4} xl={3}>
                                                                 <div className='productercateg' id="1">
@@ -1425,7 +1614,7 @@ class Category extends Component {
                                                                                 )
                                                                             }
 
-                                                                            {
+                                                                            {/* {
                                                                                 data.count == 0 && (
                                                                                     <span className='elipsenals awaitcount'>Ожидается</span>
                                                                                 )
@@ -1434,8 +1623,10 @@ class Category extends Component {
                                                                                 data.count > 0 && (
                                                                                     <span className='elipsenals'>В наличии</span>
                                                                                 )
-                                                                            }
-                                                                            <button onClick={() => this.bufer(data.artikul)} className='snerstest'><span className='elipseart'>{data.artikul}</span></button>
+                                                                            } */}
+                                                                            <button onClick={() => this.bufer(data.artikul)} className='snerstest'><span className='elipseart'>
+                                                                                <div className='gradienterr'></div>
+                                                                                {data.artikul}</span></button>
                                                                         </div>
                                                                         {
                                                                             data.sum == 0 && (
