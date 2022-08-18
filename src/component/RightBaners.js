@@ -167,7 +167,24 @@ class RightBaners extends Component {
             // speed: 2000,
             slidesToScroll: 1,
 
+            responsive: [
+             
+                  {
+                    breakpoint: 991,
+                    settings: {
+                      slidesToShow: 3,
+                  
+                    }
+                  },
+                  {
+                    breakpoint: 749,
+                    settings: {
+                      slidesToShow: 2,
+                  
+                    }
+                  }
 
+            ]
 
         }
         const settings = {

@@ -158,7 +158,24 @@ class MoBaners extends Component {
             // speed: 2000,
             slidesToScroll: 1,
 
+            responsive: [
+             
+                {
+                  breakpoint: 991,
+                  settings: {
+                    slidesToShow: 4,
+                
+                  }
+                },
+                {
+                  breakpoint: 749,
+                  settings: {
+                    slidesToShow: 3,
+                
+                  }
+                }
 
+          ]
 
         }
         const settings = {

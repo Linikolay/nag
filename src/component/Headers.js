@@ -56,14 +56,13 @@ class Headers extends Component {
 
             .then(data => {
                 console.log(data)
-                if (data.data.length > 0) {
+          
                     this.setState({
                         searchlist: data,
+                        categorysearch: data.categorysearch,
                         search: true
                     })
-                } else {
-
-                }
+              
             }
             )
 
@@ -156,12 +155,40 @@ class Headers extends Component {
                                         this.state.search == true && (
                                             <div className='mainlst'>
 
-                                                {this.state.searchlist.data.map((data) =>
-                                                    <a href={'/view/' + data._id} className='product_list'>
-                                                        <img className='searchimg' src={data.image[0].url}></img>    {data.nameru}
-                                                        <p dangerouslySetInnerHTML={{ __html: (data.minidescriptionru) }}></p>
+                                        {
+                                        this.state.categorysearch.length>0&&(
+                                            <div>
+                                       
+                                  
+                                                {this.state.categorysearch.map((data) =>
+                                                    <a href={'/category/' + data._id} dangerouslySetInnerHTML={{ __html: (data.nameru) }} className='product_listr3r3r'>
+                                                     
+                                                   
                                                     </a>
                                                 )}
+
+                                                        </div>
+                                                    )
+                                                }
+
+
+                                                {
+                                                    this.state.searchlist.data.length > 0 && (
+                                                        <div className='searchproductdiv'>
+                                                     
+                                                         
+                                                            {this.state.searchlist.data.map((data) =>
+                                                                <a href={'/view/' + data._id} className='product_listr3r3r3'>
+                                                                    {/* <img className='searchimg' src={process.env.REACT_APP_IMG + data.image[0].url}></img>   */}
+                                                                    
+                                                                      {data.nameru}
+                                                                    {/* <p dangerouslySetInnerHTML={{ __html: (data.minidescriptionru) }}></p> */}
+                                                                </a>
+                                                            )}
+                                                        </div>
+                                                    )
+                                                }
+                                              
 
                                             </div>
                                         )
@@ -173,6 +200,9 @@ class Headers extends Component {
                                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                                 <Navbar.Collapse className='justify-content-end' id="basic-navbar-nav">
                                     <div className='blocknoneres'>
+
+
+
 
                                         {this.state.category.map((data, id) =>
                                             <a key={data._id} href={"category/" + data._id} className='maincatersheader'>

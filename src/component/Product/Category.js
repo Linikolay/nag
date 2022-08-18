@@ -1435,7 +1435,6 @@ class Category extends Component {
                                                                                 </div>
                                                                             )
                                                                         }
-
                                                                         {
                                                                             data.recomend == true && (
                                                                                 <div className='reqomend'>
@@ -1443,8 +1442,6 @@ class Category extends Component {
                                                                                 </div>
                                                                             )
                                                                         }
-
-
                                                                         {
                                                                             data.act == true && (
                                                                                 <div className='discount'>
@@ -1452,8 +1449,6 @@ class Category extends Component {
                                                                                 </div>
                                                                             )
                                                                         }
-
-
                                                                         {
                                                                             data.discount > 0 && (
                                                                                 <div className='skidk'>
@@ -1461,12 +1456,6 @@ class Category extends Component {
                                                                                 </div>
                                                                             )
                                                                         }
-
-
-
-
-
-
                                                                     </div>
                                                                     <div className='absoluuuu333 catevnuters'>
                                                                         {

@@ -290,7 +290,7 @@ class Prdocut extends Component {
 
                                         if (this.state.childcrumbersload == true) {
                                             return (
-                                                <Dropdown className="dopscrumbs">
+                                                <Dropdown className="dopscrumbs maincams">
                                                     <Dropdown.Toggle variant="success" id="dropdown-basic">
                                                         {this.state.crumbcategory.nameru}
                                                     </Dropdown.Toggle>
@@ -312,12 +312,12 @@ class Prdocut extends Component {
                                             )
                                         } else {
                                             return (
-                                                <Dropdown className="dopscrumbs">
+                                                <Dropdown className="dopscrumbs maincams">
                                                 <Dropdown.Toggle variant="success" id="dropdown-basic">
                                                     {this.state.crumbcategory.nameru}
                                                 </Dropdown.Toggle>
 
-                                                <Dropdown.Menu>
+                                                <Dropdown.Menu >
                                                 {this.state.infocrumb.map((data) => 
                                                 <div>
                                                     {data.nameru != this.state.crumbcategory.nameru&&(
@@ -341,12 +341,13 @@ class Prdocut extends Component {
 
                                         if (this.state.childcrumbersload == true) {
                                             return (
-                                                <Dropdown className="dopscrumbs">
+                     
+                                                <Dropdown className="dopscrumbs maincams">
                                                 <Dropdown.Toggle variant="success" id="dropdown-basic">
                                                     {this.state.crumbchild.nameru}
                                                 </Dropdown.Toggle>
 
-                                                <Dropdown.Menu>
+                                                <Dropdown.Menu className='droperesr'>
                                                 {this.state.apro.child.map((data) => 
                                                 <div>
                                                     {data.nameru != this.state.crumbchild.nameru&&(
@@ -360,6 +361,7 @@ class Prdocut extends Component {
                                             
                                                 </Dropdown.Menu>
                                             </Dropdown>   
+
                                             )
                                         } else {
 
