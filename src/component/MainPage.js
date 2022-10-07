@@ -130,8 +130,8 @@ class MainPage extends Component {
                                     </Col>
                                 )}
 
-
-                                <Col className='centerbanners bodymaincontrollers' xs={12}>
+<div className='betons'></div>
+                                <Col className='centerbanners popularheigh bodymaincontrollers' xs={12}>
                                     <Popular />
 
                                 </Col>

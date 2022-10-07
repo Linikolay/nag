@@ -4,7 +4,10 @@
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 
+    <link  href="/path/to/jquery.fancybox.min.css" rel="stylesheet">
+    <script src="/path/to/jquery.fancybox.min.js"></script>
     <meta name="description" content="__META_DESCRIPTION__"/>
     <meta name="og:title" content="__META_OG_TITLE__"/>
     <meta name="og:description" content="__META_OG_DESCRIPTION__"/>
@@ -12,7 +15,12 @@
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
  
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-  
+    <script>
+      window.replainSettings = { id: '0e3a81dd-8d52-42d5-bbe6-adaefea4a309' };
+      (function(u){var s=document.createElement('script');s.async=true;s.src=u;
+      var x=document.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);
+      })('https://widget.replain.cc/dist/client.js');
+      </script>
     <title>React App</title>
   </head>
   <body>

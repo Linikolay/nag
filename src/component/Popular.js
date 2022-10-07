@@ -9,7 +9,7 @@ import mini2 from '../img/mini2.png';
 import banner from '../img/banner.png';
 import routersimg from '../img/router.png';
 import partner from '../img/partner.png';
-import {NotificationContainer, NotificationManager} from 'react-notifications';
+import { NotificationContainer, NotificationManager } from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
 import Slider from "react-slick";
 
@@ -39,12 +39,12 @@ class Popular extends Component {
         this.next1 = this.next1.bind(this);
         this.previous1 = this.previous1.bind(this);
     }
-    bufer = e =>{
+    bufer = e => {
 
         navigator.clipboard.writeText(e)
         /* Скопируйте текст внутри текстового поля */
-        NotificationManager.success(e , 'Артикул Скопирован' );
-   
+        NotificationManager.success(e, 'Артикул Скопирован');
+
     }
     componentDidMount() {
         const requestOptions = {
@@ -54,11 +54,11 @@ class Popular extends Component {
 
             })
         };
-        fetch(process.env.REACT_APP_BASE_URL+'/auth/getallpopularproduct', requestOptions)
+        fetch(process.env.REACT_APP_BASE_URL + '/auth/getallpopularproduct', requestOptions)
             .then((response) => response.json())
 
             .then(data => {
-                console.log(data)
+              
                 this.setState({
                     main: data,
                     isLoad: true
@@ -118,27 +118,27 @@ class Popular extends Component {
                 {
                     breakpoint: 1199,
                     settings: {
-                      slidesToShow: 4,
-                  
+                        slidesToShow: 4,
+
                     }
-                  },
-                  {
+                },
+                {
                     breakpoint: 991,
                     settings: {
-                      slidesToShow: 3,
-                  
+                        slidesToShow: 3,
+
                     }
-                  },
-                  {
+                },
+                {
                     breakpoint: 749,
                     settings: {
-                      slidesToShow: 2,
-                  
+                        slidesToShow: 2,
+
                     }
-                  }
+                }
 
             ]
-            
+
             ,
             slidesToScroll: 1,
 
@@ -180,9 +180,9 @@ class Popular extends Component {
 
 
             return (
-                <div className="page-wrap">
+                <div className="page-wrap magapush">
                     <div className="main-body">
-                    <NotificationContainer/>
+                        <NotificationContainer />
 
                         <Container className='controlerspadr'>
                             <Row>
@@ -214,7 +214,7 @@ class Popular extends Component {
 
 
                                 </Col>
-                     
+
 
                                 <Col className='nopadd marginmaincontrolls' xs={12}>
                                     <Slider ref={c => (this.slider = c)}{...settings}>
@@ -260,7 +260,7 @@ class Popular extends Component {
 
                                                 </div>
                                                 <div className='catevnuters'>
-                                                <Link className={"mainlinkblackcolor"} to={"/view/" + data._id}> <img className='routers' src={process.env.REACT_APP_IMG+data.image[0].url} /></Link>
+                                                    <Link className={"mainlinkblackcolor"} to={"/view/" + data._id}> <img className='routers' src={process.env.REACT_APP_IMG + data.image[0].url} /></Link>
                                                     {
                                                         data.brand.length > 0 && (
                                                             <p className='brandtextvers'>{data.brand[0].nameru}
@@ -271,14 +271,14 @@ class Popular extends Component {
                                                     <p className='textrowproduct'><Link className={"mainlinkblackcolor"} to={"/view/" + data._id}>{data.nameru}</Link>
                                                     </p>
                                                     <div className='groupelipse'>
-                                                       
+
                                                         {
-                                                            data.count == 0&&(
+                                                            data.count == 0 && (
                                                                 <div className='elipse awaitbtn'></div>
                                                             )
                                                         }
-                                                           {
-                                                            data.count >0&&(
+                                                        {
+                                                            data.count > 0 && (
                                                                 <div className='elipse'></div>
                                                             )
                                                         }
@@ -294,23 +294,23 @@ class Popular extends Component {
                                                             )
                                                         } */}
 
-                                                     
-                                                        <button  onClick={() => this.bufer(data.artikul)}  className='snerstest'><span className='elipseart'> {data.artikul}</span></button>
-                                                         
+
+                                                        <button onClick={() => this.bufer(data.artikul)} className='snerstest'><span className='elipseart'> {data.artikul}</span></button>
+
 
                                                     </div>
 
                                                     {
-                                                            data.sum ==0&&(
-                                                                <p className='titleboldcena'>По запросу</p>
-                                                            )
-                                                        }
-                                                         {
-                                                            data.sum >0&&(
-                                                                <p className='titleboldcena'>{Math.ceil(data.sum).toLocaleString()} сум</p>
-                                                            )
-                                                        }
-                                                 
+                                                        data.sum == 0 && (
+                                                            <p className='titleboldcena'>По запросу</p>
+                                                        )
+                                                    }
+                                                    {
+                                                        data.sum > 0 && (
+                                                            <p className='titleboldcena'>{Math.ceil(data.sum).toLocaleString()} сум</p>
+                                                        )
+                                                    }
+
 
                                                     <div className='cartbtners'>
 

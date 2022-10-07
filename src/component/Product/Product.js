@@ -12,6 +12,8 @@ import icodoc from '../../img/icodoc.svg';
 
 import PropTypes from "prop-types";
 
+
+
 import cartbtn from "../../img/cartbtn.svg";
 import arti from "../../img/ari.svg";
 import srav from "../../img/sravbtn.svg";
@@ -20,6 +22,7 @@ import favorite from "../../img/favorite.svg";
 import { Carousel } from 'react-responsive-carousel';
 import imgproduct from "../../img/imgproduct.svg";
 import "bootstrap/dist/css/bootstrap.min.css"
+
 import ImageSlider from "../Slide/ImageSlider";
 
 import { LARGE_IMAGES } from "../data/data";
@@ -28,7 +31,7 @@ import '../../App.css'
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import {NotificationContainer, NotificationManager} from 'react-notifications';
+import { NotificationContainer, NotificationManager } from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
 
 class Prdocut extends Component {
@@ -49,8 +52,10 @@ class Prdocut extends Component {
             curen: 1580000,
             curenter: 1580000,
             count: 1,
+            gala: false,
             dec: true,
             har: false,
+            gala: false,
             doc: false,
             childcrumbersload: false,
             pers: {
@@ -70,12 +75,23 @@ class Prdocut extends Component {
         this.har = this.har.bind(this);
         this.doc = this.doc.bind(this);
     }
-    bufer = e =>{
+    bufer = e => {
 
         navigator.clipboard.writeText(e)
         /* Скопируйте текст внутри текстового поля */
-        NotificationManager.success(e , 'Артикул Скопирован' );
-   
+        NotificationManager.success(e, 'Артикул Скопирован');
+
+    }
+    galer = e => {
+        console.log('test')
+        this.setState({
+            gala: true
+        })
+    }
+    desa = e =>{
+        this.setState({
+            gala: false
+        })
     }
     change = e => {
         this.setState({
@@ -136,7 +152,7 @@ class Prdocut extends Component {
         var pathArray = window.location.pathname.split('/');
 
 
-        fetch(process.env.REACT_APP_BASE_URL+'/auth/oneproduct/' + pathArray[2], requestOptions)
+        fetch(process.env.REACT_APP_BASE_URL + '/auth/oneproduct/' + pathArray[2], requestOptions)
             .then((response) => response.json())
 
             .then(data => {
@@ -148,20 +164,20 @@ class Prdocut extends Component {
                     infocrumb: data.crumbinfo,
                     crumbcategory: data.apro,
                 })
-                if(data.apro.child){
-                  
+                if (data.apro.child) {
+
                     for (var g = 0; g < data.apro.child.length; g++) {
                         if (data.apro.child[g].product.length > 0) {
                             console.log(data.apro.child[g])
                             this.setState({
-                              
+
                                 crumbchild: data.apro.child[g],
                                 childcrumbersload: true
                             })
                         }
                     }
                 }
-                
+
                 for (var i = 0; i < cont.product.mainparams.length; i++) {
 
 
@@ -255,25 +271,16 @@ class Prdocut extends Component {
 
 
     render() {
-
-
-
-
-
         const { thumbsSwiper, setThumbsSwiper, isLoad, main } = this.state
-
         if (!isLoad) {
             return (
-                <p>
-
-                </p>
+                <div className='defaultheruslan'>
+                </div>
             )
         } else {
-
-
             return (
                 <div className="page-wrap">
-                      <NotificationContainer/>
+                    <NotificationContainer />
                     <div className="main-body">
                         {console.log(this.state.test)}
                         <Container className='controlerspadr'>
@@ -286,81 +293,78 @@ class Prdocut extends Component {
                                         Категории
                                     </a >
                                     /
-                                     {(() => {
+                                    {(() => {
 
                                         if (this.state.childcrumbersload == true) {
                                             return (
-                                                <Dropdown className="dopscrumbs maincams">
-                                                    <Dropdown.Toggle variant="success" id="dropdown-basic">
+                                                <Dropdown className="dopscrumbs maincams dropdown">
+                                                    <Dropdown.Toggle variant="success" className='maindrope333 btn btn-primary dropdown-toggle' id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                         {this.state.crumbcategory.nameru}
                                                     </Dropdown.Toggle>
 
-                                                    <Dropdown.Menu>
-                                                {this.state.infocrumb.map((data) => 
-                                                <div>
-                                                    {data.nameru != this.state.crumbcategory.nameru&&(
-                                                        <Dropdown.Item href={"/category/"+data._id}>{data.nameru}</Dropdown.Item>
-                                                    )}
+                                                    <div className='dropdown-menu'>
+                                                        {this.state.infocrumb.map((data) =>
+                                                            <div>
+                                                                {data.nameru != this.state.crumbcategory.nameru && (
+                                                                    <Dropdown.Item href={"/category/" + data._id}>{data.nameru}</Dropdown.Item>
+                                                                )}
 
-                                                </div>
- 
-                                                )}
-                                                  
-                                                </Dropdown.Menu>
+                                                            </div>
+
+                                                        )}
+
+                                                    </div>
                                                 </Dropdown>
 
                                             )
                                         } else {
                                             return (
-                                                <Dropdown className="dopscrumbs maincams">
-                                                <Dropdown.Toggle variant="success" id="dropdown-basic">
-                                                    {this.state.crumbcategory.nameru}
-                                                </Dropdown.Toggle>
+                                                <Dropdown className="dopscrumbs maincams dropdown">
+                                                    <Dropdown.Toggle variant="success" className='maindrope333 btn btn-primary dropdown-toggle' id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        {this.state.crumbcategory.nameru}
+                                                    </Dropdown.Toggle>
 
-                                                <Dropdown.Menu >
-                                                {this.state.infocrumb.map((data) => 
-                                                <div>
-                                                    {data.nameru != this.state.crumbcategory.nameru&&(
-                                                        <Dropdown.Item href={"/category/"+data._id}>{data.nameru}</Dropdown.Item>
-                                                    )}
+                                                    <div className='dropdown-menu'>
+                                                        {this.state.infocrumb.map((data) =>
+                                                            <div>
+                                                                {data.nameru != this.state.crumbcategory.nameru && (
+                                                                    <Dropdown.Item href={"/category/" + data._id}>{data.nameru}</Dropdown.Item>
+                                                                )}
 
-                                                </div>
- 
-                                                )}
-                                                  
-                                                </Dropdown.Menu>
-                                            </Dropdown>
+                                                            </div>
+
+                                                        )}
+
+                                                    </div>
+                                                </Dropdown>
                                             )
                                         }
                                     })()}
-                                    {this.state.childcrumbersload==true&&(
+                                    {this.state.childcrumbersload == true && (
                                         <span>/</span>
                                     )}
-                                    
                                     {(() => {
-
                                         if (this.state.childcrumbersload == true) {
                                             return (
-                     
-                                                <Dropdown className="dopscrumbs maincams">
-                                                <Dropdown.Toggle variant="success" id="dropdown-basic">
-                                                    {this.state.crumbchild.nameru}
-                                                </Dropdown.Toggle>
+                                                <Dropdown className="dopscrumbs maincams dropdown">
+                                                    <Dropdown.Toggle variant="success" className='maindrope333 btn btn-primary dropdown-toggle' id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        {this.state.crumbchild.nameru}
+                                                    </Dropdown.Toggle>
 
-                                                <Dropdown.Menu className='droperesr'>
-                                                {this.state.apro.child.map((data) => 
-                                                <div>
-                                                    {data.nameru != this.state.crumbchild.nameru&&(
-                                                        <Dropdown.Item href={"/category/"+data._id}>{data.nameru}</Dropdown.Item>
-                                                    )}
+                                                    <div className='droperesr dropdown-menu'>
+                                                        {this.state.apro.child.map((data) =>
+                                                            <div>
+                                                                {data.nameru != this.state.crumbchild.nameru && (
+                                                                    <Dropdown.Item href={"/category/" + data._id}>{data.nameru}</Dropdown.Item>
+                                                                )}
 
-                                                </div>
- 
-                                                )}
-                                                   
-                                            
-                                                </Dropdown.Menu>
-                                            </Dropdown>   
+                                                            </div>
+
+                                                        )}
+
+
+                                                    </div>
+                                                </Dropdown>
 
                                             )
                                         } else {
@@ -376,7 +380,7 @@ class Prdocut extends Component {
                                             )
                                         } else {
                                             return (
-                                                <a  className={'rgconsole'}>{this.state.main.nameru}</a>
+                                                <a className={'rgconsole'}>{this.state.main.nameru}</a>
                                             )
                                         }
 
@@ -384,7 +388,7 @@ class Prdocut extends Component {
 
                                 </div>
 
-                                <Col className='nopadd cladco productblocked textpssss' xs={12}>
+                                <Col className='nopadd cladco productblocked poducteresgkibak textpssss' xs={12}>
 
 
 
@@ -433,11 +437,19 @@ class Prdocut extends Component {
                                                             )
                                                         }
 
-                                                        <div className='btnaddcartsrav btnaddcartsravdet'><img src={srav}></img></div>
-                                                        <div className='btnaddcartfavorite btnaddcartfavoritedet'><img src={favorite}></img></div>
+                                                        <div className='btnaddcartsrav btcustomers btnaddcartsravdet'><img src={srav}></img></div>
+                                                        <div className='btnaddcartfavorite btcustomers btnaddcartfavoritedet'><img src={favorite}></img></div>
                                                     </div>
 
-                                                    <img className='imgproductdetals' src={process.env.REACT_APP_IMG+this.state.src.url}></img>
+                                                    {
+                                                        this.state.gala == true && (
+                                                            <div onClick={this.desa} className='galamain'>
+                                                                <img className='imgmyconfirm' src={process.env.REACT_APP_IMG + this.state.src.url}></img>
+                                                            </div>
+                                                        )
+                                                    }
+                                                    <button className='galerbtns' onClick={this.galer}>  <img className='imgproductdetals' src={process.env.REACT_APP_IMG + this.state.src.url}></img></button>
+
 
                                                     {this.state.maincount > 1 && (
                                                         <div className='container maincontro'>
@@ -514,24 +526,24 @@ class Prdocut extends Component {
                                             <div className='rightblockproduct'>
                                                 <div className='topers'>
                                                     <div className='groupelipse grtonamecontrolers'>
-                                                       {
-                                                            this.state.main.count == 0&&(
+                                                        {
+                                                            this.state.main.count == 0 && (
                                                                 <div className='elipse awaitbtn'></div>
                                                             )
                                                         }
-                                                           {
-                                                             this.state.main.count >0&&(
+                                                        {
+                                                            this.state.main.count > 0 && (
                                                                 <div className='elipse'></div>
                                                             )
                                                         }
 
                                                         {
-                                                             this.state.main.count == 0&&(
+                                                            this.state.main.count == 0 && (
                                                                 <span className='elipsenals awaitcount'>Ожидается</span>
                                                             )
                                                         }
-                                                           {
-                                                             this.state.main.count >0&&(
+                                                        {
+                                                            this.state.main.count > 0 && (
                                                                 <span className='elipsenals'>В наличии</span>
                                                             )
                                                         }
@@ -541,39 +553,39 @@ class Prdocut extends Component {
                                                 </div>
                                                 <div className='linemonproduct'></div>
                                                 <p className='stoimprod'>Стоимость</p>
-                                                         {
-                                                            this.state.curen ==0&&(
-                                                                <p className='titleboldcena'>По запросу</p>
-                                                            )
-                                                        }
-                                                         {
-                                                            this.state.curen >0&&(
-                                                                <p className='cenatopiks'>{Math.ceil(this.state.curen).toLocaleString()} сум</p>
-                                                            )
-                                                        }
-                                               
+                                                {
+                                                    this.state.curen == 0 && (
+                                                        <p className='titleboldcena'>По запросу</p>
+                                                    )
+                                                }
+                                                {
+                                                    this.state.curen > 0 && (
+                                                        <p className='cenatopiks'>{Math.ceil(this.state.curen).toLocaleString()} сум</p>
+                                                    )
+                                                }
 
-                                         
-                                                         {
-                                                            this.state.curen >0&&(
-                                                                <div className='tik'>
-                                                                <p className='tiktext'>Количество</p>
-            
-                                                                <div className='grouties'>
-                                                                    <button onClick={this.minus} className='btnleftminus'>-</button>
-                                                                    <div className='countd'>{this.state.count}</div>
-                                                                    <button onClick={this.plus} className='btnpls'>+</button>
-                                                                </div>
+
+
+                                                {
+                                                    this.state.curen > 0 && (
+                                                        <div className='tik'>
+                                                            <p className='tiktext'>Количество</p>
+
+                                                            <div className='grouties'>
+                                                                <button onClick={this.minus} className='btnleftminus'>-</button>
+                                                                <div className='countd'>{this.state.count}</div>
+                                                                <button onClick={this.plus} className='btnpls'>+</button>
                                                             </div>
-                                                            )
-                                                        }
+                                                        </div>
+                                                    )
+                                                }
 
-{
-                                                            this.state.curen >0&&(
-                                                                <button className='carttoproductes'><img src={cartbtn} />Добавить в корзину</button>
-                                                            )
-                                                        }
-                                          
+                                                {
+                                                    this.state.curen > 0 && (
+                                                        <button className='carttoproductes'><img src={cartbtn} />Добавить в корзину</button>
+                                                    )
+                                                }
+
 
                                             </div>
                                         </Col>
@@ -853,30 +865,20 @@ class Prdocut extends Component {
                                             this.state.doc == true && (
                                                 <Col className=' clasrightline opisanser' xs={6}>
                                                     {main.files.map((pop, idx) =>
-
                                                         <div>
-
                                                             <div className='documentbtn'>
-
-
                                                                 <a href={pop.url} target="_blank" className='pastext'><img className='icodoc' src={icodoc} /><p>{pop.nameru} </p></a>
 
                                                             </div>
                                                         </div>
 
                                                     )}
-
-
                                                 </Col>
                                             )
                                         }
-
-
                                     </Row>
-
                                 </Col>
                             </Row>
-
                         </Container>
 
 

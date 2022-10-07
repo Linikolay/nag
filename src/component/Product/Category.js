@@ -55,6 +55,8 @@ class Category extends Component {
             count: "",
             all: false,
             breadchild: "",
+            favor: "",
+            cart: "",
             breadcat: "",
             get: false,
             pops: false,
@@ -153,11 +155,106 @@ class Category extends Component {
         NotificationManager.success(e, 'Артикул Скопирован');
 
     }
+  
+
     change = e => {
         this.setState({
             sle: e
         })
     }
+
+    adFavor = e => {
+        var cata = false
+
+        var cons = JSON.parse(localStorage.getItem('favor'))
+        var gapa = this.state.favor
+
+        var gapas = [...this.state.favor]
+        var PowerTone = gapas.pop()
+        console.log(this.state.favor.length)
+        if (cons != undefined) {
+            for (var i = 0; i < this.state.favor.length; i++) {
+                if (e._id == this.state.favor[i]._id) {
+                    let filteredArray = this.state.favor.filter(item => item._id != e._id)
+                    this.setState({
+                        favor: filteredArray
+                    })
+                    localStorage.setItem('favor', JSON.stringify(filteredArray))
+                } else if ((this.state.favor.length - 1) == i) {
+
+
+                    const fava = [...this.state.favor]
+                    fava.push(e)
+                    this.setState({
+                        favor: fava
+                    })
+                    localStorage.setItem('favor', JSON.stringify(fava))
+
+
+                }
+            }
+        }
+        if (cons == undefined) {
+            localStorage.setItem('favor', JSON.stringify([e]))
+            // cons.push(e)
+            // localStorage.setItem('favor', JSON.stringify(cons))
+            console.log("test")
+
+
+        } else if (cons.length == 0) {
+            console.log("gepers")
+            gapa.push(e)
+            this.setState({
+                favor: gapa
+            })
+            localStorage.setItem('favor', JSON.stringify(this.state.favor))
+        }
+
+
+    }
+    adCart = e =>{
+        var cata = false
+        var cons = JSON.parse(localStorage.getItem('cart'))
+        console.log(e)
+        var gapa = this.state.cart
+        var gapas = [...this.state.cart]
+      
+        var PowerTone = gapas.pop()
+        
+        if (cons != undefined) {
+            console.log(this.state.cart.length - 1)
+            if(localStorage.getItem('cart').length > 0){
+                for (var i = 0; i < this.state.cart.length; i++) {
+                    if (e._id == this.state.cart[i]._id) {
+                        let filteredArray = this.state.cart.filter(item => item._id != e._id)
+                        this.setState({
+                            cart: filteredArray
+                        })
+                    } else if ((this.state.cart.length - 1) == i) {
+                        const fava = [...this.state.cart]
+                        fava.push(e)
+                        this.setState({
+                            cart: fava
+                        })
+                        localStorage.setItem('cart', JSON.stringify(fava))
+    
+    
+                    }
+                }
+            }
+        }
+        if (cons == undefined) {
+            localStorage.setItem('cart', JSON.stringify([e]))
+            cons.push(e)
+        } else if (cons.length == 0) {
+            gapa.push(e)
+            this.setState({
+                cart: gapa
+            })
+            localStorage.setItem('cart', JSON.stringify(this.state.cart))
+        }
+    }
+
     handleScroll() {
         const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
         const body = document.body;
@@ -257,8 +354,30 @@ class Category extends Component {
         }
     }
     componentDidMount() {
+    
 
-        
+
+        if(JSON.parse(localStorage.getItem('favor')) == null){
+            this.setState({
+             favor: []
+            })
+        }else{
+            this.setState({
+                favor: JSON.parse(localStorage.getItem('favor'))
+            })
+        }
+
+
+        if(JSON.parse(localStorage.getItem('cart')) == null){
+            this.setState({
+             cart: []
+            })
+        }else{
+            this.setState({
+                cart: JSON.parse(localStorage.getItem('cart'))
+            })
+        }
+     
         console.log(this.props)
         if (window.innerWidth <= 1446) {
             this.setState({
@@ -273,7 +392,7 @@ class Category extends Component {
         window.addEventListener('scroll', this.handleScroll);
         window.addEventListener('resize', this.updateWindowDimensions);
         var pathArray = window.location.pathname.split('/');
-        console.log(pathArray)
+
 
         const requestOptions = {
             method: 'POST',
@@ -542,7 +661,9 @@ class Category extends Component {
         // ariaLabel={['Lower thumb', 'Upper thumb']}
         if (!isLoad) {
             return (
-                <p></p>
+                <div className='defaultheruslan'>
+
+                </div>
             )
         } else {
             return (
@@ -612,8 +733,6 @@ class Category extends Component {
                                                             )
                                                         }
                                                     })()}
-
-
 
 
                                                 </div>
@@ -1125,7 +1244,7 @@ class Category extends Component {
 
                                                                 <img className='imgdowncater' src={down}></img>
 
-                                                                <div>
+                                                                <div className='topmydare'>
 
 
                                                                     {this.state.construktor.map((data) =>
@@ -1133,7 +1252,7 @@ class Category extends Component {
                                                                       {this.state.catload==true&&(
                                                                                 <div className="form-group1 margcat">
 
-                                                                                    <a className={"linkcaters"} href={'/category/' + data._id}>{data.nameru}</a>
+                                                                                    <a className={"linkcaters"} href={'/category/' + data._id}>{data.nameru} </a>
                                                                                 </div>
                                                                       )}
                                                                                     
@@ -1179,7 +1298,7 @@ class Category extends Component {
                                                         <img className='imgdowncater' src={down}></img>
                                                         {console.log(this.state.brand)}
                                                         {this.state.banload == true&&(
-                                                            <div>
+                                                            <div className='topmydare'>
                                                                 {/* breadcat */}
                                                                 {this.state.brand.map((data, idx) => 
                                                                   <div className="form-group1">
@@ -1318,7 +1437,6 @@ class Category extends Component {
                                                                                 fontSize: "12px",
                                                                                 position: "absolute",
                                                                                 marginTop: "-20px",
-
                                                                                 marginLeft: "-2px"
                                                                             }}
                                                                         >
@@ -1356,7 +1474,7 @@ class Category extends Component {
                                                         {this.state.tipload == true&&(
 
                                                        
-                                                        <div>
+                                                        <div className='topmydare'>
 
                                                             <div className="form-group1">
                                                                 <input type="checkbox" id="javascript5" />
@@ -1381,31 +1499,31 @@ class Category extends Component {
 
 
   {/* breadcat */}
-  {this.state.breadcat.filter.map((data, idx) => 
-                                                                   <Col className=' cladco' xs={12}>
-                                                                   <button onClick={this.tip} className='btnbrands'>
-                                                                       {data.nameru}
-                                                                   </button>
-                                                                   <img className='imgdowncater' src={down}></img>
-                                                               
-           
-                                                                  
-                                                                   <div>
-                                                                   {data.filterchild.map((data1, idx) => 
-        <div className="form-group1">
-        <input type="checkbox" id="javascript5" />
-        <label htmlFor="javascript5"> {data1.nameru}</label>
-    </div>
-                                                                    )}
-                                                                       
-           
-           
-                                                                   
-           
-                                                                   </div>
-                                                               
-                                                               </Col>
+                                                    {/* {this.state.breadcat.filter.map((data, idx) =>
+                                                        <Col className=' cladco' xs={12}>
+                                                            <button onClick={this.tip} className='btnbrands'>
+                                                                {data.nameru}
+                                                            </button>
+                                                            <img className='imgdowncater' src={down}></img>
+
+
+
+                                                            <div className='topmydare'>
+                                                                {data.filterchild.map((data1, idx) =>
+                                                                    <div className="form-group1">
+                                                                        <input type="checkbox" id="javascript5" />
+                                                                        <label htmlFor="javascript5"> {data1.nameru}</label>
+                                                                    </div>
                                                                 )}
+
+
+
+
+
+                                                            </div>
+
+                                                        </Col>
+                                                    )} */}
                                                
 
 
@@ -1629,8 +1747,13 @@ class Category extends Component {
                                                                         }
 
 
-
+                                                                        <div className='botorekamas'>
+                                                                            <button onClick={() => this.adCart(data)} className='btnaddcart'><img src={cartbtn}></img> Добавить</button>
+                                                                            <div className='btnaddcartsrav'><img src={srav}></img></div>
+                                                                            <button onClick={() => this.adFavor(data)} className='btnaddcartfavorite'><img src={favorite}></img></button>
+                                                                        </div>
                                                                     </div>
+
 
                                                                 </div>
 

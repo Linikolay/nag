@@ -22,6 +22,10 @@ class Headers extends Component {
             searchlist: [],
             nolist: false,
             search: false,
+            loadcont:false,
+            loadcart: false,
+            cart: '',
+            counttr: '',
             isLoad: false
         }
         this.search = this.search.bind(this);
@@ -43,7 +47,9 @@ class Headers extends Component {
 
 
     }
-
+    clicked = e =>{
+        console.log("headddddd")
+    }
     search = e => {
         console.log(e.target.value)
         const requestOptions = {
@@ -71,9 +77,32 @@ class Headers extends Component {
                 console.error(error);
             });
     }
+    
+
 
     componentDidMount() {
+        setInterval(() => {
+   
+            if(JSON.parse(localStorage.getItem('favor')) != undefined){
+                this.setState({
+                    counttr: JSON.parse(localStorage.getItem('favor')).length,
+                    loadcont: true
+                })
+            }else{
 
+            }
+         
+            if(JSON.parse(localStorage.getItem('cart')).length>0){
+                this.setState({
+                    cart: JSON.parse(localStorage.getItem('cart')).length,
+                    loadcart: true
+                })
+            }
+
+          
+            
+          }, 1000);
+      
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -120,6 +149,7 @@ class Headers extends Component {
 
 
     render() {
+
         const { isLoad } = this.state
         if (!isLoad) {
             return(
@@ -216,9 +246,23 @@ class Headers extends Component {
                                     </div>
                                     <Nav className="me-auto">
                                         <Nav.Link className='rgtopbuttn' href="#home"><img src={start} />Сравнение</Nav.Link>
-                                        <Nav.Link className='rgtopbuttn' href="#home"><img src={favorite} />Избранное</Nav.Link>
-                                        <Nav.Link className='rgtopbuttn' href="#home"><img src={cart} />Корзина</Nav.Link>
-                                        <Nav.Link className='rgtopbuttn regbtn' href="#home"><img src={reg} />Войти</Nav.Link>
+                                        <Nav.Link className='rgtopbuttn relatagava' href="/favor"><img src={favorite} />Избранное
+                                        {this.state.loadcont == true&&(
+                                            <span className='countfavor'>{this.state.counttr}</span>
+                                        )
+                                        }
+                                       
+        
+                                        </Nav.Link>
+                                        <Nav.Link className='rgtopbuttn relatagava55' href="/cart"><img src={cart} />Корзина
+                                        {this.state.loadcart == true&&(
+                                            <span className='btnaddcart435345'>{this.state.cart}</span>
+                                        )
+                                        }
+                                        </Nav.Link>
+                                      
+
+                                        {/* <Nav.Link className='rgtopbuttn regbtn' href="#home"><img src={reg} />Войти</Nav.Link> */}
                                         {/* <NavDropdown title="Ру" id="basic-nav-dropdown">
 
                                         <NavDropdown.Item href="#action/3.2">Uz</NavDropdown.Item>

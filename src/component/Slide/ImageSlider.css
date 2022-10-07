@@ -17,7 +17,7 @@
 .prevArrow {
   position: absolute;
   top: 27%;
-  left: -30px;
+  left: -25px;
   z-index: 100;
   cursor: pointer;
   color: #a3a3a373;
@@ -42,7 +42,7 @@ width: 360px;
   position: absolute;
   top: 27%;
   color: #a3a3a373;
-  right: -30px;
+  right: -45px;
   z-index: 100;
   cursor: pointer;
   font-size: 2rem;
